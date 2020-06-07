@@ -1,7 +1,7 @@
 import React from 'react';
 import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
-import { Grid, Button, withStyles, Typography, List, ListItem, ListItemIcon, ListItemText, ListSubheader, Paper } from '@material-ui/core';
-import { Done, Close, Mood, SentimentVeryDissatisfied, PlayCircleFilled, Replay, TrendingFlat, Score } from '@material-ui/icons';
+import { Grid, Button, withStyles, Typography, List, ListItem, ListItemIcon, ListItemText, Paper } from '@material-ui/core';
+import { Done, Close, Mood, SentimentVeryDissatisfied, PlayCircleFilled, Replay, TrendingFlat, Score, HelpOutline } from '@material-ui/icons';
 import _ from 'lodash';
 
 const styles = () => ({
@@ -146,25 +146,28 @@ class Alphabet extends React.Component{
           <Paper elevation={4} className={classes.scoreCard}>
             <div className={classes.scorecardTitle}>SCORE CARD</div>
             <List>
-              <ListSubheader>
-                Total alphabets(Questions) : {questionNumber}
-              </ListSubheader>
+              <ListItem style={{ backgroundColor: 'gray', color: 'white'}}>
+                <ListItemIcon><HelpOutline style={{color: 'white'}} /></ListItemIcon>
+                <ListItemText>Total alphabets(Questions) </ListItemText>
+                <ListItemIcon><TrendingFlat style={{color: 'white'}} /></ListItemIcon>
+                <ListItemText>{questionNumber}</ListItemText>
+              </ListItem>
               <ListItem style={{ backgroundColor: 'green', color: 'white'}}>
-                <ListItemIcon><Done /></ListItemIcon>
+                <ListItemIcon><Done style={{color: 'white'}} /></ListItemIcon>
                 <ListItemText>Right Answers </ListItemText>
-                <ListItemIcon><TrendingFlat /></ListItemIcon>
+                <ListItemIcon><TrendingFlat style={{color: 'white'}} /></ListItemIcon>
                 <ListItemText>{right}</ListItemText>
               </ListItem>
               <ListItem style={{ backgroundColor: 'red', color: 'white'}}>
-                <ListItemIcon><Close /></ListItemIcon>
+                <ListItemIcon><Close style={{color: 'white'}} /></ListItemIcon>
                 <ListItemText>Wrong Answers </ListItemText>
-                <ListItemIcon><TrendingFlat /></ListItemIcon>
+                <ListItemIcon><TrendingFlat style={{color: 'white'}} /></ListItemIcon>
                 <ListItemText>{wrong}</ListItemText>
               </ListItem>
-              <ListItem>
-                <ListItemIcon><Score /></ListItemIcon>
-                <ListItemText>Score </ListItemText>
-                <ListItemIcon><TrendingFlat /></ListItemIcon>
+              <ListItem style={{ backgroundColor: 'blue', color: 'white'}}>
+                <ListItemIcon><Score style={{color: 'white'}} /></ListItemIcon>
+                <ListItemText>Total Score </ListItemText>
+                <ListItemIcon><TrendingFlat style={{color: 'white'}} /></ListItemIcon>
                 <ListItemText>{score}</ListItemText>
               </ListItem>
             </List>
