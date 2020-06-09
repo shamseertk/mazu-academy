@@ -1,10 +1,11 @@
 import React from 'react';
-import { alphabets } from '../utils/alphabets';
+import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
 import AlphabetTile from '../component/AlphabetTile';
 import Header from '../component/common/Header';
 import { Grid } from '@material-ui/core';
 
 function Letters() {
+  const alphabetsUpdated = alphabets.slice(0, LEARNED_SO_FAR);
   return <React.Fragment>
     <Header pageTitle="All Alphabets" />
     <div className="container">
@@ -14,7 +15,7 @@ function Letters() {
         justify="space-between"
         alignItems="flex-start"
       >
-      {alphabets && alphabets.map(letter=> <AlphabetTile letter={letter} />)}
+      {alphabetsUpdated && alphabetsUpdated.map(letter=> <AlphabetTile letter={letter} />)}
       </Grid>
     </div>
   </React.Fragment>

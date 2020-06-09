@@ -1,4 +1,4 @@
-export const LEARNED_SO_FAR = 12;
+export const LEARNED_SO_FAR = 15;
 export const alphabets = [{
   letter: 'alif',
     image: 'alif.jpg',
