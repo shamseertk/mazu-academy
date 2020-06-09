@@ -45,8 +45,8 @@ export const alphabets = [{
   letter: 'dhwad',
     image: 'dhwad.jpg',
   }, {
-    letter: 'thwa',
-    image: 'thwa.jpg',
+    letter: 'twa',
+    image: 'twa.jpg',
   }, {
     letter: 'dhwa',
     image: 'dhwa.jpg',
@@ -78,12 +78,9 @@ export const alphabets = [{
     letter: 'haaa',
     image: 'haaa.jpg',
   }, {
-    letter: 'waa',
-    image: 'waa.jpg',
+    letter: 'wa',
+    image: 'wa.jpg',
   }, {
-    letter: 'amza',
-    image: 'amza.jpg',
-  }, {
-    letter: 'yaa',
+    letter: 'ya',
     image: 'ya.jpg',
   }];
