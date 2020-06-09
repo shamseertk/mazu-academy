@@ -11,6 +11,7 @@ const styles = () => ({
     fontSize: '20px',
     color: 'white',
     fontFamily: 'cursive',
+    marginLeft: '10px',
     '&:hover': {
       backgroundColor: '#28c0c0',
     }
@@ -18,7 +19,7 @@ const styles = () => ({
   menuWrapper: {
     marginLeft: '10px',
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     display: 'flex',
   }
 });
