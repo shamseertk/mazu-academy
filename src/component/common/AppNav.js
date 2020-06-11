@@ -31,6 +31,9 @@ const menus =[{
   label: 'Games',
   link: '/game',
 }, {
+  label: 'Test',
+  link: '/test',
+}, {
   label: 'Writing',
   link: '/writing',
 }];
