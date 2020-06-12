@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Typography, Toolbar, withStyles, Hidden, IconButton, Drawer } from '@material-ui/core';
+import { AppBar, Typography, Toolbar, withStyles, Hidden, IconButton } from '@material-ui/core';
 import AppNav from './AppNav';
 import { Menu } from '@material-ui/icons';
 
@@ -38,8 +38,11 @@ class Header extends React.Component {
         <Toolbar>
           <Hidden smUp>
             <IconButton
-              onClick={this.openDrawer}>
-              <Menu />
+              onClick={this.openDrawer}
+              >
+              <Menu
+                style={{color: '#fff'}}
+                />
             </IconButton>
           </Hidden>
           <Typography

@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, Hidden, Drawer, IconButton } from '@material-ui/core';
+import { withStyles, Hidden, Drawer, IconButton, Divider } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { ChevronLeft } from '@material-ui/icons';
 
@@ -70,7 +70,9 @@ class AppNav extends React.Component {
           onClick={closeDrawer}
           >
           <ChevronLeft />
+          <ChevronLeft />
         </IconButton>
+        <Divider />
         {menus && menus.map(menu => <Link key={menu.link}
         to={`${menu.link}`}
         className={classes.menuButtonDrawer}>{menu.label}</Link>)}
