@@ -84,3 +84,5 @@ export const alphabets = [{
     letter: 'ya',
     image: 'ya.jpg',
   }];
+
+export const learnedAlphabets = alphabets.slice(0, LEARNED_SO_FAR);
