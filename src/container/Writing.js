@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles, Dialog, DialogContent, DialogTitle } from '@material-ui/core';
+import _ from 'lodash';
 import Header from '../component/common/Header';
 import { learnedAlphabets } from '../utils/alphabets';
 
@@ -62,7 +63,7 @@ class Writing extends React.Component {
               style={{ textAlign:'center' }}
               ><img
               className={classes.dialogTitle}
-              src={require(`../images/alphabets/${learnedAlphabets[selectedIndex].image}`)}
+              src={require(`../images/alphabets/${_.get(learnedAlphabets, [selectedIndex, 'image'])}`)}
               alt="alphabet"
               /></DialogTitle>
           <DialogContent>
