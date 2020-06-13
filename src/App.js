@@ -1,18 +1,13 @@
 import React from 'react';
-import { Container, AppBar, Typography } from '@material-ui/core';
-import Alphabet from './container/Alphabet';
+import Header from './component/common/Header';
+import Router from './router';
 
 function App() {
-  return <Container>
-    <AppBar
-      style={{height: '50px'}}
-      position="fixed"
-      ><Typography
-        component="h1"
-        style={{fontSize: '25px'}}
-        >Arabic Learning</Typography></AppBar>
-    <Alphabet />
-  </Container>
+  return <React.Fragment>
+    <Header />
+    <Router />
+    <div className="footer"><a href="mailto:funandlearnapp@gmail.com">Send us your feedback</a></div>
+  </React.Fragment>
 }
 
 export default App;

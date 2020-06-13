@@ -3,6 +3,7 @@ import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
 import { Grid, Button, withStyles, Typography, List, ListItem, ListItemIcon, ListItemText, Paper } from '@material-ui/core';
 import { Done, Close, Mood, SentimentVeryDissatisfied, PlayCircleFilled, Replay, TrendingFlat, Score, HelpOutline } from '@material-ui/icons';
 import _ from 'lodash';
+import SubNav from '../component/common/SubNav';
 
 const styles = () => ({
   buttonStyle: {
@@ -102,9 +103,20 @@ class Alphabet extends React.Component{
 
     const { classes } = this.props;
     
-    return <div style={{ paddingTop: '60px'}}>
-      <div>Read the letter, click on verify button to check whether you read it correct or not. If correct click on the Right
-        button otherwise on Wrong button. Then it will show next letter. Do the same until you get a 'finished' message.
+    return <div className="container">
+      <SubNav pageTitle="Alphabet Self Test" />
+      <div>Read the letter, click on <Button className={classes.buttonStyle}
+        variant="contained" color="primary"
+        startIcon={<PlayCircleFilled />}
+        >Verify It</Button> button to check whether you read it correct or not. If correct click on the 
+        <Button className={`${classes.buttonStyle} ${classes.buttonCorrect}`} variant="contained" color="primary"
+          startIcon={<Done />}
+          endIcon={<Mood />}
+          >Right</Button>
+        button otherwise on <Button className={`${classes.buttonStyle} ${classes.buttonWrong}`} variant="contained" color="secondary"
+            startIcon={<Close />}
+            endIcon={<SentimentVeryDissatisfied />}
+            >Wrong</Button> button. Then it will show next letter. Do the same until you get final score.
       </div>
       <Grid container style={{border: '1px solid #224422', padding: '5px'}}>
         <Grid item>
