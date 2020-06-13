@@ -11,10 +11,6 @@ const style = () => ({
     border: '1px solid #abc234',
     cursor: 'pointer',
   },
-  dialogTitle: {
-    height: '40px',
-    width: '40px',
-  },
 });
 
 class Writing extends React.Component {
@@ -60,8 +56,8 @@ class Writing extends React.Component {
           fullWidth
           >
             <DialogTitle
-              style={{ textAlign:'center' }}
-              >{learnedAlphabets[selectedIndex].arabic}</DialogTitle>
+              style={{ textAlign:'center'}}
+              ><span style={{fontSize: '40px'}}>{learnedAlphabets[selectedIndex].arabic}</span></DialogTitle>
           <DialogContent>
           <iframe
             title="Alphabet Writing"
