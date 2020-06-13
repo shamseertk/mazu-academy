@@ -74,7 +74,7 @@ export const alphabets = [{
     image: 'za.jpg',
     writing: {
       start: 59,
-      end: 61,
+      end: 63,
     },
   }, {
     letter: 'seen',

@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../component/common/Header';
 import { learnedAlphabets } from '../utils/alphabets';
-import { withStyles, Dialog, DialogContent } from '@material-ui/core';
+import { withStyles, Dialog, DialogContent, DialogTitle } from '@material-ui/core';
 
 const style = () => ({
   highlighted: {
@@ -9,6 +9,10 @@ const style = () => ({
     width: '70px',
     border: '1px solid #abc234',
     cursor: 'pointer',
+  },
+  dialogTitle: {
+    height: '40px',
+    width: '40px',
   },
 });
 
@@ -52,12 +56,23 @@ class Writing extends React.Component {
         <Dialog
           open={writingPopup}
           onClose={this.closeWriting}
+          fullWidth
           >
+            <DialogTitle
+              style={{ textAlign:'center' }}
+              ><img
+              className={classes.dialogTitle}
+              src={require(`../images/alphabets/${learnedAlphabets[selectedIndex].image}`)}
+              alt="alphabet"
+              /></DialogTitle>
           <DialogContent>
           <iframe
+            title="Alphabet Writing"
+            width="100%"
+            height="300px"
             src={`https://www.youtube.com/embed/0kMyyfL0LTA?controls=0&start=${learnedAlphabets[selectedIndex].writing.start}
-              &end=${learnedAlphabets[selectedIndex].writing.end}&autoplay=1`} frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              &end=${learnedAlphabets[selectedIndex].writing.end}&autoplay=1&mute=1`} frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </DialogContent>
         </Dialog>
       </div>
