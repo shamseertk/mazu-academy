@@ -1,10 +1,10 @@
 import React from 'react';
-import { Card, CardMedia, CardActionArea, makeStyles, Button } from '@material-ui/core';
+import { Card, CardMedia, CardActionArea, makeStyles } from '@material-ui/core';
 import { PlayArrowRounded } from '@material-ui/icons';
 
 const styles = makeStyles({
   root: {
-    maxWidth: '220px',
+    maxWidth: '150px',
     marginBottom: '8px',
   }
 });
@@ -21,11 +21,8 @@ function AlphabetTile(props){
     <CardMedia
       component="img"
       src={img} />
-    <CardActionArea style={{textAlign: 'center'}}>
-      <Button className={classes.buttonStyle}
-        color="primary" onClick={() => playTheLetter(props.letter.letter)}
-        startIcon={<PlayArrowRounded />}
-        >Read It</Button>
+    <CardActionArea style={{textAlign: 'center', backgroundColor: '#9ee7e7', display: 'flex'}} onClick={() => playTheLetter(props.letter.letter)}>
+      <PlayArrowRounded /><div>Read It</div>
     </CardActionArea>
   </Card>
 }

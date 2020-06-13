@@ -1,11 +1,12 @@
 import React from 'react';
-import Alphabet from './container/Alphabet';
 import Header from './component/common/Header';
+import Router from './router';
 
 function App() {
   return <React.Fragment>
-    <Header pageTitle="Reading Game" />
-    <Alphabet />
+    <Header />
+    <Router />
+    <div className="footer"><a href="mailto:funandlearnapp@gmail.com">Send us your feedback</a></div>
   </React.Fragment>
 }
 

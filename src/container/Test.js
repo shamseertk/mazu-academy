@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../component/common/Header';
+import SubNav from '../component/common/SubNav';
 import Test from '../component/Test';
 
 class TestContainer extends React.Component{
   render() {
     return <React.Fragment>
-      <Header pageTitle="Test" />
+      <SubNav pageTitle="Test" />
       <div className="container">
         <Test />
       </div>

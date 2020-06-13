@@ -4,13 +4,6 @@ import AppNav from './AppNav';
 import { Menu } from '@material-ui/icons';
 
 const styles = () => ({
-  pageTitle: {
-    fontSize: '24px',
-    padding: '10px 0px 10px 50px',
-    fontFamily: 'sans-serif',
-    color: '#083f92',
-    backgroundColor: '#00d0ff',
-  }
 });
 
 class Header extends React.Component {
@@ -36,7 +29,7 @@ class Header extends React.Component {
       position="sticky"
       >
         <Toolbar>
-          <Hidden smUp>
+          <Hidden mdUp>
             <IconButton
               onClick={this.openDrawer}
               >
@@ -55,7 +48,6 @@ class Header extends React.Component {
             />
         </Toolbar>
       </AppBar>
-      <div className={this.props.classes.pageTitle}>{this.props.pageTitle}</div>
     </React.Fragment>
   }
 }

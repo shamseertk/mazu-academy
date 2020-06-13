@@ -3,6 +3,7 @@ import { withStyles, Dialog, DialogContent, DialogTitle } from '@material-ui/cor
 import _ from 'lodash';
 import Header from '../component/common/Header';
 import { learnedAlphabets } from '../utils/alphabets';
+import SubNav from '../component/common/SubNav';
 
 const style = () => ({
   highlighted: {
@@ -36,12 +37,15 @@ class Writing extends React.Component {
     const { classes } = this.props;
     const { writingPopup, selectedIndex } = this.state;
     return <React.Fragment>
-      <Header pageTitle="All Alphabets" />
       <div className="container">
-      <div style={{display: 'flex', flexDirection: 'row-reverse', flexWrap: 'wrap', width: '100%'}}>
+      <SubNav pageTitle="Learn to Write" />
+      <h3>Instruction</h3>
+      <p>Click on each letter to see how you can write the alphabet. Listen carefully, the lines it, the direction from starting to end.</p>
+      <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center', flexWrap: 'wrap', width: '100%'}}>
         {learnedAlphabets && learnedAlphabets.map(
           (alphabet, index) => {
             return <img
+              key={alphabet.letter}
               className={classes.highlighted}
               src={require(`../images/alphabets/${alphabet.image}`)}
               alt="alphabet"
@@ -62,10 +66,10 @@ class Writing extends React.Component {
           <iframe
             title="Alphabet Writing"
             width="100%"
-            height="300px"
+            height="340px"
             src={`https://www.youtube.com/embed/0kMyyfL0LTA?controls=0&start=${learnedAlphabets[selectedIndex].writing.start}
-              &end=${learnedAlphabets[selectedIndex].writing.end}&autoplay=1&mute=1`} frameborder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              &end=${learnedAlphabets[selectedIndex].writing.end}&autoplay=1&mute=1`} frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
           </DialogContent>
         </Dialog>
       </div>
