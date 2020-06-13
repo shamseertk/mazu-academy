@@ -1,7 +1,7 @@
 import React from 'react';
+import { withStyles, Dialog, DialogContent, DialogTitle } from '@material-ui/core';
 import Header from '../component/common/Header';
 import { learnedAlphabets } from '../utils/alphabets';
-import { withStyles, Dialog, DialogContent, DialogTitle } from '@material-ui/core';
 
 const style = () => ({
   highlighted: {
