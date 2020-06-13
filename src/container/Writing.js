@@ -39,6 +39,7 @@ class Writing extends React.Component {
   render() {
     const { classes } = this.props;
     const { writingPopup, selectedIndex } = this.state;
+    const imagePath = require(`../images/alphabets/${_.get(learnedAlphabets, [selectedIndex, 'image'])}`);
     return <React.Fragment>
       <Header pageTitle="All Alphabets" />
       <div className="container">
@@ -63,7 +64,7 @@ class Writing extends React.Component {
               style={{ textAlign:'center' }}
               ><img
               className={classes.dialogTitle}
-              src={require(`../images/alphabets/${_.get(learnedAlphabets, [selectedIndex, 'image'])}`)}
+              src={imagePath}
               alt="alphabet"
               /></DialogTitle>
           <DialogContent>
