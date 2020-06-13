@@ -1,7 +1,8 @@
 export const LEARNED_SO_FAR = 15;
 export const alphabets = [{
-  letter: 'alif',
+    letter: 'alif',
     image: 'alif.jpg',
+    arabic: 'ا',
     writing: {
       start: 0,
       end: 5,
@@ -9,6 +10,7 @@ export const alphabets = [{
   }, {
     letter: 'ba',
     image: 'ba.jpg',
+    arabic: 'ب',
     writing: {
       start: 5,
       end: 13,
@@ -16,6 +18,7 @@ export const alphabets = [{
   }, {
     letter: 'tha',
     image: 'tha.jpg',
+    arabic: 'ت',
     writing: {
       start: 14,
       end: 18,
@@ -23,6 +26,7 @@ export const alphabets = [{
   }, {
     letter: 'thsa',
     image: 'thsa.jpg',
+    arabic: 'ث',
     writing: {
       start: 19,
       end: 25,
@@ -30,6 +34,7 @@ export const alphabets = [{
   }, {
     letter: 'jeem',
     image: 'jeem.jpg',
+    arabic: 'ج',
     writing: {
       start: 27,
       end: 33,
@@ -37,6 +42,7 @@ export const alphabets = [{
   }, {
     letter: 'ha',
     image: 'ha.jpg',
+    arabic: 'ح',
     writing: {
       start: 33,
       end: 38,
@@ -44,6 +50,7 @@ export const alphabets = [{
   }, {
     letter: 'kha',
     image: 'kha.jpg',
+    arabic: 'خ',
     writing: {
       start: 38,
       end: 43,
@@ -51,6 +58,7 @@ export const alphabets = [{
   }, {
     letter: 'dal',
     image: 'dal.jpg',
+    arabic: 'د',
     writing: {
       start: 44,
       end: 49,
@@ -58,6 +66,7 @@ export const alphabets = [{
   }, {
     letter: 'dhal',
     image: 'dhal.jpg',
+    arabic: 'ذ',
     writing: {
       start: 50,
       end: 55,
@@ -65,6 +74,7 @@ export const alphabets = [{
   }, {
     letter: 'ra',
     image: 'ra.jpg',
+    arabic: 'ر',
     writing: {
       start: 55,
       end: 58,
@@ -72,6 +82,7 @@ export const alphabets = [{
   }, {
     letter: 'za',
     image: 'za.jpg',
+    arabic: 'ز',
     writing: {
       start: 59,
       end: 63,
@@ -79,6 +90,7 @@ export const alphabets = [{
   }, {
     letter: 'seen',
     image: 'seen.jpg',
+    arabic: 'س',
     writing: {
       start: 62,
       end: 69,
@@ -86,6 +98,7 @@ export const alphabets = [{
   }, {
     letter: 'sheen',
     image: 'sheen.jpg',
+    arabic: 'ش',
     writing: {
       start: 70,
       end: 79,
@@ -93,6 +106,7 @@ export const alphabets = [{
   }, {
     letter: 'swad',
     image: 'swad.jpg',
+    arabic: 'ص',
     writing: {
       start: 80,
       end: 87,
@@ -100,6 +114,7 @@ export const alphabets = [{
   }, {
     letter: 'dhwad',
     image: 'dhwad.jpg',
+    arabic: 'ض',
     writing: {
       start: 88,
       end: 96,
@@ -107,6 +122,7 @@ export const alphabets = [{
   }, {
     letter: 'twa',
     image: 'twa.jpg',
+    arabic: 'ط',
     writing: {
       start:97 ,
       end: 102,
@@ -114,6 +130,7 @@ export const alphabets = [{
   }, {
     letter: 'dhwa',
     image: 'dhwa.jpg',
+    arabic: 'ظ',
     writing: {
       start: 103,
       end: 108,
@@ -121,6 +138,7 @@ export const alphabets = [{
   }, {
     letter: 'aain',
     image: 'aain.jpg',
+    arabic: 'ع',
     writing: {
       start: 109,
       end: 114,
@@ -128,6 +146,7 @@ export const alphabets = [{
   }, {
     letter: 'gaain',
     image: 'gaain.jpg',
+    arabic: 'غ',
     writing: {
       start: 115,
       end: 120,
@@ -135,6 +154,7 @@ export const alphabets = [{
   }, {
     letter: 'fa',
     image: 'fa.jpg',
+    arabic: 'ف',
     writing: {
       start: 121,
       end: 125,
@@ -142,6 +162,7 @@ export const alphabets = [{
   }, {
     letter: 'qaf',
     image: 'qaf.jpg',
+    arabic: 'ق',
     writing: {
       start: 126,
       end: 131,
@@ -149,6 +170,7 @@ export const alphabets = [{
   }, {
     letter: 'kaaf',
     image: 'kaaf.jpg',
+    arabic: 'كـ',
     writing: {
       start: 132,
       end: 135,
@@ -156,6 +178,7 @@ export const alphabets = [{
   }, {
     letter: 'laam',
     image: 'laam.jpg',
+    arabic: 'ل',
     writing: {
       start: 136,
       end: 141,
@@ -163,6 +186,7 @@ export const alphabets = [{
   }, {
     letter: 'meem',
     image: 'meem.jpg',
+    arabic: 'م',
     writing: {
       start: 142,
       end: 148,
@@ -170,6 +194,7 @@ export const alphabets = [{
   }, {
     letter: 'noon',
     image: 'noon.jpg',
+    arabic: 'ن',
     writing: {
       start: 149,
       end: 155,
@@ -177,6 +202,7 @@ export const alphabets = [{
   }, {
     letter: 'haaa',
     image: 'haaa.jpg',
+    arabic: 'ه',
     writing: {
       start: 156,
       end: 165,
@@ -184,6 +210,7 @@ export const alphabets = [{
   }, {
     letter: 'wa',
     image: 'wa.jpg',
+    arabic: 'و',
     writing: {
       start: 166,
       end: 170,
@@ -191,6 +218,7 @@ export const alphabets = [{
   }, {
     letter: 'ya',
     image: 'ya.jpg',
+    arabic: 'ي',
     writing: {
       start: 171,
       end: 179,
