@@ -4,7 +4,7 @@ import { PlayArrowRounded } from '@material-ui/icons';
 
 const styles = makeStyles({
   root: {
-    maxWidth: '150px',
+    maxWidth: '100px',
     marginBottom: '8px',
   }
 });

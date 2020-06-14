@@ -6,8 +6,8 @@ import { menus } from '../../utils/menus';
 
 const styles = () => ({
   pageTitle: {
-    fontSize: '24px',
-    padding: '10px 0px 10px 10px',
+    fontSize: '20px',
+    padding: '10px 0px 10px 25px',
     fontFamily: 'sans-serif',
     color: '#083f92',
     backgroundColor: '#00d0ff',
@@ -40,7 +40,7 @@ class SubNav extends React.Component {
   render() {
     const { classes } = this.props;
     const { currentPage } = this.state;
-    return <div className={classes.pageTitle}><div style={{width: '250px'}}>{this.props.pageTitle}</div>
+    return <div className={classes.pageTitle}><div style={{width: '250px', paddingTop: '8px'}}>{this.props.pageTitle}</div>
       <Hidden smDown>
         <Link
           key={currentPage.link}

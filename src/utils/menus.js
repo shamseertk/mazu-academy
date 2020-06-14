@@ -6,7 +6,7 @@ export const menus =[{
   link: '/level1',
   subMenus: [{
     label: 'Games',
-    link: '/level1/games'
+    link: '/level1/games',
   }, {
     label: 'Writing',
     link: '/level1/writing'

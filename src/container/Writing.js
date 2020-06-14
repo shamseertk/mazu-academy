@@ -1,6 +1,5 @@
 import React from 'react';
 import { withStyles, Dialog, DialogContent, DialogTitle } from '@material-ui/core';
-import _ from 'lodash';
 import { learnedAlphabets } from '../utils/alphabets';
 import SubNav from '../component/common/SubNav';
 
@@ -36,8 +35,8 @@ class Writing extends React.Component {
     const { classes } = this.props;
     const { writingPopup, selectedIndex } = this.state;
     return <React.Fragment>
+      <SubNav pageTitle="Level1 &#8608; Learn to Write" />
       <div className="container">
-      <SubNav pageTitle="Learn to Write" />
       <h3>Instruction</h3>
       <p>Click on each letter to see how you can write the alphabet. Watch carefully, how the alphabet can be written within lines, from starting to the end.</p>
       <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center', flexWrap: 'wrap', width: '100%'}}>

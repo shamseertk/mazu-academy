@@ -7,8 +7,8 @@ import SubNav from '../component/common/SubNav';
 function Letters(props) {
   const alphabetsUpdated = alphabets.slice(0, LEARNED_SO_FAR);
   return <React.Fragment>
+    <SubNav pageTitle="Level1 &#8608; All Alphabets" />
     <div className="container">
-      <SubNav pageTitle="All Alphabets" />
       <Grid
           container
           direction="row-reverse"
