@@ -1,6 +1,6 @@
 import React from 'react';
 import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
-import AlphabetTile from '../component/AlphabetTile';
+import WordTile from '../component/WordTile';
 import { Grid } from '@material-ui/core';
 import SubNav from '../component/common/SubNav';
 
@@ -9,14 +9,7 @@ function Letters(props) {
   return <React.Fragment>
     <SubNav pageTitle="Level1 &#8608; All Alphabets" />
     <div className="container">
-      <Grid
-          container
-          direction="row-reverse"
-          justify="space-around"
-          alignItems="flex-start"
-        >
-        {alphabetsUpdated && alphabetsUpdated.map(letter=> <AlphabetTile key={letter.letter} letter={letter} />)}
-      </Grid>
+        <WordTile letter={alphabetsUpdated[0]} />
     </div>
   </React.Fragment>
 }

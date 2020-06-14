@@ -14,7 +14,7 @@ function playTheLetter(audiofile){
   audio.play();
 }
 
-function AlphabetTile(props){
+function WordTile(props){
   const img = require(`../images/alphabets/${props.letter.image}`);
   const classes = styles();
   return <Card className={classes.root}>
@@ -27,4 +27,4 @@ function AlphabetTile(props){
   </Card>
 }
 
-export default AlphabetTile;
+export default WordTile;

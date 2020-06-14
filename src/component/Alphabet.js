@@ -3,7 +3,6 @@ import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
 import { Grid, Button, withStyles, Typography, List, ListItem, ListItemIcon, ListItemText, Paper } from '@material-ui/core';
 import { Done, Close, Mood, SentimentVeryDissatisfied, PlayCircleFilled, Replay, TrendingFlat, Score, HelpOutline } from '@material-ui/icons';
 import _ from 'lodash';
-import SubNav from '../component/common/SubNav';
 
 const styles = () => ({
   buttonStyle: {
@@ -103,8 +102,7 @@ class Alphabet extends React.Component{
 
     const { classes } = this.props;
     
-    return <div className="container">
-      <SubNav pageTitle="Alphabet Self Test" />
+    return <React.Fragment>
       <div>Read the letter, click on <Button className={classes.buttonStyle}
         variant="contained" color="primary"
         startIcon={<PlayCircleFilled />}
@@ -186,7 +184,7 @@ class Alphabet extends React.Component{
           </Paper>
         </Grid>  
       </Grid>
-    </div>;
+    </React.Fragment>;
   }
 }
 
