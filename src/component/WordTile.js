@@ -4,7 +4,7 @@ import { PlayArrowRounded } from '@material-ui/icons';
 
 const styles = makeStyles({
   root: {
-    maxWidth: '100px',
+    maxWidth: '300px',
     marginBottom: '8px',
   }
 });
@@ -15,7 +15,7 @@ function playTheLetter(audiofile){
 }
 
 function WordTile(props){
-  const img = require(`../images/alphabets/${props.letter.image}`);
+  const img = require(`../images/words/apple.jpg`);
   const classes = styles();
   return <Card className={classes.root}>
     <CardMedia

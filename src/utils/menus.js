@@ -5,8 +5,11 @@ export const menus =[{
   label: 'Level1',
   link: '/level1',
   subMenus: [{
+    label: 'Words',
+    link: '/level1/words',
+  }, {
     label: 'Games',
-    link: '/level1/games'
+    link: '/level1/games',
   }, {
     label: 'Writing',
     link: '/level1/writing'
