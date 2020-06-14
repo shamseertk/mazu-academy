@@ -1,8 +1,23 @@
 import React from 'react';
 import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
 import WordTile from '../component/WordTile';
-import { MobileStepper, Button } from '@material-ui/core';
+import { MobileStepper, Button, withStyles } from '@material-ui/core';
 import SubNav from '../component/common/SubNav';
+
+const style = () => ({
+  bookWrapper: {
+    width: '900px',
+    selfAlign: 'center',
+    margin: 'auto',
+  },
+  '@media screen and (max-width: 900px)': {
+    bookWrapper: {
+      width: '100%',
+      selfAlign: 'center',
+      margin: 'auto',
+    },
+  }
+});
 
 class WordLevelOne extends React.Component {
   constructor(props) {
@@ -41,29 +56,32 @@ class WordLevelOne extends React.Component {
   }
   render() {
     const { alphabetsUpdated, activeStep } = this.state;
+    const { classes } = this.props;
     return <React.Fragment>
       <SubNav pageTitle="Level1 &#8608; All Alphabets" />
       <div className="container">
-        <MobileStepper
-          steps={alphabetsUpdated.length}
-          position="static"
-          variant="text"
-          activeStep={activeStep}
-          nextButton={
-            <Button
-              onClick={this.nextPage}
-              >Next</Button>
-          }
-          backButton={
-            <Button
-              onClick={this.prevPage}
-              >Prev</Button>
-          }
-          />
-          <WordTile letter={alphabetsUpdated[activeStep]} />
+        <div className={classes.bookWrapper}>
+          <MobileStepper
+            steps={alphabetsUpdated.length}
+            position="static"
+            variant="text"
+            activeStep={activeStep}
+            nextButton={
+              <Button
+                onClick={this.nextPage}
+                >Next</Button>
+            }
+            backButton={
+              <Button
+                onClick={this.prevPage}
+                >Prev</Button>
+            }
+            />
+            <WordTile letter={alphabetsUpdated[activeStep]} />
+        </div>
       </div>
     </React.Fragment>
   }
 }
 
-export default WordLevelOne;
+export default withStyles(style)(WordLevelOne);

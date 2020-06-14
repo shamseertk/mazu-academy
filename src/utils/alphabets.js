@@ -9,9 +9,9 @@ export const alphabets = [{
     end: 5,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'اَ سَ دُُ',
+    together: 'اَسَدُُ',
+    image: 'lion.jpg',
   }],
 }, {
   id: 2,
@@ -23,9 +23,9 @@ export const alphabets = [{
     end: 13,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'بَ طَّ ةُُ',
+    together: 'بَطَّةُُ',
+    image: 'duck.jpg',
   }],
 }, {
   id: 3,
@@ -37,9 +37,9 @@ export const alphabets = [{
     end: 18,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'تُ فّ آ حَ ةُُ',
+    together: 'تُفّآحَةُُ',
+    image: 'apple.jpg',
   }],
 }, {
   id: 4,
@@ -51,9 +51,9 @@ export const alphabets = [{
     end: 25,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'ثَ عْ لَ بُُ',
+    together: 'ثَعْلَبُُ',
+    image: 'fox.jpg',
   }],
 }, {
   id: 5,
@@ -65,9 +65,9 @@ export const alphabets = [{
     end: 33,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'جَ مَ لُُ',
+    together: 'جَمَلُُ',
+    image: 'camel.jpg',
   }],
 }, {
   id: 6,
@@ -79,9 +79,9 @@ export const alphabets = [{
     end: 38,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'حَ دِ ي قَ ةُُ',
+    together: 'حَدِيقَةُُ',
+    image: 'garden.jpg',
   }],
 }, {
   id: 7,
@@ -93,9 +93,33 @@ export const alphabets = [{
     end: 43,
   },
   words: [{
+    separate: 'خَ رُو فُُ',
+    together: 'خَرُوفُُ',
+    image: 'sheep.jpg',
+  }, {
+    separate: 'خُرُوجُُ',
+    together: 'خُرُوجُُ',
+    image: 'beet.jpg',
+  }, {
     separate: '',
     together: '',
     image: '',
+  }, {
+    separate: '',
+    together: '',
+    image: '',
+  }, {
+    separate: '',
+    together: 'جَبَلٌ',
+    image: 'mountain.jpg',
+  }, {
+    separate: '',
+    together: 'جَدٌّ',
+    image: 'grandfather.jpg',
+  }, {
+    separate: '',
+    together: 'نَجّآرُُ',
+    image: 'carpenter.jpg',
   }],
 }, {
   id: 8,
