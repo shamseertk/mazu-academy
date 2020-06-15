@@ -1,4 +1,4 @@
-export const LEARNED_SO_FAR = 28;
+export const LEARNED_SO_FAR = 22;
 export const alphabets = [{
   id: 1,
   letter: 'alif',
