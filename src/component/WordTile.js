@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardMedia, CardActionArea, makeStyles, CardContent, CardHeader } from '@material-ui/core';
+import { Card, CardMedia, CardActionArea, makeStyles, CardContent } from '@material-ui/core';
 import { PlayArrowRounded } from '@material-ui/icons';
 
 const styles = makeStyles({
