@@ -65,7 +65,7 @@ class Writing extends React.Component {
             title="Alphabet Writing"
             width="100%"
             height="340px"
-            src={`https://www.youtube.com/embed/0kMyyfL0LTA?controls=0&start=${learnedAlphabets[selectedIndex].writing.start}
+            src={`https://www.youtube.com/embed/g5XTXWpOzfE?controls=0&start=${learnedAlphabets[selectedIndex].writing.start}
               &end=${learnedAlphabets[selectedIndex].writing.end}&autoplay=1&mute=1`} frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
           </DialogContent>

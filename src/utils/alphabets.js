@@ -1,4 +1,4 @@
-export const LEARNED_SO_FAR = 21;
+export const LEARNED_SO_FAR = 28;
 export const alphabets = [{
   id: 1,
   letter: 'alif',
@@ -323,8 +323,8 @@ export const alphabets = [{
   image: 'kaaf.jpg',
   arabic: 'ك',
   writing: {
-    start: 132,
-    end: 135,
+    start: 135,
+    end: 145,
   },
   words: [{
     separate: '',
@@ -337,8 +337,8 @@ export const alphabets = [{
   image: 'laam.jpg',
   arabic: 'ل',
   writing: {
-    start: 136,
-    end: 141,
+    start: 145,
+    end: 149,
   },
   words: [{
     separate: '',
@@ -351,8 +351,8 @@ export const alphabets = [{
   image: 'meem.jpg',
   arabic: 'م',
   writing: {
-    start: 142,
-    end: 148,
+    start: 150,
+    end: 155,
   },
   words: [{
     separate: '',
@@ -365,8 +365,8 @@ export const alphabets = [{
   image: 'noon.jpg',
   arabic: 'ن',
   writing: {
-    start: 149,
-    end: 155,
+    start: 156,
+    end: 165,
   },
   words: [{
     separate: '',
@@ -379,8 +379,8 @@ export const alphabets = [{
   image: 'haaa.jpg',
   arabic: 'ه',
   writing: {
-    start: 156,
-    end: 165,
+    start: 166,
+    end: 170,
   },
   words: [{
     separate: '',
@@ -393,8 +393,8 @@ export const alphabets = [{
   image: 'wa.jpg',
   arabic: 'و',
   writing: {
-    start: 166,
-    end: 170,
+    start: 172,
+    end: 176,
   },
   words: [{
     separate: '',
@@ -407,8 +407,8 @@ export const alphabets = [{
   image: 'ya.jpg',
   arabic: 'ي',
   writing: {
-    start: 171,
-    end: 179,
+    start: 178,
+    end: 183,
   },
   words: [{
     separate: '',
