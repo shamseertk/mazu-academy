@@ -5,6 +5,9 @@ export const menus =[{
   label: 'Level1',
   link: '/level1',
   subMenus: [{
+    label: 'Vowels',
+    link: '/level1/vowels',
+  }, {
     label: 'Words',
     link: '/level1/words',
   }, {
