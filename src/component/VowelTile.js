@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardMedia, CardActionArea, makeStyles, CardContent, Grid, Paper, IconButton, Button } from '@material-ui/core';
+import { Card, makeStyles, CardContent, IconButton } from '@material-ui/core';
 import { PlayArrowRounded } from '@material-ui/icons';
 import _ from 'lodash';
 

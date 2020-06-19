@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, CardMedia, CardActionArea, makeStyles, CardContent, Grid, Paper } from '@material-ui/core';
-import { PlayArrowRounded } from '@material-ui/icons';
+import { Card, CardMedia, makeStyles, CardContent, Paper } from '@material-ui/core';
 import _ from 'lodash';
 
 const styles = makeStyles({
@@ -42,11 +41,6 @@ const styles = makeStyles({
     backgroundColor: '#afd275'
   }
 });
-
-function playTheLetter(audiofile){
-  const audio = new Audio(require(`../audio/${audiofile}.m4a`));
-  audio.play();
-}
 
 function WordTile(props){
   const img = require(`../images/words/${props.letter.words[0].image}`);

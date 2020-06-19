@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles, Hidden, Drawer, IconButton, Divider } from '@material-ui/core';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ChevronLeft, SubdirectoryArrowRight } from '@material-ui/icons';
 import { menus } from '../../utils/menus';
 

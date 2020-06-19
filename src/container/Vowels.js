@@ -1,7 +1,7 @@
 import React from 'react';
 import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
 import VowelTile from '../component/VowelTile';
-import { Grid, Typography, Link, Tabs, Tab } from '@material-ui/core';
+import { Grid, Typography, Tabs, Tab } from '@material-ui/core';
 import SubNav from '../component/common/SubNav';
 import LongVowel from '../component/LongVowel';
 
