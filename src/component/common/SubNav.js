@@ -41,7 +41,7 @@ class SubNav extends React.Component {
     const { classes } = this.props;
     const { currentPage } = this.state;
     return <div className={classes.pageTitle}><div style={{width: '250px', paddingTop: '8px'}}>{this.props.pageTitle}</div>
-      <Hidden smDown>
+      <Hidden mdDown>
         <Link
           key={currentPage.link}
           to={currentPage.link}

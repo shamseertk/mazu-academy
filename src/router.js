@@ -7,6 +7,7 @@ import Writing from './container/Writing';
 import Test from './container/Test';
 import Home from './container/Home';
 import WordLevelOne from './container/WordLevelOne';
+import WritingPractice from './container/WritingPractice';
 
 export default function Router() {
   return <Switch>
@@ -17,6 +18,7 @@ export default function Router() {
     <Route path="/level1/games"><Game /> </Route>
     <Route path="/level1/test"><Test /></Route>
     <Route path="/level1/writing"><Writing /></Route>
+    <Route path="/level1/writing-practice"><WritingPractice /></Route>
     <Route path="*"><Letters /></Route>
   </Switch>
 }
