@@ -1,0 +1,36 @@
+export const vowel = [{
+  letter: 'ب',
+  longFath: 'بَ + ا = بَا',
+  longKasra : 'بِ + ي = بِي',
+  longDhamma: 'بُ + و = بُو',
+  thanveen: 'بً بٍ بٌ',
+  shadh: 'بَّ بِّ بُّ',
+}, {
+  letter: 'ج',
+  longFath: 'جَ + ا = جَا',
+  longKasra : 'جِ + ي = جِي',
+  longDhamma: 'جُ + و = جُو',
+  thanveen: 'جً جٍ جٌ',
+  shadh: 'جَّ جِّ جُّ',
+}, {
+  letter: 'د',
+  longFath: 'دَ + ا = دَا',
+  longKasra : 'دِ + ي = دِي',
+  longDhamma: 'دُ + و = دُو',
+  thanveen: 'دً دٍ دٌ',
+  shadh: 'دَّ دِّ دُّ',
+}, {
+  letter: 'ر',
+  longFath: 'رَ + ا = رَا',
+  longKasra : 'رِ + ي = رِي',
+  longDhamma: 'رُ + و = رُو',
+  thanveen: 'رً رٍ ر',
+  shadh: 'رَّ رِّ رُّ',
+}, {
+  letter: 'س',
+  longFath: 'سَ + ا = سَا',
+  longKasra : 'سِ + ي = سِي',
+  longDhamma: 'سُ + و = سُو',
+  thanveen: 'سً سٍ سٌ',
+  shadh: 'سَّ سِّ سُّ',
+}]

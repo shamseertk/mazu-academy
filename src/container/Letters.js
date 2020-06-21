@@ -9,6 +9,8 @@ function Letters(props) {
   return <React.Fragment>
     <SubNav pageTitle="Level1 &#8608; All Alphabets" />
     <div className="container">
+      <div className="instruction">
+        This page shows all the Arabic alphabets, click on the Read It button to hear how it pronounces.</div>
       <Grid
           container
           direction="row-reverse"

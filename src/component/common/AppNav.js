@@ -1,7 +1,8 @@
 import React from 'react';
 import { withStyles, Hidden, Drawer, IconButton, Divider } from '@material-ui/core';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ChevronLeft, SubdirectoryArrowRight } from '@material-ui/icons';
+import _ from 'lodash'
 import { menus } from '../../utils/menus';
 
 const styles = () => ({
@@ -57,7 +58,7 @@ class AppNav extends React.Component {
   render() {
     const { classes, drawerOpen, closeDrawer } = this.props;
     return <div className={classes.menuWrapper}>
-      <Hidden smDown>
+      <Hidden mdDown>
       {menus && menus.map(menu => <Link key={menu.link}
         to={`${menu.link}`}
         className={classes.menuButton}>{menu.label}</Link>)}
@@ -74,11 +75,11 @@ class AppNav extends React.Component {
           <ChevronLeft />
         </IconButton>
         <Divider />
-        {menus && menus.map(menu => <div key={menu.link} style={{display: 'flex', flexDirection: 'column'}} onClick={closeDrawer}>
+        {menus && menus.map(menu => _.get(menu, ['active'], true) && <div key={menu.link} style={{display: 'flex', flexDirection: 'column'}} onClick={closeDrawer}>
           <Link key={menu.link}
             to={`${menu.link}`}
             className={classes.menuButtonDrawer}>{menu.label}</Link>
-          {menu.subMenus && menu.subMenus.map(subMenu => <Link
+          {menu.subMenus && menu.subMenus.map(subMenu => _.get(subMenu, ['active'], true) && <Link
             key={subMenu.link}
             to={`${subMenu.link}`}
             className={classes.subMenuButtonDrawer}

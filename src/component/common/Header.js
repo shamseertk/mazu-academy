@@ -29,7 +29,7 @@ class Header extends React.Component {
       position="sticky"
       >
         <Toolbar>
-          <Hidden mdUp>
+          <Hidden lgUp>
             <IconButton
               onClick={this.openDrawer}
               >
