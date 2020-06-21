@@ -210,6 +210,7 @@ class WritingPad extends React.Component{
         </div>
         <div>
           <ReactPlayer
+            width="100%"
             ref={player => (this.player = player)}
             playing={readyToVerify}
             url='https://www.youtube.com/watch?v=g5XTXWpOzfE' />
