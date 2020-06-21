@@ -14,11 +14,17 @@ export const menus =[{
     label: 'Writing Practice',
     link: '/level1/writing-practice',
   }, {
+    label: 'Fun',
+    link: '/level1/fun',
+    active: true,
+  }, {
     label: 'Vowels',
     link: '/level1/vowels',
+    active: false,
   }, {
     label: 'Words',
     link: '/level1/words',
+    active: false,
   }, {
     label: 'Test',
     link: '/level1/test'

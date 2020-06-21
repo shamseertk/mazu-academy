@@ -57,7 +57,8 @@ function VowelTile(props){
     <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
       <div className={classes.letterTitle}>{props.letter.arabic}</div>
       <div className={classes.boxContainer}>
-      {_.get(props.letter, ['harakat', 'letters'],'').split(' ').map((haraka, index) => <div style={{display: 'flex', flexDirection: 'column'}}>
+      {_.get(props.letter, ['harakat', 'letters'],'').split(' ').map((haraka, index) => <div
+        key={`${haraka}`} style={{display: 'flex', flexDirection: 'column'}}>
         <div className={classes.gridBox}>{haraka}</div>
         <div className={classes.gridBoxButton}><IconButton style={{width: '5px', height: '5px'}}
           onClick={() => playTheLetter(_.get(props.letter, ['harakat', 'audio'],'').split(' ')[index])}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Game from './container/Game';
+import Fun from './container/Fun';
 import Letters from './container/Letters';
 import Vowels from './container/Vowels';
 import Writing from './container/Writing';
@@ -16,6 +17,7 @@ export default function Router() {
     <Route path="/level1/vowels"><Vowels /></Route>
     <Route path="/level1/words"><WordLevelOne /></Route>
     <Route path="/level1/games"><Game /> </Route>
+    <Route path="/level1/fun"><Fun /> </Route>
     <Route path="/level1/test"><Test /></Route>
     <Route path="/level1/writing"><Writing /></Route>
     <Route path="/level1/writing-practice"><WritingPractice /></Route>

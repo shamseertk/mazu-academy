@@ -1,7 +1,7 @@
 import React from 'react';
 import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
-import { Grid, Button, withStyles, Typography, List, ListItem, ListItemIcon, ListItemText, Paper } from '@material-ui/core';
-import { Done, Close, Mood, SentimentVeryDissatisfied, Replay, TrendingFlat, Score, HelpOutline, Backspace, HowToReg } from '@material-ui/icons';
+import { Grid, Button, withStyles, Typography, List, ListItem, ListItemIcon, ListItemText, Paper, IconButton } from '@material-ui/core';
+import { Done, Close, Mood, SentimentVeryDissatisfied, Replay, TrendingFlat, Score, HelpOutline, Backspace, HowToReg, FiberManualRecord, Undo } from '@material-ui/icons';
 import _ from 'lodash';
 import CanvasDraw from "react-canvas-draw";
 import ReactPlayer from 'react-player';
@@ -74,6 +74,7 @@ class WritingPad extends React.Component{
       score: 0,
       displaFinalResult: false,
       questionNumber: 1,
+      brushColor: 'green',
     });
   }
   verifyIt = () => {
@@ -117,9 +118,17 @@ class WritingPad extends React.Component{
   eraseWindow = () => {
     this.saveableCanvas.clear();
   }
+  changeColorTo = (color) => {
+    this.setState({
+      brushColor: color,
+    })
+  }
+  undoPaint = () => {
+    this.saveableCanvas.undo();
+  }
   render() {
     const { learnedAlphabets, displayCurrent, displayResultButton, displaFinalResult, questionNumber, score,
-      right, wrong, readyToVerify } = this.state;
+      right, wrong, readyToVerify, brushColor } = this.state;
 
     const { classes } = this.props;
     
@@ -180,15 +189,23 @@ class WritingPad extends React.Component{
             onClick={this.eraseWindow}
             startIcon={<Backspace />}
             >Erase All</Button>
+          <Button className={`${classes.buttonStyle} ${classes.eraseButton}`} variant="contained" color="primary"
+            onClick={this.undoPaint}
+            startIcon={<Undo />}
+            >Undo</Button>
+          <IconButton onClick={() => this.changeColorTo('green')}><FiberManualRecord style={{backgroundColor: 'green'}} /></IconButton>
+          <IconButton onClick={() => this.changeColorTo('red')}><FiberManualRecord style={{backgroundColor: 'red'}} /></IconButton>
+          <IconButton onClick={() => this.changeColorTo('blue')}><FiberManualRecord style={{backgroundColor: 'blue'}} /></IconButton>
+          <IconButton onClick={() => this.changeColorTo('orange')}><FiberManualRecord style={{backgroundColor: 'orange'}} /></IconButton>
           <CanvasDraw
             ref={canvasDraw => (this.saveableCanvas = canvasDraw)}
             lazyRadius={0}
-            brushColor="green"
+            brushColor={brushColor}
             brushRadius={3}
             imgSrc={require("../images/writing/writingLines.png")}
             canvasWidth="640px"
             canvasHeight="208px"
-            catenaryColor="green"
+            catenaryColor={brushColor}
             />
         </div>
         <div>

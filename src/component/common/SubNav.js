@@ -47,7 +47,7 @@ class SubNav extends React.Component {
           to={currentPage.link}
           className={classes.subMenuButton}
         >{currentPage.label} Home</Link>
-        {currentPage && _.get(currentPage, ['subMenus'], []).map(menu => <Link
+        {currentPage && _.get(currentPage, ['subMenus'], []).map(menu => _.get(menu, ['active'], true) && <Link
           key={menu.link}
           to={menu.link}
           className={classes.subMenuButton}
