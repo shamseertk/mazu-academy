@@ -20,7 +20,7 @@ export const menus =[{
   }, {
     label: 'Vowels',
     link: '/level1/vowels',
-    active: false,
+    active: true,
   }, {
     label: 'Words',
     link: '/level1/words',
