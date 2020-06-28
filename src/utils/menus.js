@@ -2,7 +2,7 @@ export const menus =[{
   label: 'Home',
   link: '/',
 }, {
-  label: 'Level1',
+  label: 'Level One',
   link: '/level1',
   subMenus: [{
     label: 'Practice Alphabets',
@@ -22,11 +22,20 @@ export const menus =[{
     link: '/level1/vowels',
     active: true,
   }, {
-    label: 'Words',
-    link: '/level1/words',
-    active: false,
+    label: 'Vowel Practice',
+    link: '/level1/vowel-practice',
+    active: true,
   }, {
     label: 'Test',
     link: '/level1/test'
+  }]
+}, {
+  label: 'Level Two',
+  link: '/level2',
+  active: false,
+  subMenus: [{
+    label: 'More Words',
+    link: '/level2/more-words',
+    active: false,
   }]
 }];

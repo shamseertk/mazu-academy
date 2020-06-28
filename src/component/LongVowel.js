@@ -47,7 +47,7 @@ class LongVowel extends React.Component {
         <Typography component="h2" align="center">Eg:- With <span className="highlighter">Fat'ha</span> <span className="arabic">(فَتْحَة)</span></Typography>
 
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
-          {vowel && vowel.map(vwl => <Card className={classes.root}>
+          {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter}${vwl.longFath}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
               <div className={classes.letterTitle}>{vwl.letter}</div>
               <div className={classes.boxContainer}>
@@ -58,7 +58,7 @@ class LongVowel extends React.Component {
         </div>
         <Typography component="h2" align="center">Eg:- With <span className="highlighter">Kasra</span> <span className="arabic">(كَسْرَة)</span></Typography>
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
-          {vowel && vowel.map(vwl => <Card className={classes.root}>
+          {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter}${vwl.longKasra}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
               <div className={classes.letterTitle}>{vwl.letter}</div>
               <div className={classes.boxContainer}>
@@ -70,7 +70,7 @@ class LongVowel extends React.Component {
 
         <Typography component="h2" align="center">Eg:- With <span className="highlighter">Damma</span> <span className="arabic">(ضَمَّة)</span></Typography>
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
-          {vowel && vowel.map(vwl => <Card className={classes.root}>
+          {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter}${vwl.longDhamma}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
               <div className={classes.letterTitle}>{vwl.letter}</div>
               <div className={classes.boxContainer}>
@@ -89,7 +89,7 @@ class LongVowel extends React.Component {
 
         <Typography component="h2" align="center">Eg:- With <span className="highlighter">Thanveen</span></Typography>
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
-          {vowel && vowel.map(vwl => <Card className={classes.root}>
+          {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter}${vwl.thanveen}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
               <div className={classes.letterTitle}>{vwl.letter}</div>
               <div className={classes.boxContainer}>
@@ -101,7 +101,7 @@ class LongVowel extends React.Component {
 
         <Typography component="h2" align="center">Eg:- With <span className="highlighter">Shadh</span></Typography>
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
-          {vowel && vowel.map(vwl => <Card className={classes.root}>
+          {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter} ${vwl.shadh}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
               <div className={classes.letterTitle}>{vwl.letter}</div>
               <div className={classes.boxContainer}>
