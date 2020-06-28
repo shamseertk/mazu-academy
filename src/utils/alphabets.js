@@ -1,20 +1,40 @@
 export const LEARNED_SO_FAR = 29;
+export const categories = {
+  ANIMAL: 'animal',
+  VEHICLE: 'vehicle',
+  HUMAN: 'human body',
+  FOOD: 'food',
+  THING: 'things',
+  PROFESSION: 'profession',
+  INSTITUTE: 'institute',
+  BIRD: 'bird',
+  FRUIT: 'fruit',
+  APPLIANCE: 'appliances',
+  VEGITABLE: 'vegitables'
+}
 export const alphabets = [{
   id: 1,
   letter: 'alif',
   image: 'alif.jpg',
   arabic: 'ا',
+  joining: {
+  arabic: 'ا',
+    first: 'ا',
+    middle: 'ا',
+    last: 'ﺎ',
+  },
   writing: {
     start: 0,
     end: 5,
   },
   words: [{
     separate: 'اَ سَ دٌ',
-    together: 'اَسَدُُ',
+    together: 'اَسَدٌ',
     image: 'lion.jpg',
+    category: categories.ANIMAL,
   }],
   harakat: {
-    letters: 'اَ اِ اُ اْ',
+    letters: 'أَ إِ أُ أْ',
     audio: 'ah.m4a e.m4a u.m4a uh.m4a',
   },
 }, {
@@ -22,13 +42,18 @@ export const alphabets = [{
   letter: 'ba',
   image: 'ba.jpg',
   arabic: 'ب',
+  joining: {
+    first: 'ﺑ',
+    middle: 'ﺒ',
+    last: 'ﺐ',
+  },
   writing: {
     start: 5,
     end: 13,
   },
   words: [{
-    separate: 'بَ طَّ ةُُ',
-    together: 'بَطَّةُُ',
+    separate: 'بَ طَّ ةٌ',
+    together: 'بَطَّةٌ',
     image: 'duck.jpg',
   }],
   harakat: {
@@ -40,13 +65,18 @@ export const alphabets = [{
   letter: 'tha',
   image: 'tha.jpg',
   arabic: 'ت',
+  joining: {
+    first: 'ﺗ',
+    middle: 'ﺘ',
+    last: 'ﺖ',
+  },
   writing: {
     start: 14,
     end: 18,
   },
   words: [{
-    separate: 'تُ فّ آ حَ ةُُ',
-    together: 'تُفّآحَةُُ',
+    separate: 'تُ فّ آ حَ ةٌ',
+    together: 'تُفّآحَةٌ',
     image: 'apple.jpg',
   }],
   harakat: {
@@ -58,13 +88,18 @@ export const alphabets = [{
   letter: 'thsa',
   image: 'thsa.jpg',
   arabic: 'ث',
+  joining: {
+    first: 'ﺛ',
+    middle: 'ﺜ',
+    last: 'ﺚ',
+  },
   writing: {
     start: 19,
     end: 25,
   },
   words: [{
-    separate: 'ثَ عْ لَ بُُ',
-    together: 'ثَعْلَبُُ',
+    separate: 'ثَ عْ لَ بٌ',
+    together: 'ثَعْلَبٌ',
     image: 'fox.jpg',
   }],
   harakat: {
@@ -76,14 +111,19 @@ export const alphabets = [{
   letter: 'jeem',
   image: 'jeem.jpg',
   arabic: 'ج',
+  joining: {
+    first: 'ﺟ',
+    middle: 'ﺠ',
+    last: 'ﺞ',
+  },
   writing: {
     start: 27,
     end: 33,
   },
   words: [{
-    separate: 'جَ مَ لُُ',
-    together: 'جَمَلُُ',
-    image: 'camel.jpg',
+    separate: 'جَ مَ لٌ',
+    together: 'جَمَلٌ',
+    image: 'camel.png',
   }],
   harakat: {
     letters: 'جَ جِ جُ جْ',
@@ -94,13 +134,18 @@ export const alphabets = [{
   letter: 'ha',
   image: 'ha.jpg',
   arabic: 'ح',
+  joining: {
+    first: 'ﺣ',
+    middle: 'ﺤ',
+    last: 'ﺢ',
+  },
   writing: {
     start: 33,
     end: 38,
   },
   words: [{
-    separate: 'حَ دِ ي قَ ةُُ',
-    together: 'حَدِيقَةُُ',
+    separate: 'حَ دِ ي قَ ةٌ',
+    together: 'حَدِيقَةٌ',
     image: 'garden.jpg',
   }],
   harakat: {
@@ -112,38 +157,19 @@ export const alphabets = [{
   letter: 'kha',
   image: 'kha.jpg',
   arabic: 'خ',
+  joining: {
+    first: 'ﺧ',
+    middle: 'ﺨ',
+    last: 'ﺦ',
+  },
   writing: {
     start: 38,
     end: 43,
   },
   words: [{
-    separate: 'خَ رُو فُُ',
-    together: 'خَرُوفُُ',
+    separate: 'خَ رُو فٌ',
+    together: 'خَرُوفٌ',
     image: 'sheep.jpg',
-  }, {
-    separate: 'خُرُوجُُ',
-    together: 'خُرُوجُُ',
-    image: 'beet.jpg',
-  }, {
-    separate: '',
-    together: '',
-    image: '',
-  }, {
-    separate: '',
-    together: '',
-    image: '',
-  }, {
-    separate: '',
-    together: 'جَبَلٌ',
-    image: 'mountain.jpg',
-  }, {
-    separate: '',
-    together: 'جَدٌّ',
-    image: 'grandfather.jpg',
-  }, {
-    separate: '',
-    together: 'نَجّآرُُ',
-    image: 'carpenter.jpg',
   }],
   harakat: {
     letters: 'خَ خِ خُ خْ',
@@ -154,14 +180,20 @@ export const alphabets = [{
   letter: 'dal',
   image: 'dal.jpg',
   arabic: 'د',
+  joining: {
+    first: 'ﺩ',
+    middle: 'ﺪ',
+    last: 'ﺪ',
+  },
   writing: {
     start: 44,
     end: 49,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'دَ رَّا جَ ةٌ',
+    together: 'دَرَّاجَةٌ',
+    image: 'bicycle.jpg',
+    category: categories.VEHICLE,
   }],
   harakat: {
     letters: 'دَ دِ دُ دْ',
@@ -172,14 +204,20 @@ export const alphabets = [{
   letter: 'dhal',
   image: 'dhal.jpg',
   arabic: 'ذ',
+  joining: {
+    first: 'ﺫ',
+    middle: 'ﺬ',
+    last: 'ﺬ',
+  },
   writing: {
     start: 50,
     end: 55,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'ذُ بَ ا بٌ',
+    together: 'ذُبَابٌ',
+    image: 'fly.jpg',
+    category: categories.ANIMAL,
   }],
   harakat: {
     letters: 'ذَ ذِ ذُ ذْ',
@@ -190,14 +228,20 @@ export const alphabets = [{
   letter: 'ra',
   image: 'ra.jpg',
   arabic: 'ر',
+  joining: {
+    first: 'ﺭ',
+    middle: 'ﺮ',
+    last: 'ﺮ',
+  },
   writing: {
     start: 55,
     end: 58,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'رُ مَ ا نٌ',
+    together: 'رُمَانٌ',
+    image: 'pomegranate.jpg',
+    category: categories.FOOD,
   }],
   harakat: {
     letters: 'رَ رِ رُ رْ',
@@ -208,14 +252,19 @@ export const alphabets = [{
   letter: 'za',
   image: 'za.jpg',
   arabic: 'ز',
+  joining: {
+    first: 'ﺯ',
+    middle: 'ﺰ',
+    last: 'ﺰ',
+  },
   writing: {
     start: 59,
     end: 63,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'زَ رَ ا فَ ةٌ',
+    together: 'زَرَافَةٌ',
+    image: 'giraffe.jpg',
   }],
   harakat: {
     letters: 'زَ زِ زُ زْ',
@@ -226,14 +275,20 @@ export const alphabets = [{
   letter: 'seen',
   image: 'seen.jpg',
   arabic: 'س',
+  joining: {
+    first: 'ﺳ',
+    middle: 'ﺴ',
+    last: 'ﺲ',
+  },
   writing: {
     start: 62,
     end: 69,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'سَ يَّ ا رَ ةٌ',
+    together: 'سَيَّارَةٌ',
+    image: 'car.jpg',
+    category: categories.VEHICLE,
   }],
   harakat: {
     letters: 'سَ سِ سُ سْ',
@@ -244,14 +299,20 @@ export const alphabets = [{
   letter: 'sheen',
   image: 'sheen.jpg',
   arabic: 'ش',
+  joining: {
+    first: 'ﺷ',
+    middle: 'ﺸ',
+    last: 'ﺶ',
+  },
   writing: {
     start: 70,
     end: 79,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'شَ ا حِ نَ ةٌ',
+    together: 'شَاحِنَةٌ',
+    image: 'truck.jpg',
+    category: categories.VEHICLE,
   }],
   harakat: {
     letters: 'شَ شِ شُ شْ',
@@ -262,14 +323,20 @@ export const alphabets = [{
   letter: 'swad',
   image: 'swad.jpg',
   arabic: 'ص',
+  joining: {
+    first: 'ﺻ',
+    middle: 'ﺼ',
+    last: 'ﺺ',
+  },
   writing: {
     start: 80,
     end: 87,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'صَ بَ ا حٌ',
+    together: 'صَبَاحٌ',
+    image: 'morning.jpg',
+    category: categories.THING,
   }],
   harakat: {
     letters: 'صَ صِ صُ صْ',
@@ -280,14 +347,20 @@ export const alphabets = [{
   letter: 'dhwad',
   image: 'dhwad.jpg',
   arabic: 'ض',
+  joining: {
+    first: 'ﺿ',
+    middle: 'ﻀ',
+    last: 'ﺾ',
+  },
   writing: {
     start: 88,
     end: 96,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'ضِ فْ دَ عٌ',
+    together: 'ضِفْدَعٌ',
+    image: 'frog.jpg',
+    category: categories.ANIMAL,
   }],
   harakat: {
     letters: 'ضَ ضِ ضُ ضْ',
@@ -298,14 +371,20 @@ export const alphabets = [{
   letter: 'twa',
   image: 'twa.jpg',
   arabic: 'ط',
+  joining: {
+    first: 'ﻃ',
+    middle: 'ﻄ',
+    last: 'ﻂ',
+  },
   writing: {
     start:97 ,
     end: 102,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'طَ ا وِ لَ ةٌ',
+    together: 'طَاوِلَةٌ',
+    image: 'table.jpg',
+    category: categories.THING,
   }],
   harakat: {
     letters: 'طَ طِ طُ طْ',
@@ -316,14 +395,20 @@ export const alphabets = [{
   letter: 'dhwa',
   image: 'dhwa.jpg',
   arabic: 'ظ',
+  joining: {
+    first: 'ﻇ',
+    middle: 'ﻈ',
+    last: 'ﻆ',
+  },
   writing: {
     start: 103,
     end: 108,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'ظَ رْ فٌ',
+    together: 'ظَرْفٌ',
+    image: 'envelope.jpg',
+    category: categories.THING,
   }],
   harakat: {
     letters: 'ظَ ظِ ظُ ظْ',
@@ -334,14 +419,20 @@ export const alphabets = [{
   letter: 'aain',
   image: 'aain.jpg',
   arabic: 'ع',
+  joining: {
+    first: 'ﻋ',
+    middle: 'ﻌ',
+    last: 'ﻊ',
+  },
   writing: {
     start: 109,
     end: 114,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'عَ يْ نٌ',
+    together: 'عَيْنٌ',
+    image: 'eye.jpg',
+    category: categories.HUMAN,
   }],
   harakat: {
     letters: 'عَ عِ عُ عْ',
@@ -352,14 +443,20 @@ export const alphabets = [{
   letter: 'gaain',
   image: 'gaain.jpg',
   arabic: 'غ',
+  joining: {
+    first: 'ﻏ',
+    middle: 'ﻐ',
+    last: 'ﻎ',
+  },
   writing: {
     start: 115,
     end: 120,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'غَ ا بَ ةٌ',
+    together: 'غَابَةٌ',
+    image: 'forest.jpg',
+    category: categories.THING,
   }],
   harakat: {
     letters: 'غَ غِ غُ غْ',
@@ -370,14 +467,19 @@ export const alphabets = [{
   letter: 'fa',
   image: 'fa.jpg',
   arabic: 'ف',
+  joining: {
+    first: 'ﻓ',
+    middle: 'ﻔ',
+    last: 'ﻒ',
+  },
   writing: {
     start: 121,
     end: 125,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'فَ هْ دٌ',
+    together: 'فَهْدٌ',
+    image: 'jaguar.jpg',
   }],
   harakat: {
     letters: 'فَ فِ فُ فْ',
@@ -388,14 +490,19 @@ export const alphabets = [{
   letter: 'qaf',
   image: 'qaf.jpg',
   arabic: 'ق',
+  joining: {
+    first: 'ﻗ',
+    middle: 'ﻘ',
+    last: 'ﻖ',
+  },
   writing: {
     start: 126,
     end: 131,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'قِ رْ دٌ',
+    together: 'قِرْدٌ',
+    image: 'monkey.jpg',
   }],
   harakat: {
     letters: 'قَ قِ قُ قْ',
@@ -406,14 +513,19 @@ export const alphabets = [{
   letter: 'kaaf',
   image: 'kaaf.jpg',
   arabic: 'ك',
+  joining: {
+    first: 'ﻛ',
+    middle: 'ﻜ',
+    last: 'ﻚ',
+  },
   writing: {
     start: 135,
     end: 145,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'كَ لْ بٌ',
+    together: 'كَلْبٌ',
+    image: 'dog.jpg',
   }],
   harakat: {
     letters: 'كَ كِ كُ كْ',
@@ -424,14 +536,20 @@ export const alphabets = [{
   letter: 'laam',
   image: 'laam.jpg',
   arabic: 'ل',
+  joining: {
+    first: 'ﻟ',
+    middle: 'ﻠ',
+    last: 'ﻞ',
+  },
   writing: {
     start: 145,
     end: 149,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'لَ حْ مٌ',
+    together: 'لَحْمٌ',
+    image: 'meat.jpg',
+    category: categories.FOOD,
   }],
   harakat: {
     letters: 'لَ لِ لُ لْ',
@@ -442,14 +560,20 @@ export const alphabets = [{
   letter: 'meem',
   image: 'meem.jpg',
   arabic: 'م',
+  joining: {
+    first: 'ﻣ',
+    middle: 'ﻤ',
+    last: 'ﻢ',
+  },
   writing: {
     start: 150,
     end: 155,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'مِ فْ تَ ا حٌ',
+    together: 'مِفْتَاحٌ',
+    image: 'key.jpg',
+    category: categories.THING,
   }],
   harakat: {
     letters: 'مَ مِ مُ مْ',
@@ -460,14 +584,20 @@ export const alphabets = [{
   letter: 'noon',
   image: 'noon.jpg',
   arabic: 'ن',
+  joining: {
+    first: 'ﻧ',
+    middle: 'ﻨ',
+    last: 'ﻦ',
+  },
   writing: {
     start: 156,
     end: 165,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'نَ مِ رٌ',
+    together: 'نَمِرٌ',
+    image: 'tiger.jpg',
+    category: categories.ANIMAL,
   }],
   harakat: {
     letters: 'نَ نِ نُ نْ',
@@ -478,14 +608,20 @@ export const alphabets = [{
   letter: 'haaa',
   image: 'haaa.jpg',
   arabic: 'ه',
+  joining: {
+    first: 'ﻫ',
+    middle: 'ﻬ',
+    last: 'ﻪ',
+  },
   writing: {
     start: 166,
     end: 170,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'هُ دْ هُ دْ',
+    together: 'هُدْهُدْ',
+    image: 'hoopoe.jpg',
+    category: categories.ANIMAL,
   }],
   harakat: {
     letters: 'هَ هِ هُ هْ',
@@ -496,14 +632,20 @@ export const alphabets = [{
   letter: 'wa',
   image: 'wa.jpg',
   arabic: 'و',
+  joining: {
+    first: 'ﻭ',
+    middle: 'ﻮ',
+    last: 'ﻮ',
+  },
   writing: {
     start: 172,
     end: 176,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'وَ جْ هٌ',
+    together: 'وَجْهٌ',
+    image: 'face.jpg',
+    category: categories.HUMAN,
   }],
   harakat: {
     letters: 'وَ وِ وُ وْ',
@@ -514,14 +656,20 @@ export const alphabets = [{
   letter: 'ya',
   image: 'ya.jpg',
   arabic: 'ي',
+  joining: {
+    first: 'ﻳ',
+    middle: 'ﻴ',
+    last: 'ﻲ',
+  },
   writing: {
     start: 178,
     end: 183,
   },
   words: [{
-    separate: '',
-    together: '',
-    image: '',
+    separate: 'يَ دٌ',
+    together: 'يَدٌ',
+    image: 'hand.jpg',
+    category: categories.HUMAN,
   }],
   harakat: {
     letters: 'يَ يِ يُ يْ',
@@ -529,4 +677,4 @@ export const alphabets = [{
   },
 }];
 
-export const learnedAlphabets = alphabets.slice(0, LEARNED_SO_FAR);
+export const learnedAlphabets = [...alphabets].slice(0, LEARNED_SO_FAR);

@@ -59,7 +59,7 @@ class AppNav extends React.Component {
     const { classes, drawerOpen, closeDrawer } = this.props;
     return <div className={classes.menuWrapper}>
       <Hidden mdDown>
-      {menus && menus.map(menu => <Link key={menu.link}
+      {menus && menus.map(menu => _.get(menu, ['active'], true) && <Link key={menu.link}
         to={`${menu.link}`}
         className={classes.menuButton}>{menu.label}</Link>)}
       </Hidden>
