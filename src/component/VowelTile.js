@@ -16,6 +16,7 @@ const styles = makeStyles({
     textAlign: 'center',
     backgroundColor: '#faf0dd',
     marginBottom: '10px',
+    padding: '0px 0px 5px 0px',
   },
   gridBox: {
     border: '1px solid #bca234',
@@ -55,11 +56,11 @@ function VowelTile(props){
   
   return <Card className={classes.root}>
     <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
-      <div className={classes.letterTitle}>{props.letter.arabic}</div>
+      <div className={`${classes.letterTitle} arabic-font`}>{props.letter.arabic}</div>
       <div className={classes.boxContainer}>
       {_.get(props.letter, ['harakat', 'letters'],'').split(' ').map((haraka, index) => <div
         key={`${haraka}`} style={{display: 'flex', flexDirection: 'column'}}>
-        <div className={classes.gridBox}>{haraka}</div>
+        <div className={`${classes.gridBox} arabic-font`}>{haraka}</div>
         <div className={classes.gridBoxButton}><IconButton style={{width: '5px', height: '5px'}}
           onClick={() => playTheLetter(_.get(props.letter, ['harakat', 'audio'],'').split(' ')[index])}
         ><PlayArrowRounded /></IconButton></div>
