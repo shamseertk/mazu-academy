@@ -49,9 +49,9 @@ class LongVowel extends React.Component {
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
           {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter}${vwl.longFath}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
-              <div className={classes.letterTitle}>{vwl.letter}</div>
+              <div className={`${classes.letterTitle} arabic-font`}>{vwl.letter}</div>
               <div className={classes.boxContainer}>
-              <div className={classes.gridBox}>{vwl.longFath}</div>
+                <div className={`${classes.gridBox} arabic-font`}>{vwl.longFath}</div>
               </div>
             </CardContent>
           </Card>)}
@@ -60,9 +60,9 @@ class LongVowel extends React.Component {
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
           {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter}${vwl.longKasra}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
-              <div className={classes.letterTitle}>{vwl.letter}</div>
+              <div className={`${classes.letterTitle} arabic-font`}>{vwl.letter}</div>
               <div className={classes.boxContainer}>
-              <div className={classes.gridBox}>{vwl.longKasra}</div>
+                <div className={`${classes.gridBox} arabic-font`}>{vwl.longKasra}</div>
               </div>
             </CardContent>
           </Card>)}
@@ -72,9 +72,9 @@ class LongVowel extends React.Component {
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
           {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter}${vwl.longDhamma}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
-              <div className={classes.letterTitle}>{vwl.letter}</div>
+              <div className={`${classes.letterTitle} arabic-font`}>{vwl.letter}</div>
               <div className={classes.boxContainer}>
-              <div className={classes.gridBox}>{vwl.longDhamma}</div>
+                <div className={`${classes.gridBox} arabic-font`}>{vwl.longDhamma}</div>
               </div>
             </CardContent>
           </Card>)}
@@ -91,9 +91,9 @@ class LongVowel extends React.Component {
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
           {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter}${vwl.thanveen}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
-              <div className={classes.letterTitle}>{vwl.letter}</div>
+              <div className={`${classes.letterTitle} arabic-font`}>{vwl.letter}</div>
               <div className={classes.boxContainer}>
-              <div className={classes.gridBox}>{vwl.thanveen}</div>
+                <div className={`${classes.gridBox} arabic-font`}>{vwl.thanveen}</div>
               </div>
             </CardContent>
           </Card>)}
@@ -103,9 +103,9 @@ class LongVowel extends React.Component {
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
           {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter} ${vwl.shadh}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
-              <div className={classes.letterTitle}>{vwl.letter}</div>
+              <div className={`${classes.letterTitle} arabic-font`}>{vwl.letter}</div>
               <div className={classes.boxContainer}>
-              <div className={classes.gridBox}>{vwl.shadh}</div>
+                <div className={`${classes.gridBox} arabic-font`}>{vwl.shadh}</div>
               </div>
             </CardContent>
           </Card>)}

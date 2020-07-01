@@ -24,6 +24,10 @@ const styles = makeStyles({
     textAlign: 'center',
     margin: '0px 10px 0px 10px',
     fontSize: '2em',
+    '&:hover': {
+      backgroundColor: '#ffdab9',
+      cursor: 'pointer',
+    }
   },
   gridBoxButton: {
     padding: '0px 15px',

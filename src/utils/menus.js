@@ -34,6 +34,10 @@ export const menus =[{
   link: '/level2',
   active: true,
   subMenus: [{
+    label: 'Word Test',
+    link: '/level2/simple-word-test',
+    active: true,
+  }, {
     label: 'More Words',
     link: '/level2/more-words',
     active: true,
