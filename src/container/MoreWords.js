@@ -1,5 +1,4 @@
 import React from 'react';
-import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
 import { arabicWords } from '../utils/words';
 import { withStyles } from '@material-ui/core';
 import SubNav from '../component/common/SubNav';
@@ -24,17 +23,15 @@ const style = () => ({
 class Words extends React.Component {
   constructor(props) {
     super(props);
-    const alphabetsUpdated = alphabets.slice(0, LEARNED_SO_FAR);
     this.state = {
-      alphabetsUpdated,
-      activeStep: 14,
+      activeStep: 0,
       enableJoinedWords: true,
     };
   }
 
   nextPage = () => {
-    const { activeStep, alphabetsUpdated } = this.state;
-    if(alphabetsUpdated.length - 1 === activeStep) {
+    const { activeStep } = this.state;
+    if(arabicWords.length - 1 === activeStep) {
       this.setState({
         activeStep: 0,
       });
@@ -46,10 +43,10 @@ class Words extends React.Component {
   }
 
   prevPage = () => {
-    const { activeStep, alphabetsUpdated } = this.state;
+    const { activeStep } = this.state;
     if(activeStep === 0) {
       this.setState({
-        activeStep: alphabetsUpdated.length - 1,
+        activeStep: arabicWords.length - 1,
       })
     } else {
       this.setState({
@@ -62,18 +59,28 @@ class Words extends React.Component {
       enableJoinedWords: evt.target.checked,
     });
   }
+  onSelectLetter = (evt) => {
+    this.setState({
+      activeStep: arabicWords.findIndex(alp => alp.arabic === evt.target.value),
+    })
+  }
   render() {
-    const { alphabetsUpdated, activeStep } = this.state;
+    const { activeStep } = this.state;
     const { classes } = this.props;
+    
     return <React.Fragment>
       <SubNav pageTitle="Level2 &#8608; More Words" />
       <div className="container">
         <div className={classes.bookWrapper}>
           <BookNavigation
-            stepperSteps={alphabetsUpdated.length}
+            stepperSteps={arabicWords.length}
             activeStep={activeStep}
             clickNextButton={this.nextPage}
             clickPrevButton={this.prevPage}
+            selectDropDown={this.onSelectLetter}
+            selectOptions={arabicWords}
+            selectLabelValue={{label: 'arabic', value: 'arabic'}}
+            selectedValue={arabicWords[activeStep].arabic}
             />
         </div>
         <div style={{

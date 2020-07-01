@@ -17,6 +17,7 @@ export const alphabets = [{
   letter: 'alif',
   image: 'alif.jpg',
   arabic: 'ا',
+  arabicAlternative: 'أإ',
   joining: {
   arabic: 'ا',
     first: 'ا',
@@ -28,8 +29,8 @@ export const alphabets = [{
     end: 5,
   },
   words: [{
-    separate: 'اَ سَ دٌ',
-    together: 'اَسَدٌ',
+    separate: 'أَ سَ دٌ',
+    together: 'أَسَدٌ',
     image: 'lion.jpg',
     category: categories.ANIMAL,
   }],
@@ -123,7 +124,7 @@ export const alphabets = [{
   words: [{
     separate: 'جَ مَ لٌ',
     together: 'جَمَلٌ',
-    image: 'camel.png',
+    image: 'camel.jpg',
   }],
   harakat: {
     letters: 'جَ جِ جُ جْ',
