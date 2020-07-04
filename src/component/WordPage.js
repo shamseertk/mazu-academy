@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles, Paper } from '@material-ui/core';
+import { get } from 'lodash';
 
 const styles = () => ({
   wordPageWrapper: {
@@ -34,14 +35,15 @@ class WordPage extends React.Component{
   }
   render() {
     const { letter, classes } = this.props;
-    //const img = require(`../images/words/${letter.words[0].image}`);
-    
+
     return <div className={classes.wordPageWrapper}>
       {letter.words.map(word => <React.Fragment key={word.arabic}>
-          <Paper elevation={7} className={classes.wordContent}>
-            <img alt={word.arabic} src={require(`../images/words/${word.image}`)} height="200" />
+          <Paper elevation={7} className={classes.wordContent} title={get(word, ['english'], '')}>
+            {word.image ? <img alt={word.arabic} src={require(`../images/words/${word.image}`)} height="200" /> :
+              <div style={{ height: '200px', width: '300px', alignItems: 'center', justifyContent: 'center', display: 'flex'}}>{word.english}</div>}
             <div style={{textAlign: 'center'}}>{word.arabic.split('').map((ar, arIndex) =>
-               ar === letter.arabic ? <span style={{color: 'red'}} key={arIndex}>{ar}</span> : ar)}</div>
+               (ar === letter.arabic || get(letter, ['arabicAlternative'], '').split('').includes(ar))
+               ? <span style={{color: 'red'}} key={arIndex}>{ar}</span> : ar)}</div>
           </Paper>
         </React.Fragment>
       )}

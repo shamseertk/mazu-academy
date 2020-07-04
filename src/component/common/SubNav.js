@@ -21,7 +21,8 @@ const styles = () => ({
     fontSize: '20px',
     color: 'white',
     fontFamily: 'cursive',
-    marginLeft: '15px',
+    marginLeft: '5px',
+    whiteSpace:'nowrap',
     '&:hover': {
       backgroundColor: '#0b9862',
     }

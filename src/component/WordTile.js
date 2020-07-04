@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardMedia, withStyles, CardContent, Paper } from '@material-ui/core';
-import _ from 'lodash';
+import _, { get } from 'lodash';
 import { alphabets } from '../utils/alphabets';
 
 const styles = () => ({
@@ -109,12 +109,14 @@ class WordTile extends React.Component{
           </div>
         </div>
         <Paper elevation={10} className={classes.word}>
-          {letter.words[0].separate.split('').map((lttr, index) => lttr === letter.arabic 
+          {letter.words[0].separate.split('').map((lttr, index) =>
+          (lttr === letter.arabic || get(letter, ['arabicAlternative'], '').split('').includes(lttr))
             ? <span key={index} style={{color: 'red'}}>{lttr}</span> 
-            : lttr)}
+            : lttr)} 
         </Paper>
         {enableJoinedWords && <Paper elevation={10} className={classes.word}>
-            {letter.words[0].together.split('').map((lttr, index) => lttr === letter.arabic 
+            {letter.words[0].together.split('').map((lttr, index) =>
+            (lttr === letter.arabic || get(letter, ['arabicAlternative'], '').split('').includes(lttr))
               ? <span key={index} style={{color: 'red'}}>{lttr}</span> 
               : lttr)}
         </Paper>}
