@@ -3,6 +3,7 @@ import SubNav from '../component/common/SubNav';
 import TestAlphabets from '../component/TestAlphabets';
 import { Tabs, Tab } from '@material-ui/core';
 import ShortVowelTest from '../component/ShortVowelTest';
+import LongVowelTest from '../component/LongVowelTest';
 
 class TestContainer extends React.Component{
   constructor(props) {
@@ -37,6 +38,7 @@ class TestContainer extends React.Component{
         </Tabs>
         {selectedTab === 'alphabets' && <TestAlphabets />}
         {selectedTab === 'short' && <ShortVowelTest />}
+        {selectedTab === 'long' && <LongVowelTest />}
       </div>
     </React.Fragment>
   }
