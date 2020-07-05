@@ -8,3 +8,7 @@
     var code = letter.charCodeAt(0);
     return (code === CHARCODE_TATWEEL || code === CHARCODE_SUPERSCRIPT_ALIF || (code >= 1612 && code <= 1631)); //tashkeel
   }
+
+  export const generateRandomNumber = (max) => {
+    return Math.floor(Math.random() * Math.floor(max));
+  }

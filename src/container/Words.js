@@ -26,7 +26,7 @@ class Words extends React.Component {
     this.state = {
       alphabetsUpdated,
       activeStep: 0,
-      enableJoinedWords: true,
+      enableJoinedWords: false,
     };
   }
 
@@ -74,6 +74,7 @@ class Words extends React.Component {
             color="primary" />}
           label="Joined Words"
           labelPlacement="start"
+          disabled
           />
         
         <div className={classes.bookWrapper}>

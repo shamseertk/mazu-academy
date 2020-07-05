@@ -11,6 +11,7 @@ import Words from './container/Words';
 import WritingPractice from './container/WritingPractice';
 import VowelPractice from './container/VowelPractice';
 import MoreWords from './container/MoreWords';
+import WordOneTest from './container/WordOneTest';
 
 export default function Router() {
   return <Switch>
@@ -24,7 +25,7 @@ export default function Router() {
     <Route path="/level1/writing"><Writing /></Route>
     <Route path="/level1/writing-practice"><WritingPractice /></Route>
     <Route exact path="/level2"><Words /></Route>
-    <Route path="/level2/simple-word-test"><Words /></Route>
+    <Route path="/level2/simple-word-test"><WordOneTest /></Route>
     <Route path="/level2/more-words"><MoreWords /></Route>
     <Route path="*"><Letters /></Route>
   </Switch>

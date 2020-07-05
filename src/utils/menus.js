@@ -32,7 +32,7 @@ export const menus =[{
 }, {
   label: 'Level Two',
   link: '/level2',
-  active: false,
+  active: true,
   subMenus: [{
     label: 'Word Test',
     link: '/level2/simple-word-test',
@@ -40,6 +40,6 @@ export const menus =[{
   }, {
     label: 'More Words',
     link: '/level2/more-words',
-    active: true,
+    active: false,
   }]
 }];
