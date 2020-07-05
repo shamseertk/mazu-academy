@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, withStyles } from '@material-ui/core';
 import _ from 'lodash';
 import Highlighter from "react-highlight-words";
-import { generateRandomNumber, isCharTashkeel } from '../utils/utils';
+import { isCharTashkeel } from '../utils/utils';
 
 const styles = () => ({
   question: {
