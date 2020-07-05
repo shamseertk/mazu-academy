@@ -40,7 +40,7 @@ class ExcerciseWordOne extends React.Component {
       ); */
       const indexMissingLetterEnd = 6;
      // console.log('===', indexMissingLetter, indexMissingLetterEnd, data[0].words[0].together.split('').length);
-      const charToReplace = data[0].words[0].together.substring(indexMissingLetter, indexMissingLetterEnd);
+    //  const charToReplace = data[0].words[0].together.substring(indexMissingLetter, indexMissingLetterEnd);
    //  console.log('===', charToReplace);
     
     
@@ -49,11 +49,11 @@ class ExcerciseWordOne extends React.Component {
       indexLetter: 0,
       indexMissingLetter,
       indexMissingLetterEnd,
-      charToReplace,
+     // charToReplace,
     }
   }
   render() {
-    const { data, indexLetter, indexMissingLetter, charToReplace } = this.state;
+    const { data, indexLetter, indexMissingLetter } = this.state;
     const { classes } = this.props;
     let wordIndex = -1;
     return <Card style={{textAlign: 'center'}}>
