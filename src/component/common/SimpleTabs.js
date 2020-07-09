@@ -9,14 +9,15 @@ const styles = () => ({
     color: 'white',
   },
   tabLabelIcon: {
-    overflow: 'scroll',
+    overflow: 'auto',
     borderBottom: '20px solid #597d8c',
     borderRight: '10px solid transparent',
     borderLeft: '10px solid transparent',
   },
   tabRoot: {
     borderRadius: '0px 20px 0px 0px',
-    backgroundColor: '#020406',
+    backgroundColor: '#6e8194',
+    borderRight: '1px solid #fff',
     color: 'white',
   },
   tabSelected: {
