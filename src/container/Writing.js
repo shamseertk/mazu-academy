@@ -59,7 +59,7 @@ class Writing extends React.Component {
           >
             <DialogTitle
               style={{ textAlign:'center'}}
-              ><span style={{fontSize: '40px'}}>{learnedAlphabets[selectedIndex].arabic}</span></DialogTitle>
+              ><span style={{fontSize: '40px'}} className="arabic-font">{learnedAlphabets[selectedIndex].arabic}</span></DialogTitle>
           <DialogContent>
           <iframe
             title="Alphabet Writing"

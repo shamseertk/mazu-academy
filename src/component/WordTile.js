@@ -96,7 +96,7 @@ class WordTile extends React.Component{
     
     return <Card className={classes.root}>
       <CardContent style={{textAlign: 'right', width: '100%'}}>
-        <div className={classes.letterTitle}>{letter.arabic}</div>
+        <div className={`${classes.letterTitle} arabic-font`}>{letter.arabic}</div>
         <div className={classes.boxContainer}>
           <div className={classes.gridBox}>
             {_.get(_.get(letter, ['harakat', 'letters'], '').split(' '), ['2'], '')}

@@ -87,7 +87,7 @@ class Words extends React.Component {
           textAlign: 'center',
           fontSize: '2.5em',
           color: 'brown'
-          }}>{arabicWords[activeStep].arabic}</div>
+          }} className="arabic-font">{arabicWords[activeStep].arabic}</div>
         <WordPage
           letter={arabicWords[activeStep]}
           />

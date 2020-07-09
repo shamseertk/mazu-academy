@@ -119,7 +119,7 @@ class ExcerciseOne extends React.Component {
       <Grid container>
         <Grid md="auto" item xs={12} sm={6}>
           <div className="instruction">Drag the picture to the correct box and click on Check It or Next Button.</div>
-          <div className={classes.letterTitle}>{arabicWords[currentIndex].arabic}</div>
+          <div className={`${classes.letterTitle} arabic-font`}>{arabicWords[currentIndex].arabic}</div>
         </Grid>
         <Grid md="auto" item xs={6} sm={3}>
           <div style={{textAlign: 'center', padding: '3px'}}><Button
@@ -148,7 +148,7 @@ class ExcerciseOne extends React.Component {
             <Grid item>
               <div style={{textAlign: 'center',
                 marginBottom: '3px', border: '1px solid green', maxWidth: '200px'}}>
-                <div style={{ backgroundColor: 'yellow', fontSize: '2em'}}>{word.arabic}</div>
+                <div style={{ backgroundColor: 'yellow', fontSize: '2em'}} className="arabic-font">{word.arabic}</div>
                 <WordTitle accepts={_.get(word, ['copied','image']) ? [] : accepts}
                   onReset={this.resetImage}
                   onDrop={this.handleDrop} word={word} index={index} />
