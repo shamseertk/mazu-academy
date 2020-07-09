@@ -1,9 +1,9 @@
 import React from 'react';
 import SubNav from '../component/common/SubNav';
 import TestAlphabets from '../component/TestAlphabets';
-import { Tabs, Tab } from '@material-ui/core';
 import ShortVowelTest from '../component/ShortVowelTest';
 import LongVowelTest from '../component/LongVowelTest';
+import SimpleTabs from '../component/common/SimpleTabs';
 
 class TestContainer extends React.Component{
   constructor(props) {
@@ -24,21 +24,23 @@ class TestContainer extends React.Component{
       <div className="container">
         <div className="instruction">This is for Teacher or Parents, to examine the students/their kids.
           Page displays some random letters and see if they can answer it. </div>
-        <Tabs
-          style={{backgroundColor: '#106686', color: 'white'}}
-          scrollButtons="auto"
-          variant="scrollable"
-          value={selectedTab}
-          onChange={this.selectTab}
-          >
-          <Tab label="Alphabets" value="alphabets" />
-          <Tab label="Short Vowels" value="short" />
-          <Tab label="Long Vowels" value="long" />
-          <Tab label="Shadh Vowels" value="shadh" />
-        </Tabs>
-        {selectedTab === 'alphabets' && <TestAlphabets />}
-        {selectedTab === 'short' && <ShortVowelTest />}
-        {selectedTab === 'long' && <LongVowelTest />}
+        <SimpleTabs
+          selectedTab={selectedTab}
+          handleChangeTab={this.selectTab}
+          tabsInfo={[{
+            label: 'Alphabets',
+            value: 'alphabets',
+            component: <TestAlphabets />
+          }, {
+            label: 'Short Vowels',
+            value: 'short',
+            component: <ShortVowelTest />
+          }, {
+            label: 'Long Vowels',
+            value: 'long',
+            component: <LongVowelTest />
+          }]}
+          />
       </div>
     </React.Fragment>
   }

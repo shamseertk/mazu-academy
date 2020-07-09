@@ -1,7 +1,6 @@
 import React from 'react';
-import SubNav from '../component/common/SubNav';
-import { alphabets } from '../utils/alphabets';
-import ExcerciseWordOne from '../component/ExcerciseWordOne';
+import { alphabets } from '../../utils/alphabets';
+import ExcerciseWordOne from '../ExcerciseWordOne';
 
 class WordOneTest extends React.Component {
   constructor(props) {
@@ -13,7 +12,6 @@ class WordOneTest extends React.Component {
   render() {
     const { allAlphabets } = this.state;
     return <React.Fragment>
-      <SubNav pageTitle="Level1 &#8608; Word Exercise" />
       <ExcerciseWordOne
         data={allAlphabets}
         />

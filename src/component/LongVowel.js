@@ -36,7 +36,8 @@ class LongVowel extends React.Component {
   render() {
     const { classes } = this.props;
     return <React.Fragment>
-      <div className="container">
+      <h3>Other Vowels</h3>
+      <div>
         <div className="instruction">
           <Typography component="p">As mentioned, Long vowels are made by using the letters
             <span className="arabic">(ا،ي٬و)</span>. These letters come after the letter with 

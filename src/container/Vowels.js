@@ -1,9 +1,10 @@
 import React from 'react';
 import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
 import VowelTile from '../component/VowelTile';
-import { Grid, Typography, Tabs, Tab } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import SubNav from '../component/common/SubNav';
 import LongVowel from '../component/LongVowel';
+import SimpleTabs from '../component/common/SimpleTabs';
 
 class Vowels extends React.Component {
   constructor(props) {
@@ -35,25 +36,27 @@ class Vowels extends React.Component {
             .</Typography>
           <Typography component="p">Additional vowel sounds are <span className="highlighter">Thanveen and Shadd</span> </Typography>
         </div>
-        <Tabs
-          style={{backgroundColor: '#106686', color: 'white'}}
-          scrollButtons="auto"
-          variant="scrollable"
-          value={selectedTab}
-          onChange={this.selectTab}
-          >
-          <Tab label="Short Vowel" value="short" />
-          <Tab label="Other Vowels" value="other" />
-        </Tabs>
-        {selectedTab === 'short' && <Grid
-            container
-            direction="row-reverse"
-            justify="space-around"
-            alignItems="flex-start"
-          >
-          {alphabetsUpdated && alphabetsUpdated.map(letter=> <VowelTile key={letter.letter} letter={letter} />)}
-        </Grid>}
-        {selectedTab === 'other' && <LongVowel />}
+        <SimpleTabs
+          selectedTab={selectedTab}
+          handleChangeTab={this.selectTab}
+          tabsInfo={[{
+            label: 'Short Vowel',
+            value: 'short',
+            component: <React.Fragment><h3>Short Vowel</h3>
+              <Grid
+                container
+                direction="row-reverse"
+                justify="space-around"
+                alignItems="flex-start"
+              >
+                {alphabetsUpdated && alphabetsUpdated.map(letter=> <VowelTile key={letter.letter} letter={letter} />)}
+              </Grid></React.Fragment>
+          }, {
+            label: 'Other Vowels',
+            value: 'other',
+            component: <LongVowel />
+          }]}
+          />
       </div>
     </React.Fragment>
   }
