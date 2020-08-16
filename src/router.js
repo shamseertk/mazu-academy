@@ -10,8 +10,10 @@ import Home from './container/Home';
 import Words from './container/Words';
 import WritingPractice from './container/WritingPractice';
 import VowelPractice from './container/VowelPractice';
-import MoreWords from './container/MoreWords';
-import MoreWordTest from './container/level2/MoreWordTest';
+import MoreWords from './container/level2/MoreWords';
+import Numbers from './container/level2/Numbers';
+import Colors from './container/level2/Colors';
+import Family from './container/level2/Family';
 
 export default function Router() {
   return <Switch>
@@ -26,7 +28,9 @@ export default function Router() {
     <Route path="/level1/writing-practice"><WritingPractice /></Route>
     <Route exact path="/level2"><Words /></Route>
     <Route path="/level2/more-words"><MoreWords /></Route>
-    <Route path="/level2/word-excercise"><MoreWordTest /></Route>
+    <Route path="/level2/numbers"><Numbers /></Route>
+    <Route path="/level2/colors"><Colors /></Route>
+    <Route path="/level2/family"><Family /></Route>
     <Route path="*"><Letters /></Route>
   </Switch>
 }

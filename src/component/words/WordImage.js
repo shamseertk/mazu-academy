@@ -6,7 +6,6 @@ class WordImage extends React.Component {
   render() {
     const { word, isDragging, connectDragSource } = this.props;
     const draggingStyle = isDragging ? {opacity: 0.2, maxWidth: '80px'} : {opacity: 1, maxWidth: '150px'};
-    console.log(draggingStyle);
     
     if (isDragging || !word.image) return null;
     return connectDragSource(<div style={{ minHeght: '100px', minWidth: '150px',

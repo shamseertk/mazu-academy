@@ -20,10 +20,9 @@ class WordTitle extends React.Component {
         <Button
           style={{backgroundColor: '#f34123', color: '#fff'}} onClick={()=>onReset(word)}>
             Back</Button>
-      <img width="100"
-      src={require(`../../images/words/${word.copied.image}`)} alt={word.arabic} />
-      </React.Fragment>
-      }
+        <img width="100"
+          src={require(`../../images/words/${word.copied.image}`)} alt={word.arabic} />
+      </React.Fragment>}
     </div>)
   }
 }

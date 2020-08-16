@@ -2,12 +2,12 @@ import React from 'react';
 import { withStyles, Button, Grid } from '@material-ui/core';
 import { DndProvider } from 'react-dnd-multi-backend';
 import HTML5toTouch from 'react-dnd-multi-backend/dist/esm/HTML5toTouch';
-import { arabicWords } from '../../utils/words';
-import WordImage from './WordImage';
-import WordTitle from './WordTitle';
+import { arabicWords } from '../../../utils/words';
+import SourceRender from './SourceRender';
 import _ from 'lodash'
-import { HowToReg, NavigateNext, CheckCircle, ErrorRounded, Refresh } from '@material-ui/icons';
-import { generateRandomNumber } from '../../utils/utils';
+import { HowToReg, CheckCircle, ErrorRounded } from '@material-ui/icons';
+import { generateRandomNumber } from '../../../utils/utils';
+import TargetRender from './TargetRender';
 
 const styles = () => ({
   buttonWrapper: {
@@ -25,7 +25,7 @@ const styles = () => ({
   }
 });
 
-class ExcerciseOne extends React.Component {
+class DragDrop extends React.Component {
   constructor(props) {
     super(props);
     const currentIndex = 0;
@@ -39,24 +39,22 @@ class ExcerciseOne extends React.Component {
   resetInitiateValues = (currentIndex) => {
     const targetWords = _.orderBy(arabicWords[currentIndex].words.map( word => 
       ({ arabic: word.arabic, english: word.english, orderKey: generateRandomNumber(200) })), ['orderKey']);
-    const accepts = arabicWords[currentIndex].words.map( word => word.english );
     const sourceWords = _.orderBy(arabicWords[currentIndex].words, ['orderKey']);
     return {
       targetWords,
-      accepts,
       sourceWords,
       checkIt: false,
     };
   }
   handleDrop = (objDropped, objElem) => {
-    const { targetWords, sourceWords } = this.state;
-    const newTW = targetWords.map(word => {
-      return word.english === objDropped.word.english 
-        ? {...word, copied: objElem.word}
-        : word;
+    const { targetData, sourceData } = this.state;
+    const newTW = targetData.map(dt => {
+      return dt.english === objDropped.word.english 
+        ? {...dt, copied: objElem.word}
+        : dt;
       }
     );
-    const newSW = sourceWords.map(word => word.english !== objElem.word.english ? word : {...word, image: null});
+    const newSW = sourceData.map(word => word.english !== objElem.word.english ? word : {...word, image: null});
     this.setState({
       targetWords: newTW,
       sourceWords: newSW,
@@ -113,53 +111,52 @@ class ExcerciseOne extends React.Component {
     });
   }
   render() {
-    const { targetWords, sourceWords, accepts, currentIndex, checkIt } = this.state;
-    const { classes } = this.props;
+    const { classes, instruction, arabicTitle, checkAnswers, targetData, sourceData, elemLabel, itemId, onDropTarget,
+      accepts, displayError, resetBack } = this.props;
+    const lbl = elemLabel ? elemLabel : 'label';
     return <DndProvider options={HTML5toTouch}>
       <Grid container>
         <Grid md="auto" item xs={12} sm={6}>
-          <div className="instruction">Drag the picture to the correct box and click on Check It or Next Button.</div>
-          <div className={`${classes.letterTitle} arabic-font`}>{arabicWords[currentIndex].arabic}</div>
+          <div className="instruction">{instruction}</div>
+          <div className={`${classes.letterTitle} arabic-font`}>{arabicTitle}</div>
         </Grid>
         <Grid md="auto" item xs={6} sm={3}>
           <div style={{textAlign: 'center', padding: '3px'}}><Button
             style={{backgroundColor: 'green', marginRight: '5px'}}
             variant="contained" color="primary"
             startIcon={<HowToReg />}
-            onClick={this.checkValues}
+            onClick={checkAnswers}
             >Check It</Button></div>
-          {sourceWords && sourceWords.map((word, index) =>
-            <WordImage key={word.english} word={word} index={index} />
+          {sourceData && sourceData.map((eachSrc, index) =>
+            <SourceRender key={eachSrc[lbl]
+              ? typeof eachSrc[lbl] ==='string'
+                ? eachSrc[lbl]
+                : `SRC-D-${index}`
+              : `SRC-D-${index}`} objSource={eachSrc} index={index} itemId={itemId} />
           )}
         </Grid>
         <Grid md="auto" item xs={6} sm={3}>
-          <div style={{textAlign: 'center', padding: '3px'}}>
-            {currentIndex < (arabicWords.length - 1) && <Button
-              variant="contained" color="primary"
-              startIcon={<NavigateNext />}
-              onClick={this.nextSetWords}
-              >Next</Button>}<Button
-            variant="contained" color="primary"
-            style={{backgroundColor: 'blue', marginLeft: '5px'}}
-            startIcon={<Refresh />}
-            onClick={this.restartLetter}
-            >Restart</Button></div>
-          {targetWords && targetWords.map((word, index) => <Grid key={_.get(word, ['english'], index)} container>
+          {targetData && targetData.map((eachTgt, index) => <Grid key={
+            typeof _.get(eachTgt, ['label'], index) === 'string' 
+            ? _.get(eachTgt, ['label'], index)
+            : index} container>
             <Grid item>
               <div style={{textAlign: 'center',
                 marginBottom: '3px', border: '1px solid green', maxWidth: '200px'}}>
-                <div style={{ backgroundColor: 'yellow', fontSize: '2em'}} className="arabic-font">{word.arabic}</div>
-                <WordTitle accepts={_.get(word, ['copied','image']) ? [] : accepts}
-                  onReset={this.resetImage}
-                  onDrop={this.handleDrop} word={word} index={index} />
+                <div style={{ backgroundColor: 'yellow', fontSize: '2em'}} className="arabic-font">{eachTgt.label}</div>
+                <TargetRender accepts={_.get(eachTgt, ['copied','itemId']) ? [] : accepts} onResetBack={resetBack}
+                  onDropTarget={onDropTarget}
+                  targetSrc={eachTgt}
+                  index={index}
+                  />
               </div>
             </Grid>
             <Grid item>
-              <div style={{ padding: '30px 0px 0px 0px' }}>
-                {checkIt && ((_.get(word, ['error'], false))
+              {displayError && <div style={{ padding: '30px 0px 0px 0px' }}>
+                {_.get(eachTgt, ['error'], true)
                   ? <div style={{ color: 'red' }}><ErrorRounded />Wrong</div>
-                  : <div style={{ color: 'green' }}><CheckCircle />Right</div>)}
-              </div>
+                  : <div style={{ color: 'green' }}><CheckCircle />Right</div>}
+              </div>}
             </Grid>
           </Grid>)}
         </Grid>
@@ -168,4 +165,4 @@ class ExcerciseOne extends React.Component {
   }
 }
 
-export default withStyles(styles)(ExcerciseOne);
+export default withStyles(styles)(DragDrop);

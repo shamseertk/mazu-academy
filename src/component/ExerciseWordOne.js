@@ -35,7 +35,7 @@ const styles = () => ({
   }
 });
 
-class ExcerciseWordOne extends React.Component {
+class ExerciseWordOne extends React.Component {
   constructor(props) {
     super(props);
     const { data } = props;
@@ -152,4 +152,4 @@ class ExcerciseWordOne extends React.Component {
   }
 }
 
-export default withStyles(styles)(ExcerciseWordOne);
+export default withStyles(styles)(ExerciseWordOne);

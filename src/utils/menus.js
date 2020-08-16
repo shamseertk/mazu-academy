@@ -38,8 +38,16 @@ export const menus =[{
     link: '/level2/more-words',
     active: true,
   }, {
-    label: 'Words More Tests',
-    link: '/level2/word-excercise',
+    label: 'Numbers',
+    link: '/level2/numbers',
+    active: true,
+  }, {
+    label: 'Colors',
+    link: '/level2/colors',
+    active: true,
+  }, {
+    label: 'Family',
+    link: '/level2/family',
     active: true,
   }]
 }];

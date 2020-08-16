@@ -1,9 +1,8 @@
 import React from 'react';
-import { arabicWords } from '../utils/words';
+import { arabicWords } from '../../utils/words';
 import { withStyles } from '@material-ui/core';
-import SubNav from '../component/common/SubNav';
-import BookNavigation from '../component/common/BookNavigation';
-import WordPage from '../component/WordPage';
+import BookNavigation from '../common/BookNavigation';
+import WordPage from './WordPage';
 
 const style = () => ({
   bookWrapper: {
@@ -20,7 +19,7 @@ const style = () => ({
   }
 });
 
-class Words extends React.Component {
+class MoreWordsComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,31 +68,28 @@ class Words extends React.Component {
     const { classes } = this.props;
     
     return <React.Fragment>
-      <SubNav pageTitle="Level2 &#8608; More Words" />
-      <div className="container">
-        <div className={classes.bookWrapper}>
-          <BookNavigation
-            stepperSteps={arabicWords.length}
-            activeStep={activeStep}
-            clickNextButton={this.nextPage}
-            clickPrevButton={this.prevPage}
-            selectDropDown={this.onSelectLetter}
-            selectOptions={arabicWords}
-            selectLabelValue={{label: 'arabic', value: 'arabic'}}
-            selectedValue={arabicWords[activeStep].arabic}
-            />
-        </div>
-        <div style={{
-          textAlign: 'center',
-          fontSize: '2.5em',
-          color: 'brown'
-          }} className="arabic-font">{arabicWords[activeStep].arabic}</div>
-        <WordPage
-          letter={arabicWords[activeStep]}
+      <div className={classes.bookWrapper}>
+        <BookNavigation
+          stepperSteps={arabicWords.length}
+          activeStep={activeStep}
+          clickNextButton={this.nextPage}
+          clickPrevButton={this.prevPage}
+          selectDropDown={this.onSelectLetter}
+          selectOptions={arabicWords}
+          selectLabelValue={{label: 'arabic', value: 'arabic'}}
+          selectedValue={arabicWords[activeStep].arabic}
           />
       </div>
+      <div style={{
+        textAlign: 'center',
+        fontSize: '2.5em',
+        color: 'brown'
+        }} className="arabic-font">{arabicWords[activeStep].arabic}</div>
+      <WordPage
+        letter={arabicWords[activeStep]}
+        />
     </React.Fragment>
   }
 }
 
-export default withStyles(style)(Words);
+export default withStyles(style)(MoreWordsComponent);

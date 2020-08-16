@@ -1,3 +1,4 @@
+import { flattenDeep } from 'lodash';
 import { categories } from "./alphabets";
 import { generateRandomNumber } from "./utils";
 
@@ -290,7 +291,7 @@ export const arabicWords = [{
   }, {
     arabic: 'مَدْرَسَةٌ', image: 'school.png', english: 'School', orderKey: generateRandomNumber(100), category: categories.THING,
   }, {
-    arabic: 'مِقْعَدٌ', image: 'bench.jpg', english: 'Bench', orderKey: generateRandomNumber(100), category: categories.THING,
+    arabic: 'مَقْعَدٌ', image: 'bench.jpg', english: 'Bench', orderKey: generateRandomNumber(100), category: categories.THING,
   }, {
     arabic: 'مَاءٌ', image: 'water.jpg', english: 'Water', orderKey: generateRandomNumber(100), category: categories.FOOD,
   }, {
@@ -347,3 +348,5 @@ export const arabicWords = [{
     arabic: 'يَقْطِينٌ', image: 'pumpkin.jpg', english: 'Pumpkin', orderKey: generateRandomNumber(100), category: categories.VEGITABLE,
   }],
 }];
+
+export const allWords = flattenDeep(arabicWords.map(ar => [...ar.words]))

@@ -80,8 +80,8 @@ class Words extends React.Component {
             value: 'word',
             component: <WordLevelOne />
           }, {
-            label: 'Excercises',
-            value: 'excercises',
+            label: 'Exercise',
+            value: 'exercise',
             component: <WordOneTest data={alphabetsUpdated} />
           }]}
           handleChangeTab={this.changeTab}

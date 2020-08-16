@@ -1,6 +1,6 @@
 import React from 'react';
 import { alphabets } from '../../utils/alphabets';
-import ExcerciseWordOne from '../ExcerciseWordOne';
+import ExerciseWordOne from '../ExerciseWordOne';
 
 class WordOneTest extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class WordOneTest extends React.Component {
   render() {
     const { allAlphabets } = this.state;
     return <React.Fragment>
-      <ExcerciseWordOne
+      <ExerciseWordOne
         data={allAlphabets}
         />
     </React.Fragment>
