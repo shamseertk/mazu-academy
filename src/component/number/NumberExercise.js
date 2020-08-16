@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, Button, Select } from '@material-ui/core';
+import { withStyles, Button } from '@material-ui/core';
 import { arabicNumbers, convertNumberToAR } from '../../utils/numbers';
 import _ from 'lodash'
 import { generateRandomNumber, NUMBER_QSTN_TYPES } from '../../utils/utils';
