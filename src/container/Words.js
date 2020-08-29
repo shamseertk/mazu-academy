@@ -1,8 +1,10 @@
 import React from 'react';
 import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
-import WordTile from '../component/WordTile';
-import { MobileStepper, Button, withStyles, Switch, FormControlLabel } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import SubNav from '../component/common/SubNav';
+import SimpleTabs from '../component/common/SimpleTabs';
+import WordLevelOne from '../component/words/WordLevelOne';
+import WordOneTest from '../component/words/WordOneTest';
 
 const style = () => ({
   bookWrapper: {
@@ -27,6 +29,7 @@ class Words extends React.Component {
       alphabetsUpdated,
       activeStep: 0,
       enableJoinedWords: false,
+      selectedTab: 'word',
     };
   }
 
@@ -60,45 +63,29 @@ class Words extends React.Component {
       enableJoinedWords: evt.target.checked,
     });
   }
+  changeTab = (event, val) => {
+    this.setState({
+      selectedTab: val,
+    })
+  }
   render() {
-    const { alphabetsUpdated, activeStep, enableJoinedWords } = this.state;
-    const { classes } = this.props;
+    const { selectedTab, alphabetsUpdated } = this.state;
     return <React.Fragment>
       <SubNav pageTitle="Level2 &#8608; Words-Beginners" />
       <div className="container">
-        <FormControlLabel
-          control={<Switch
-            checked={enableJoinedWords}
-            onChange={this.handleChangeJoinedWords}
-            name="checkedB"
-            color="primary" />}
-          label="Joined Words"
-          labelPlacement="start"
-          disabled
+        <SimpleTabs
+          selectedTab={selectedTab}
+          tabsInfo={[{
+            label: 'Words',
+            value: 'word',
+            component: <WordLevelOne />
+          }, {
+            label: 'Exercise',
+            value: 'exercise',
+            component: <WordOneTest data={alphabetsUpdated} />
+          }]}
+          handleChangeTab={this.changeTab}
           />
-        
-        <div className={classes.bookWrapper}>
-          <MobileStepper
-            steps={alphabetsUpdated.length}
-            position="static"
-            variant="text"
-            activeStep={activeStep}
-            nextButton={
-              <Button
-                onClick={this.nextPage}
-                >Next</Button>
-            }
-            backButton={
-              <Button
-                onClick={this.prevPage}
-                >Prev</Button>
-            }
-            />
-            <WordTile
-              letter={alphabetsUpdated[activeStep]}
-              enableJoinedWords={enableJoinedWords}
-              />
-        </div>
       </div>
     </React.Fragment>
   }

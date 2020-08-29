@@ -75,7 +75,7 @@ class TestAlphabets extends React.Component{
 
     const { classes } = this.props;
     
-    return <div className="container">
+    return <div>
       <Grid container style={{border: '1px solid #224422', padding: '5px'}}>
         <Grid item>
           <Typography component="h1">Question # {questionNumber}. </Typography>

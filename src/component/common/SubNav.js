@@ -3,13 +3,12 @@ import { withStyles, Hidden } from '@material-ui/core';
 import { withRouter, Link } from 'react-router-dom';
 import _ from 'lodash';
 import { menus } from '../../utils/menus';
+import PageTitle from './PageTitle';
 
 const styles = () => ({
   pageTitle: {
     fontSize: '20px',
     padding: '10px 0px 10px 25px',
-    fontFamily: 'sans-serif',
-    color: '#083f92',
     backgroundColor: '#00d0ff',
     display: 'flex'
   },
@@ -41,7 +40,8 @@ class SubNav extends React.Component {
   render() {
     const { classes } = this.props;
     const { currentPage } = this.state;
-    return <div className={classes.pageTitle}><div style={{width: '250px', paddingTop: '8px'}}>{this.props.pageTitle}</div>
+    return <div className={classes.pageTitle}>
+      <PageTitle pageTitle={this.props.pageTitle} />
       <Hidden mdDown>
         <Link
           key={currentPage.link}
