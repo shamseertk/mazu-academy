@@ -25,7 +25,7 @@ class WordLevelOne extends React.Component {
     this.state = {
       alphabetsUpdated,
       activeStep: 0,
-      enableJoinedWords: false,
+      enableJoinedWords: true,
     };
   }
 
@@ -74,7 +74,6 @@ class WordLevelOne extends React.Component {
           label="Joined Words"
           labelPlacement="start"
           />
-        
         <div className={classes.bookWrapper}>
           <MobileStepper
             steps={alphabetsUpdated.length}
