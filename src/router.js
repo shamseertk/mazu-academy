@@ -13,6 +13,7 @@ import VowelPractice from './container/VowelPractice';
 import MoreWords from './container/level2/MoreWords';
 import Numbers from './container/level2/Numbers';
 import Colors from './container/level2/Colors';
+import Months from './container/level2/Months';
 import Family from './container/level2/Family';
 
 export default function Router() {
@@ -29,6 +30,7 @@ export default function Router() {
     <Route exact path="/level2"><Words /></Route>
     <Route path="/level2/more-words"><MoreWords /></Route>
     <Route path="/level2/numbers"><Numbers /></Route>
+    <Route path="/level2/months"><Months /></Route>
     <Route path="/level2/colors"><Colors /></Route>
     <Route path="/level2/family"><Family /></Route>
     <Route path="*"><Letters /></Route>

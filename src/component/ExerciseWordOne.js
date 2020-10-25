@@ -56,7 +56,7 @@ class ExerciseWordOne extends React.Component {
     this.setState({
       openDialog: true,
       dialogTitle: 'Result',
-      dialogContent: <div>The correct answer is {data[indexLetter].words[0].together}.
+      dialogContent: <div className="instruction">The correct answer is <span className="arabic">{data[indexLetter].words[0].together}.</span>
         <br />Check your answer, is it </div>,
       dialogActions: <div><Button onClick={() => this.logResult(1)}>Correct</Button>
         <Button onClick={() => this.logResult(-1)}>Wrong</Button></div>

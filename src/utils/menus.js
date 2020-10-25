@@ -42,6 +42,10 @@ export const menus =[{
     link: '/level2/numbers',
     active: true,
   }, {
+    label: 'Months',
+    link: '/level2/months',
+    active: true,
+  }, {
     label: 'Colors',
     link: '/level2/colors',
     active: true,

@@ -30,6 +30,11 @@ export const COLOR_QSTN_TYPES = {
   COLOR_CODE: 'colorCode',
 }
 
+export const MONTH_QSTN_TYPES = {
+  MONTH: 'id',
+  ARABIC: 'arabic',
+}
+
 export const pickRandomFromArray = (arr) => {
   const pickedIndex = generateRandomNumber(arr.length - 1);
   const pickedObj = arr[pickedIndex];
