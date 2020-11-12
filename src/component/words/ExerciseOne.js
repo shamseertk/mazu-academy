@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, Button, Grid } from '@material-ui/core';
+import { withStyles, Button, Grid, Select, MenuItem } from '@material-ui/core';
 import { DndProvider } from 'react-dnd-multi-backend';
 import HTML5toTouch from 'react-dnd-multi-backend/dist/esm/HTML5toTouch';
 import { arabicWords } from '../../utils/words';
@@ -22,6 +22,9 @@ const styles = () => ({
     border: '1px solid #453bca',
     margin: '10px',
     borderRadius: '40px'
+  },
+  filterLtr: {
+    padding: '10px'
   }
 });
 
@@ -104,6 +107,13 @@ class ExerciseOne extends React.Component {
       ...resetValues,
     });
   }
+  setIndexFilter = (ev) => {
+    const newIndex = ev.target.value;
+    // const resetValues = this.resetInitiateValues(newIndex); 
+    this.setState({
+      currentIndex: newIndex,
+    })
+  }
   restartLetter = () => {
     const currentIndex = 0;
     const resetValues = this.resetInitiateValues(currentIndex); 
@@ -119,6 +129,18 @@ class ExerciseOne extends React.Component {
       <Grid container>
         <Grid md="auto" item xs={12} sm={6}>
           <div className="instruction">Drag the picture to the correct box and click on Check It or Next Button.</div>
+          <div className={classes.filterLtr}>
+          <Select
+            onChange={this.setIndexFilter}
+            value={currentIndex}
+            >
+            {arabicWords && arabicWords.map((sel, index) => 
+            <MenuItem
+              key={index}
+              value={index}
+              className={classes.menuClass}
+              >{sel.arabic}</MenuItem>)}
+          </Select></div>
           <div className={`${classes.letterTitle} arabic-font`}>{arabicWords[currentIndex].arabic}</div>
         </Grid>
         <Grid md="auto" item xs={6} sm={3}>
