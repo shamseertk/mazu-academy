@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, Button, Grid } from '@material-ui/core';
+import { withStyles, Button, Grid, Select, MenuItem } from '@material-ui/core';
 import { DndProvider } from 'react-dnd-multi-backend';
 import HTML5toTouch from 'react-dnd-multi-backend/dist/esm/HTML5toTouch';
 import { arabicWords } from '../../utils/words';
@@ -22,6 +22,9 @@ const styles = () => ({
     border: '1px solid #453bca',
     margin: '10px',
     borderRadius: '40px'
+  },
+  filterLtr: {
+    padding: '10px'
   }
 });
 
@@ -33,6 +36,7 @@ class ExerciseOne extends React.Component {
     
     this.state = {
       currentIndex: 0,
+      selectedAlready: [],
       ...resetValues
     }
   }
@@ -46,6 +50,7 @@ class ExerciseOne extends React.Component {
       accepts,
       sourceWords,
       checkIt: false,
+      title: arabicWords[currentIndex].arabic,
     };
   }
   handleDrop = (objDropped, objElem) => {
@@ -97,11 +102,103 @@ class ExerciseOne extends React.Component {
   }
   nextSetWords = () => {
     const { currentIndex } = this.state;
-    const newIndex = currentIndex + 1;
-    const resetValues = this.resetInitiateValues(newIndex); 
+    if (currentIndex === 'random') {
+      let sourceWords = [];
+      let targetWords = [];
+      let accepts = [];
+      const { selectedAlready } = this.state;
+      const flattenArray = arabicWords.map(word => word.words).flat();
+      if (flattenArray.length - selectedAlready.length > 4) {
+        const randomIndexOne = this.generateNextRandomIndex(flattenArray, selectedAlready);
+        selectedAlready.push(flattenArray[randomIndexOne].english);
+        const randomIndexTwo = this.generateNextRandomIndex(flattenArray, selectedAlready);
+        selectedAlready.push(flattenArray[randomIndexTwo].english);
+        const randomIndexThree = this.generateNextRandomIndex(flattenArray, selectedAlready);
+        selectedAlready.push(flattenArray[randomIndexThree].english);
+        const randomIndexFour = this.generateNextRandomIndex(flattenArray, selectedAlready);
+        selectedAlready.push(flattenArray[randomIndexFour].english);
+        const randomWords = [flattenArray[randomIndexOne], 
+          flattenArray[randomIndexTwo], flattenArray[randomIndexThree],
+          flattenArray[randomIndexFour]];
+        
+        targetWords = _.orderBy(randomWords.map( word => 
+          ({ arabic: word.arabic, english: word.english, orderKey: generateRandomNumber(200) })), ['orderKey']);
+        accepts = randomWords.map( word => word.english );
+        sourceWords = _.orderBy(randomWords, ['orderKey']);
+      } else {
+        const remainingWords = flattenArray.filter(flWord => !selectedAlready.includes(flWord.english));
+        targetWords = _.orderBy(remainingWords.map( word => 
+          ({ arabic: word.arabic, english: word.english, orderKey: generateRandomNumber(200) })), ['orderKey']);
+        accepts = remainingWords.map( word => word.english );
+        sourceWords = _.orderBy(remainingWords, ['orderKey']);
+      }
+      
+      const title = 'Random';
+      this.setState({
+        sourceWords,
+        targetWords,
+        accepts,
+        checkIt: false,
+        title,
+        selectedAlready,
+      })
+    } else {
+      const newIndex = currentIndex + 1;
+      const resetValues = this.resetInitiateValues(newIndex); 
+      this.setState({
+        currentIndex: newIndex,
+        ...resetValues,
+      });
+    }
+  }
+  generateNextRandomIndex = (passArray, existArray) => {
+    const randonIndex = generateRandomNumber(passArray.length - 1);
+    if (existArray.includes(_.get(passArray[randonIndex], 'english', ''))) {
+      return this.generateNextRandomIndex(passArray, existArray);
+    }
+    return randonIndex;
+  }
+  setIndexFilter = (ev) => {
+    const newIndex = ev.target.value;
+    let targetWords = [];
+    let accepts = [];
+    let sourceWords = [];
+    const { selectedAlready } = this.state;
+    let title = '';
+    if (newIndex === 'random') {
+      const flattenArray = arabicWords.map(word => word.words).flat();
+      const randomIndexOne = this.generateNextRandomIndex(flattenArray, selectedAlready);
+      selectedAlready.push(flattenArray[randomIndexOne].english);
+      const randomIndexTwo = this.generateNextRandomIndex(flattenArray, selectedAlready);
+      selectedAlready.push(flattenArray[randomIndexTwo].english);
+      const randomIndexThree = this.generateNextRandomIndex(flattenArray, selectedAlready);
+      selectedAlready.push(flattenArray[randomIndexThree].english);
+      const randomIndexFour = this.generateNextRandomIndex(flattenArray, selectedAlready);
+      selectedAlready.push(flattenArray[randomIndexFour].english);
+      const randomWords = [flattenArray[randomIndexOne], 
+        flattenArray[randomIndexTwo], flattenArray[randomIndexThree],
+        flattenArray[randomIndexFour]];
+      targetWords = _.orderBy(randomWords.map( word => 
+        ({ arabic: word.arabic, english: word.english, orderKey: generateRandomNumber(200) })), ['orderKey']);
+      accepts = randomWords.map( word => word.english );
+      sourceWords = _.orderBy(randomWords, ['orderKey']);
+      title = 'Random';
+    } else {
+      targetWords = _.orderBy(arabicWords[newIndex].words.map( word => 
+        ({ arabic: word.arabic, english: word.english, orderKey: generateRandomNumber(200) })), ['orderKey']);
+      accepts = arabicWords[newIndex].words.map( word => word.english );
+      sourceWords = _.orderBy(arabicWords[newIndex].words, ['orderKey']);
+      title = arabicWords[newIndex].arabic;
+    }
+    
     this.setState({
       currentIndex: newIndex,
-      ...resetValues,
+      sourceWords,
+      targetWords,
+      accepts,
+      checkIt: false,
+      title,
+      selectedAlready,
     });
   }
   restartLetter = () => {
@@ -113,13 +210,28 @@ class ExerciseOne extends React.Component {
     });
   }
   render() {
-    const { targetWords, sourceWords, accepts, currentIndex, checkIt } = this.state;
+    const { targetWords, sourceWords, accepts, currentIndex, checkIt, title } = this.state;
     const { classes } = this.props;
     return <DndProvider options={HTML5toTouch}>
       <Grid container>
         <Grid md="auto" item xs={12} sm={6}>
           <div className="instruction">Drag the picture to the correct box and click on Check It or Next Button.</div>
-          <div className={`${classes.letterTitle} arabic-font`}>{arabicWords[currentIndex].arabic}</div>
+          <div className={classes.filterLtr}>
+          <Select
+            onChange={this.setIndexFilter}
+            value={currentIndex}
+            >
+            <MenuItem
+              value="random"
+              >Random</MenuItem>
+            {arabicWords && arabicWords.map((sel, index) => 
+            <MenuItem
+              key={index}
+              value={index}
+              className={classes.menuClass}
+              >{sel.arabic}</MenuItem>)}
+          </Select></div>
+          <div className={`${classes.letterTitle} arabic-font`}>{title}</div>
         </Grid>
         <Grid md="auto" item xs={6} sm={3}>
           <div style={{textAlign: 'center', padding: '3px'}}><Button
@@ -134,16 +246,17 @@ class ExerciseOne extends React.Component {
         </Grid>
         <Grid md="auto" item xs={6} sm={3}>
           <div style={{textAlign: 'center', padding: '3px'}}>
-            {currentIndex < (arabicWords.length - 1) && <Button
+            {((currentIndex === 'random' && sourceWords.length > 3) || currentIndex < (arabicWords.length - 1)) && <Button
               variant="contained" color="primary"
               startIcon={<NavigateNext />}
               onClick={this.nextSetWords}
-              >Next</Button>}<Button
-            variant="contained" color="primary"
-            style={{backgroundColor: 'blue', marginLeft: '5px'}}
-            startIcon={<Refresh />}
-            onClick={this.restartLetter}
-            >Restart</Button></div>
+              >Next</Button>}
+            <Button
+              variant="contained" color="primary"
+              style={{backgroundColor: 'blue', marginLeft: '5px'}}
+              startIcon={<Refresh />}
+              onClick={this.restartLetter}
+              >Restart</Button></div>
           {targetWords && targetWords.map((word, index) => <Grid key={_.get(word, ['english'], index)} container>
             <Grid item>
               <div style={{textAlign: 'center',
