@@ -25,7 +25,7 @@ const styles = () => ({
 class NumberExercise extends React.Component {
   constructor(props) {
     super(props);
-    const maxNumber = 5;
+    const maxNumber = 10;
     const itemsPerPage = 4;
     const resetValues = this.getInitiateValues(maxNumber, itemsPerPage);
     
