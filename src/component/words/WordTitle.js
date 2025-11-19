@@ -1,42 +1,43 @@
-import React from 'react';
-import { DropTarget } from 'react-dnd';
-import _ from 'lodash';
-import { Button } from '@material-ui/core';
 
-class WordTitle extends React.Component {
-  render() {
-    const {
-      connectDropTarget,
-      word,
-      onReset,
-      isOver,
-      canDrop,
-    } = this.props;
-    const isActive = canDrop && isOver;
-    const backgroundColor = isActive ? '#81d4fa' : null;
-    return connectDropTarget(<div style={{backgroundColor: backgroundColor, minWidth: '150px', minHeight: '120px',
-      textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
-      {_.get(word, ['copied', 'image']) && <React.Fragment>
-        <Button
-          style={{backgroundColor: '#f34123', color: '#fff'}} onClick={()=>onReset(word)}>
-            Back</Button>
-        <img width="100"
-          src={require(`../../images/words/${word.copied.image}`)} alt={word.arabic} />
-      </React.Fragment>}
-    </div>)
-  }
+import { useDroppable } from '@dnd-kit/core';
+import { Paper, Typography } from '@mui/material';
+
+// Custom Droppable component to render the English word
+function WordTitle({ id, word, droppedItem }) {
+  const { setNodeRef, isOver } = useDroppable({ id });
+  const staticStyle = {
+    border: `3px dashed ${isOver ? 'blue' : '#ccc'}`,
+    backgroundColor: droppedItem ? '#d4edda' : '#f8f9fa',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '10px',
+    padding: '10px',
+    textAlign: 'center',
+    color: droppedItem && id === droppedItem.id ? 'green' : (droppedItem ? 'red' : 'inherit')
+  };
+
+  return (
+    <Paper
+        elevation={3} 
+        ref={setNodeRef} 
+        // Apply responsive class and merge styles
+        className="dnd-image-container"
+        style={staticStyle}
+    >
+      <Typography variant="h5" style={{ marginBottom: '10px' }}>{word}</Typography>
+      {droppedItem && (
+          // Display the dropped image on successful match
+          <img 
+              // CORRECTED PATH
+              src={require(`../../images/words/${droppedItem.imageFileName}`)} 
+              alt={droppedItem.id} 
+              style={{ maxWidth: '100%', maxHeight: '100px' }}
+          />
+      )}
+    </Paper>
+  );
 }
 
-export default DropTarget(
-  (props) => props.accepts,
-  {
-    drop(props, monitor, component) {
-      props.onDrop(props, monitor.getItem())
-    },
-  },
-  (connect, monitor) => ({
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-    canDrop: monitor.canDrop(),
-  }),
-)(WordTitle);
+export default WordTitle;

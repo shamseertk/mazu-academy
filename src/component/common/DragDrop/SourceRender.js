@@ -1,57 +1,70 @@
-import React from 'react';
-import { DragSource } from 'react-dnd';
+import { useDraggable } from '@dnd-kit/core';
 
-class SourceRender extends React.Component {
-  constructor(props) {
-    super(props);
-    const { elemLabel } = props;
-    const labelKey = elemLabel ? elemLabel : 'label';
-    this.state = {
-      labelKey,
-    };
-  }
-  renderSourceElement = () => {
-    const { objSource, isDragging, elemType } = this.props;
-    const { labelKey } = this.state;
-    const draggingStyle = isDragging ? {opacity: 0.2, maxWidth: '80px'} : {opacity: 1, maxWidth: '150px'};
+// Renders the source element using dnd-kit's useDraggable hook.
+function SourceRender(props) {
+  const { objSource, isDragging: isDraggingProp, elemType } = props;
+  const { labelKey } = { labelKey: props.elemLabel ? props.elemLabel : 'label' };
+  
+  // Use unique item ID for the draggable hook
+  const { attributes, listeners, setNodeRef, transform, isDragging: isDraggingHook } = useDraggable({
+    id: objSource.itemId,
+    data: { objSource }, // Pass the full source object in data
+  });
+  
+  const isDragging = isDraggingProp || isDraggingHook;
+  
+  const style = transform ? { 
+    transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+    cursor: 'grabbing',
+  } : {
+    cursor: 'grab',
+  };
+
+  const commonStyle = {
+    textAlign: 'center',
+    margin: '5px 15px 20px 5px',
+    padding: '3px',
+    opacity: isDragging ? 0.2 : 1,
+    transition: 'opacity 0.2s',
+  };
+
+  const renderSourceElement = () => {
     switch(elemType) {
       case 'img':
         return objSource.image
           ? <img 
-            style={{cursor: 'move', ...draggingStyle}}
+            style={{maxWidth: '150px'}}
             src={require(`../../../images/words/${objSource.image}`)}
             alt={objSource[labelKey]} />
           : null;
       default:
+        // Use new CSS class for rectangular, bold, and larger look
         return objSource[labelKey] !== undefined && objSource[labelKey] !== null
-          ? <div style={{cursor: 'move',
-            minHeight: '50px',
-            paddingTop: '25%', border: '1px solid #234', ...draggingStyle}}>{objSource[labelKey]}</div>
+          ? <div 
+              className="arabic-font dnd-source-box"
+              style={{cursor: 'move'}}
+            >
+              {objSource[labelKey]}
+            </div>
           : null;
     }
-  }
-  render() {
-    const { isDragging, connectDragSource } = this.props;
-    if (isDragging) return null;
-    return connectDragSource(<div style={{ minHeght: '100px', minWidth: '150px',
-      margin: '5px 15px 20px 5px', padding: '3px', textAlign: 'center'}}>
-        {this.renderSourceElement()}
-    </div>);
-  }
+  };
+  
+  // Only render if the label/content exists (not hidden by parent state)
+  if (objSource[labelKey] === null && elemType !== 'img') return null;
+  if (elemType === 'img' && !objSource.image) return null;
+
+
+  return (
+    <div 
+        ref={setNodeRef} 
+        style={{...style, ...commonStyle }}
+        {...listeners} 
+        {...attributes}
+    >
+        {renderSourceElement()}
+    </div>
+  );
 }
 
-export default DragSource(props => 
-  props.objSource.itemId,
-  {
-    beginDrag(props) {
-      return {
-        objSource: props.objSource,
-        index: props.index
-      }
-    }
-  },
-  (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging(),
-  }),
-)(SourceRender);
+export default SourceRender;

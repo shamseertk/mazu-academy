@@ -63,5 +63,5 @@ export const arabicNumbers = [{
 }];
 
 export const convertNumberToAR = function(num) {
-  return num.toString().replace(/\d/g, d =>  '٠١٢٣٤٥٦٧٨٩'[d])
+  return num.toString().replace(/\d/g, d =>  '٠١٢٣٤٥٦٧٨٩'[d]);
 }

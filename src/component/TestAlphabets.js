@@ -1,34 +1,9 @@
 import React from 'react';
 import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
-import { Grid, Button, withStyles, Typography } from '@material-ui/core';
-import { Replay, PlayArrowSharp } from '@material-ui/icons';
-import _ from 'lodash';
+import { Grid, Button, Typography } from '@mui/material';
 
-const styles = () => ({
-  buttonStyle: {
-    margin: '4px 0px 0px 4px',
-  },
-  buttonCorrect: {
-    backgroundColor: 'green',
-  },
-  buttonWrong: {
-    backgroundColor: 'red',
-  },
-  restartButton: {
-    backgroundColor: 'blue'
-  },
-  image: {
-    maxWidth: '100%;',
-    heigt: 'auto',
-  },
-  scoreCard: {
-    margin: '5px 0px 0px 5px',
-  },
-  scorecardTitle: {
-    textAlign: 'center',
-    fontSize: '18px',
-  }
-});
+import { Replay, PlayArrowSharp } from '@mui/icons-material';
+import _ from 'lodash';
 
 class TestAlphabets extends React.Component{
   constructor(props) {
@@ -72,8 +47,6 @@ class TestAlphabets extends React.Component{
   }
   render() {
     const { learnedAlphabets, displayCurrent, questionNumber } = this.state;
-
-    const { classes } = this.props;
     
     return <div>
       <Grid container style={{border: '1px solid #224422', padding: '5px'}}>
@@ -81,13 +54,13 @@ class TestAlphabets extends React.Component{
           <Typography component="h1">Question # {questionNumber}. </Typography>
         </Grid>
         <Grid item>
-          <Button className={`${classes.buttonStyle} ${classes.restartButton}`}
+          <Button className="buttonStyle restartButton"
             variant="contained" color="primary" onClick={this.restart}
             startIcon={<Replay />}
             >Restart</Button>
         </Grid>
         <Grid item>
-          <Button className={`${classes.buttonStyle} ${classes.buttonCorrect}`} variant="contained" color="primary"
+          <Button className="buttonStyle buttonCorrect" variant="contained" color="primary"
             onClick={() => this.nextLetter()}
             endIcon={<PlayArrowSharp />}
             >Next</Button>
@@ -96,7 +69,7 @@ class TestAlphabets extends React.Component{
       <Grid container>
         <Grid item>
         {_.get(learnedAlphabets, [displayCurrent, 'image'])
-          && <img className={classes.image}
+          && <img className="image"
               src={require(`../images/alphabets/${_.get(learnedAlphabets, [displayCurrent, 'image'])}`)}
               style={{border: '1px solid #cb2312'}} alt="alphabet" />}
         </Grid>
@@ -105,4 +78,4 @@ class TestAlphabets extends React.Component{
   }
 }
 
-export default withStyles(styles)(TestAlphabets);
+export default TestAlphabets;

@@ -7,13 +7,13 @@ export const arabicWords = [{
   arabic: 'ا',
   arabicAlternative: 'أإ',
   words: [{
-    arabic: 'أَسَدٌ', image: 'lion.jpg', english: 'Lion', orderKey: generateRandomNumber(100), category: categories.ANIMAL,
+    arabic: 'أَسَدٌ', image: 'lion.jpg', english: 'Lion', category: categories.ANIMAL,
   }, {
-    arabic: 'أَرْضٌ', image: 'earth.jpg', english: 'Land', orderKey: generateRandomNumber(100), category: categories.THING,
+    arabic: 'أَرْضٌ', image: 'earth.jpg', english: 'Land', category: categories.THING,
   }, {
-    arabic: 'إِبْنٌ', image: 'son.jpg', english: 'Son', orderKey: generateRandomNumber(100), category: categories.HUMAN,
+    arabic: 'إِبْنٌ', image: 'son.jpg', english: 'Son', category: categories.HUMAN,
   }, {
-    arabic: 'أَرْنَبٌ', image: 'rabbit.jpg', english: 'Rabbit', orderKey: generateRandomNumber(100), category: categories.ANIMAL,
+    arabic: 'أَرْنَبٌ', image: 'rabbit.jpg', english: 'Rabbit', category: categories.ANIMAL,
   }],
 }, {
   id: 2,

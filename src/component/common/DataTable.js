@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from '@material-ui/core';
+import { Table } from '@mui/material';
 
 class DataTable extends React.Component {
   renderHeaders

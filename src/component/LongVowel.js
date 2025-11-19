@@ -1,40 +1,10 @@
 import React from 'react';
-import { Typography, Card, CardContent, withStyles } from '@material-ui/core';
+import { Typography, Card, CardContent } from '@mui/material';
+
 import { vowel } from '../utils/vowel';
 
-const styles = () => ({
-  root: {
-    maxWidth: '100%',
-    marginBottom: '8px',
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  letterTitle: {
-    fontSize: '30px',
-    color: 'blue',
-    textAlign: 'center',
-    backgroundColor: '#faf0dd',
-    marginBottom: '10px',
-  },
-  gridBox: {
-    border: '1px solid #bca234',
-    padding: '10px 15px',
-    textAlign: 'center',
-    margin: '0px 10px 0px 10px',
-    fontSize: '2em',
-  },
-  boxContainer: {
-    width: '100%',
-    margin: 'auto',
-    display: 'flex',
-    justifyContent: 'space-around',
-    flexWrap: 'wrap',
-    flexDirection:'row-reverse',
-  },
-});
 class LongVowel extends React.Component {
   render() {
-    const { classes } = this.props;
     return <React.Fragment>
       <h3>Other Vowels</h3>
       <div>
@@ -48,22 +18,22 @@ class LongVowel extends React.Component {
         <Typography component="h2" align="center">Eg:- With <span className="highlighter">Fat'ha</span> <span className="arabic">(فَتْحَة)</span></Typography>
 
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
-          {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter}${vwl.longFath}`}>
+          {vowel && vowel.map(vwl => <Card className="root" key={`${vwl.letter}${vwl.longFath}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
-              <div className={`${classes.letterTitle} arabic-font`}>{vwl.letter}</div>
-              <div className={classes.boxContainer}>
-                <div className={`${classes.gridBox} arabic-font`}>{vwl.longFath}</div>
+              <div className="letterTitle arabic-font">{vwl.letter}</div>
+              <div className="boxContainer">
+                <div className="gridBox arabic-font">{vwl.longFath}</div>
               </div>
             </CardContent>
           </Card>)}
         </div>
         <Typography component="h2" align="center">Eg:- With <span className="highlighter">Kasra</span> <span className="arabic">(كَسْرَة)</span></Typography>
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
-          {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter}${vwl.longKasra}`}>
+          {vowel && vowel.map(vwl => <Card className="root" key={`${vwl.letter}${vwl.longKasra}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
-              <div className={`${classes.letterTitle} arabic-font`}>{vwl.letter}</div>
-              <div className={classes.boxContainer}>
-                <div className={`${classes.gridBox} arabic-font`}>{vwl.longKasra}</div>
+              <div className="letterTitle arabic-font">{vwl.letter}</div>
+              <div className="boxContainer">
+                <div className="gridBox arabic-font">{vwl.longKasra}</div>
               </div>
             </CardContent>
           </Card>)}
@@ -71,11 +41,11 @@ class LongVowel extends React.Component {
 
         <Typography component="h2" align="center">Eg:- With <span className="highlighter">Damma</span> <span className="arabic">(ضَمَّة)</span></Typography>
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
-          {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter}${vwl.longDhamma}`}>
+          {vowel && vowel.map(vwl => <Card className="root" key={`${vwl.letter}${vwl.longDhamma}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
-              <div className={`${classes.letterTitle} arabic-font`}>{vwl.letter}</div>
-              <div className={classes.boxContainer}>
-                <div className={`${classes.gridBox} arabic-font`}>{vwl.longDhamma}</div>
+              <div className="letterTitle arabic-font">{vwl.letter}</div>
+              <div className="boxContainer">
+                <div className="gridBox} arabic-font">{vwl.longDhamma}</div>
               </div>
             </CardContent>
           </Card>)}
@@ -90,11 +60,11 @@ class LongVowel extends React.Component {
 
         <Typography component="h2" align="center">Eg:- With <span className="highlighter">Thanveen</span></Typography>
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
-          {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter}${vwl.thanveen}`}>
+          {vowel && vowel.map(vwl => <Card className="root" key={`${vwl.letter}${vwl.thanveen}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
-              <div className={`${classes.letterTitle} arabic-font`}>{vwl.letter}</div>
-              <div className={classes.boxContainer}>
-                <div className={`${classes.gridBox} arabic-font`}>{vwl.thanveen}</div>
+              <div className="letterTitle arabic-font">{vwl.letter}</div>
+              <div className="boxContainer">
+                <div className="gridBox arabic-font">{vwl.thanveen}</div>
               </div>
             </CardContent>
           </Card>)}
@@ -102,11 +72,11 @@ class LongVowel extends React.Component {
 
         <Typography component="h2" align="center">Eg:- With <span className="highlighter">Shadh</span></Typography>
         <div style={{display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center'}}>
-          {vowel && vowel.map(vwl => <Card className={classes.root} key={`${vwl.letter} ${vwl.shadh}`}>
+          {vowel && vowel.map(vwl => <Card className="root" key={`${vwl.letter} ${vwl.shadh}`}>
             <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
-              <div className={`${classes.letterTitle} arabic-font`}>{vwl.letter}</div>
-              <div className={classes.boxContainer}>
-                <div className={`${classes.gridBox} arabic-font`}>{vwl.shadh}</div>
+              <div className="letterTitle arabic-font">{vwl.letter}</div>
+              <div className="boxContainer">
+                <div className="gridBox arabic-font">{vwl.shadh}</div>
               </div>
             </CardContent>
           </Card>)}
@@ -115,6 +85,6 @@ class LongVowel extends React.Component {
     </React.Fragment>
   }
 }
-  
 
-export default withStyles(styles)(LongVowel);
+
+export default LongVowel;

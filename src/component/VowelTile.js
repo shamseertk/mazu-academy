@@ -1,54 +1,8 @@
 import React from 'react';
-import { Card, makeStyles, CardContent, IconButton } from '@material-ui/core';
-import { PlayArrowRounded } from '@material-ui/icons';
-import _ from 'lodash';
+import { Card, CardContent, IconButton } from '@mui/material';
 
-const styles = makeStyles({
-  root: {
-    maxWidth: '100%',
-    marginBottom: '8px',
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  letterTitle: {
-    fontSize: '30px',
-    color: 'blue',
-    textAlign: 'center',
-    backgroundColor: '#faf0dd',
-    marginBottom: '10px',
-    padding: '0px 0px 5px 0px',
-  },
-  gridBox: {
-    border: '1px solid #bca234',
-    padding: '10px 15px',
-    textAlign: 'center',
-    margin: '0px 10px 0px 10px',
-    fontSize: '2em',
-    '&:hover': {
-      backgroundColor: '#ffdab9',
-      cursor: 'pointer',
-    }
-  },
-  gridBoxButton: {
-    padding: '0px 15px',
-    textAlign: 'center',
-    margin: '0px 10px 0px 10px',
-  },
-  boxContainer: {
-    width: '100%',
-    margin: 'auto',
-    display: 'flex',
-    justifyContent: 'space-around',
-    flexWrap: 'wrap',
-    flexDirection:'row-reverse',
-  },
-  word: {
-    margin: '10px 0px 0px 0px',
-    fontSize: '3em',
-    textAlign: 'center',
-    backgroundColor: '#afd275'
-  }
-});
+import { PlayArrowRounded } from '@mui/icons-material';
+import _ from 'lodash';
 
 function playTheLetter(audiofile){
   const audio = new Audio(require(`../audio/vowel/${audiofile}`));
@@ -56,22 +10,24 @@ function playTheLetter(audiofile){
 }
 
 function VowelTile(props){
-  const classes = styles();
   
-  return <Card className={classes.root}>
-    <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
-      <div className={`${classes.letterTitle} arabic-font`}>{props.letter.arabic}</div>
-      <div className={classes.boxContainer}>
-      {_.get(props.letter, ['harakat', 'letters'],'').split(' ').map((haraka, index) => <div
-        key={`${haraka}`} style={{display: 'flex', flexDirection: 'column'}}>
-        <div className={`${classes.gridBox} arabic-font`}>{haraka}</div>
-        <div className={classes.gridBoxButton}><IconButton style={{width: '5px', height: '5px'}}
-          onClick={() => playTheLetter(_.get(props.letter, ['harakat', 'audio'],'').split(' ')[index])}
-        ><PlayArrowRounded /></IconButton></div>
-      </div>)}
-      </div>
-    </CardContent>
-  </Card>
+  return (
+    <Card className="vowelRoot">
+      <CardContent style={{textAlign: 'right', width: '100%', padding: '6px'}}>
+        <div className="letterTitle arabic-font">{props.letter.arabic}</div>
+        <div className="boxContainer">
+        {_.get(props.letter, ['harakat', 'letters'],'').split(' ').map((haraka, index) => <div
+          key={`${haraka}`} style={{display: 'flex', flexDirection: 'column'}}>
+          <div className="gridBox arabic-font">{haraka}</div>
+          <div className="gridBoxButton"><IconButton
+            style={{width: '5px', height: '5px'}}
+            onClick={() => playTheLetter(_.get(props.letter, ['harakat', 'audio'],'').split(' ')[index])}
+            size="large"><PlayArrowRounded /></IconButton></div>
+        </div>)}
+        </div>
+      </CardContent>
+    </Card>
+  );
 }
 
 export default VowelTile;

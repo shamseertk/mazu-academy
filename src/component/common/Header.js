@@ -1,10 +1,8 @@
 import React from 'react';
-import { AppBar, Typography, Toolbar, withStyles, Hidden, IconButton } from '@material-ui/core';
-import AppNav from './AppNav';
-import { Menu } from '@material-ui/icons';
+import { AppBar, Typography, Toolbar, IconButton, Box } from '@mui/material';
 
-const styles = () => ({
-});
+import AppNav from './AppNav';
+import { Menu } from '@mui/icons-material';
 
 class Header extends React.Component {
   constructor(props) {
@@ -25,31 +23,38 @@ class Header extends React.Component {
   }
   render () {
     const { drawerOpen } = this.state;
-    return <React.Fragment><AppBar
-      position="sticky"
-      >
-        <Toolbar>
-          <Hidden lgUp>
-            <IconButton
-              onClick={this.openDrawer}
+    return (
+      <React.Fragment><AppBar
+        position="sticky"
+        >
+          <Toolbar>
+            <Box
+              sx={{
+                display: {
+                  xs: 'block',
+                  lg: 'none'
+                }
+              }}
               >
-              <Menu
-                style={{color: '#fff'}}
-                />
-            </IconButton>
-          </Hidden>
-          <Typography
-            component="h1"
-            style={{fontSize: '25px'}}
-            >Arabic Learning</Typography>
-          <AppNav
-            drawerOpen={drawerOpen}
-            closeDrawer={this.closeDrawer}
-            />
-        </Toolbar>
-      </AppBar>
-    </React.Fragment>
+              <IconButton onClick={this.openDrawer} size="large">
+                <Menu
+                  style={{color: '#fff'}}
+                  />
+              </IconButton>
+            </Box>
+            <Typography
+              component="h1"
+              style={{fontSize: '25px'}}
+              >Arabic Learning</Typography>
+            <AppNav
+              drawerOpen={drawerOpen}
+              closeDrawer={this.closeDrawer}
+              />
+          </Toolbar>
+        </AppBar>
+      </React.Fragment>
+    );
   }
 }
 
-export default withStyles(styles)(Header);
+export default Header;

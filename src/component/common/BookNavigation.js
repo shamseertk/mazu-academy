@@ -1,17 +1,12 @@
 import React from 'react';
-import { MobileStepper, Button, Select, MenuItem, withStyles } from '@material-ui/core';
-import { get } from 'lodash';
+import { MobileStepper, Button, Select, MenuItem } from '@mui/material';
 
-const styles = () => ({
-  menuClass: {
-    fontSize: '2em',
-  }
-})
+import { get } from 'lodash';
 
 class BookNavigation extends React.Component {
   render() {
     const { stepperSteps, activeStep, clickNextButton, clickPrevButton, selectDropDown, selectOptions,
-      selectLabelValue, classes, selectedValue } = this.props;
+      selectLabelValue, selectedValue } = this.props;
       
     return <MobileStepper
       steps={stepperSteps}
@@ -33,7 +28,7 @@ class BookNavigation extends React.Component {
             <MenuItem
               key={get(sel, [selectLabelValue.value])}
               value={get(sel, [selectLabelValue.value])}
-              className={classes.menuClass}
+              className="menuClass"
               >{get(sel, [selectLabelValue.label])}</MenuItem>)}
           </Select>
           <Button
@@ -45,4 +40,4 @@ class BookNavigation extends React.Component {
   }
 }
 
-export default withStyles(styles)(BookNavigation);
+export default BookNavigation;

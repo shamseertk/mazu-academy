@@ -1,23 +1,8 @@
 import React from 'react';
 import { arabicWords } from '../../utils/words';
-import { withStyles } from '@material-ui/core';
+
 import BookNavigation from '../common/BookNavigation';
 import WordPage from './WordPage';
-
-const style = () => ({
-  bookWrapper: {
-    width: '900px',
-    selfAlign: 'center',
-    margin: 'auto',
-  },
-  '@media screen and (max-width: 900px)': {
-    bookWrapper: {
-      width: '100%',
-      selfAlign: 'center',
-      margin: 'auto',
-    },
-  }
-});
 
 class MoreWordsComponent extends React.Component {
   constructor(props) {
@@ -65,10 +50,9 @@ class MoreWordsComponent extends React.Component {
   }
   render() {
     const { activeStep } = this.state;
-    const { classes } = this.props;
     
     return <React.Fragment>
-      <div className={classes.bookWrapper}>
+      <div className="bookWrapper">
         <BookNavigation
           stepperSteps={arabicWords.length}
           activeStep={activeStep}
@@ -83,7 +67,8 @@ class MoreWordsComponent extends React.Component {
       <div style={{
         textAlign: 'center',
         fontSize: '2.5em',
-        color: 'brown'
+        color: 'brown',
+        backgroundColor: 'yellow'
         }} className="arabic-font">{arabicWords[activeStep].arabic}</div>
       <WordPage
         letter={arabicWords[activeStep]}
@@ -92,4 +77,4 @@ class MoreWordsComponent extends React.Component {
   }
 }
 
-export default withStyles(style)(MoreWordsComponent);
+export default MoreWordsComponent;

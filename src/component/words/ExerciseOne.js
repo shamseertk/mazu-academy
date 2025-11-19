@@ -1,284 +1,264 @@
-import React from 'react';
-import { withStyles, Button, Grid, Select, MenuItem } from '@material-ui/core';
-import { DndProvider } from 'react-dnd-multi-backend';
-import HTML5toTouch from 'react-dnd-multi-backend/dist/esm/HTML5toTouch';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import { DndContext } from '@dnd-kit/core';
+import { Grid, Typography, Button, Select, MenuItem } from '@mui/material';
 import { arabicWords } from '../../utils/words';
-import WordImage from './WordImage';
+import _ from 'lodash';
 import WordTitle from './WordTitle';
-import _ from 'lodash'
-import { HowToReg, NavigateNext, CheckCircle, ErrorRounded, Refresh } from '@material-ui/icons';
-import { generateRandomNumber } from '../../utils/utils';
+import WordImage from './WordImage';
 
-const styles = () => ({
-  buttonWrapper: {
-    padding: '5px',
-  },
-  letterTitle: {
-    fontSize: '4em',
-    padding: '20px',
-    color: 'blue',
-    textDecoration: 'none dotted #fff',
-    textAlign: 'center',
-    border: '1px solid #453bca',
-    margin: '10px',
-    borderRadius: '40px'
-  },
-  filterLtr: {
-    padding: '10px'
-  }
-});
-
-class ExerciseOne extends React.Component {
-  constructor(props) {
-    super(props);
-    const currentIndex = 0;
-    const resetValues = this.resetInitiateValues(currentIndex);
+function ExerciseOne() {
+  // New state for the minimum letter selection (start of the range)
+  const [startLetter, setStartLetter] = useState(arabicWords[0].arabic);
+  // Existing state for the maximum letter selection (end of the range)
+  const [selectedLetter, setSelectedLetter] = useState(arabicWords[0].arabic);
+  
+  // Memoize the words data based on the selected letter range and the cumulative logic
+  const wordsToMatchData = useMemo(() => {
+    // 1. Find the indices of the min and max letters
+    const startIndex = arabicWords.findIndex(item => item.arabic === startLetter);
+    const endIndex = arabicWords.findIndex(item => item.arabic === selectedLetter);
     
-    this.state = {
-      currentIndex: 0,
-      selectedAlready: [],
-      ...resetValues
+    // Safety check for range validity (Index must be valid and Start Index must be <= End Index)
+    if (startIndex === -1 || endIndex === -1 || startIndex > endIndex || arabicWords.length === 0) {
+        // Fallback: If the range is invalid, use only the words from the selected MAX letter.
+        const singleLetterWords = arabicWords.find(item => item.arabic === selectedLetter)?.words || [];
+        const shuffledSingle = _.shuffle(singleLetterWords);
+        return shuffledSingle.slice(0, 4);
     }
-  }
-  resetInitiateValues = (currentIndex) => {
-    const targetWords = _.orderBy(arabicWords[currentIndex].words.map( word => 
-      ({ arabic: word.arabic, english: word.english, orderKey: generateRandomNumber(200) })), ['orderKey']);
-    const accepts = arabicWords[currentIndex].words.map( word => word.english );
-    const sourceWords = _.orderBy(arabicWords[currentIndex].words, ['orderKey']);
-    return {
-      targetWords,
-      accepts,
-      sourceWords,
-      checkIt: false,
-      title: arabicWords[currentIndex].arabic,
-    };
-  }
-  handleDrop = (objDropped, objElem) => {
-    const { targetWords, sourceWords } = this.state;
-    const newTW = targetWords.map(word => {
-      return word.english === objDropped.word.english 
-        ? {...word, copied: objElem.word}
-        : word;
-      }
-    );
-    const newSW = sourceWords.map(word => word.english !== objElem.word.english ? word : {...word, image: null});
-    this.setState({
-      targetWords: newTW,
-      sourceWords: newSW,
-    });
-  }
-  resetImage = (resetWord) => {
-    const { targetWords, sourceWords } = this.state;
+
+    // 2. Create a pool of all words in the range [startIndex, endIndex]
+    const cumulativeWordPool = arabicWords
+      .slice(startIndex, endIndex + 1) // Get all letter objects in the defined range
+      .flatMap(item => item.words); // Flatten all word lists into a single array
+
+    // 3. Randomly sample a maximum of 4 unique words
+    const maxWords = 4;
+    const shuffledPool = _.shuffle(cumulativeWordPool);
+    const selectedWords = shuffledPool.slice(0, maxWords);
     
-    const newTW = targetWords.map(tw => {
+    return selectedWords;
+  }, [startLetter, selectedLetter]); // Re-calculates when either min or max letter changes
+
+  // Function to generate fresh initial state objects, including a shuffled word order
+  const getInitialStates = useCallback(() => {
+    const shuffledWords = _.shuffle(wordsToMatchData);
+    
+    const droppableState = wordsToMatchData.reduce((acc, word) => {
+        acc[word.english] = null;
+        return acc;
+    }, {});
+
+    const draggableState = wordsToMatchData.reduce((acc, word) => {
+        acc[word.english] = false;
+        return acc;
+    }, {});
+    
+    return { droppableState, draggableState, wordsOrder: shuffledWords };
+  }, [wordsToMatchData]);
+
+  // Initializing state using the memoized initial states
+  const { 
+      droppableState: initialDroppableState, 
+      draggableState: initialDraggableState,
+      wordsOrder: initialWordsOrder 
+  } = useMemo(() => getInitialStates(), [getInitialStates]); 
+  
+  // State Hooks
+  const [droppableState, setDroppableState] = useState(initialDroppableState);
+  const [draggableState, setDraggableState] = useState(initialDraggableState);
+  const [wordsOrder, setWordsOrder] = useState(initialWordsOrder);
+  const [isGameComplete, setIsGameComplete] = useState(false);
+  const [score, setScore] = useState(0);
+
+  // Restart Game Logic
+  const restartGame = useCallback(() => {
+      const { 
+          droppableState: freshDroppableState, 
+          draggableState: freshDraggableState,
+          wordsOrder: freshWordsOrder
+      } = getInitialStates();
       
-      return tw.english !== _.get(resetWord,['english'])
-        ? tw
-        : {...tw, copied: null};
-    });
-    
-    const newSW = sourceWords.map(sw => {
-      return sw.english === _.get(resetWord,['copied', 'english']) ? {...sw, image: resetWord.copied.image} : sw
-    });
-    this.setState({
-      targetWords: newTW,
-      sourceWords: newSW,
-    })
-  }
-  checkValues = () => {
-    const { targetWords } = this.state;
-    const updTW = targetWords.map(tw => {
-      if (_.get(tw, ['copied', 'english'], '') !== tw.english) {
-        return {...tw, error: true}
-      } else {
-        return {...tw, error: false};
+      setDroppableState(freshDroppableState);
+      setDraggableState(freshDraggableState);
+      setWordsOrder(freshWordsOrder);
+      setIsGameComplete(false);
+      setScore(0);
+  }, [getInitialStates]);
+
+  // Effect to reset state whenever the selected letter range (and thus wordsToMatchData) changes
+  useEffect(() => {
+    if (wordsToMatchData.length > 0) {
+        restartGame();
+    }
+  }, [wordsToMatchData, restartGame]);
+
+  const checkGameCompletion = (newState) => {
+      const allDropped = Object.values(newState).every(item => item !== null);
+      if (allDropped) {
+          // Check for correct matches
+          const finalScore = Object.entries(newState).reduce((acc, [targetId, droppedItem]) => {
+              if (droppedItem && targetId === droppedItem.id) {
+                  return acc + 1;
+              }
+              return acc;
+          }, 0);
+          setScore(finalScore);
+          setIsGameComplete(true);
       }
-    });
+  };
+
+  function handleDragEnd(event) {
+    const { active, over } = event;
+    const draggedImageId = active.id;
+    const targetWordId = over?.id;
+
+    if (!targetWordId) {
+        return;
+    }
     
-    this.setState({
-      targetWords: updTW,
-      checkIt: true,
-    });
-  }
-  nextSetWords = () => {
-    const { currentIndex } = this.state;
-    if (currentIndex === 'random') {
-      let sourceWords = [];
-      let targetWords = [];
-      let accepts = [];
-      const { selectedAlready } = this.state;
-      const flattenArray = arabicWords.map(word => word.words).flat();
-      if (flattenArray.length - selectedAlready.length > 4) {
-        const randomIndexOne = this.generateNextRandomIndex(flattenArray, selectedAlready);
-        selectedAlready.push(flattenArray[randomIndexOne].english);
-        const randomIndexTwo = this.generateNextRandomIndex(flattenArray, selectedAlready);
-        selectedAlready.push(flattenArray[randomIndexTwo].english);
-        const randomIndexThree = this.generateNextRandomIndex(flattenArray, selectedAlready);
-        selectedAlready.push(flattenArray[randomIndexThree].english);
-        const randomIndexFour = this.generateNextRandomIndex(flattenArray, selectedAlready);
-        selectedAlready.push(flattenArray[randomIndexFour].english);
-        const randomWords = [flattenArray[randomIndexOne], 
-          flattenArray[randomIndexTwo], flattenArray[randomIndexThree],
-          flattenArray[randomIndexFour]];
+    const draggedItem = wordsToMatchData.find(word => word.english === draggedImageId);
+    
+    setDroppableState(prevDroppableState => {
+        const newDroppableState = { ...prevDroppableState };
+        let oldDroppedItemId = null;
+
+        // 1. Check if the target is already occupied
+        if (newDroppableState[targetWordId]) {
+            oldDroppedItemId = newDroppableState[targetWordId].id;
+        }
+
+        // 2. Place the new item in the target slot
+        newDroppableState[targetWordId] = { 
+            id: draggedImageId, // Draggable ID (English word, e.g., 'Lion')
+            imageFileName: draggedItem.image 
+        };
         
-        targetWords = _.orderBy(randomWords.map( word => 
-          ({ arabic: word.arabic, english: word.english, orderKey: generateRandomNumber(200) })), ['orderKey']);
-        accepts = randomWords.map( word => word.english );
-        sourceWords = _.orderBy(randomWords, ['orderKey']);
-      } else {
-        const remainingWords = flattenArray.filter(flWord => !selectedAlready.includes(flWord.english));
-        targetWords = _.orderBy(remainingWords.map( word => 
-          ({ arabic: word.arabic, english: word.english, orderKey: generateRandomNumber(200) })), ['orderKey']);
-        accepts = remainingWords.map( word => word.english );
-        sourceWords = _.orderBy(remainingWords, ['orderKey']);
-      }
-      
-      const title = 'Random';
-      this.setState({
-        sourceWords,
-        targetWords,
-        accepts,
-        checkIt: false,
-        title,
-        selectedAlready,
-      })
-    } else {
-      const newIndex = currentIndex + 1;
-      const resetValues = this.resetInitiateValues(newIndex); 
-      this.setState({
-        currentIndex: newIndex,
-        ...resetValues,
-      });
-    }
-  }
-  generateNextRandomIndex = (passArray, existArray) => {
-    const randonIndex = generateRandomNumber(passArray.length - 1);
-    if (existArray.includes(_.get(passArray[randonIndex], 'english', ''))) {
-      return this.generateNextRandomIndex(passArray, existArray);
-    }
-    return randonIndex;
-  }
-  setIndexFilter = (ev) => {
-    const newIndex = ev.target.value;
-    let targetWords = [];
-    let accepts = [];
-    let sourceWords = [];
-    const { selectedAlready } = this.state;
-    let title = '';
-    if (newIndex === 'random') {
-      const flattenArray = arabicWords.map(word => word.words).flat();
-      const randomIndexOne = this.generateNextRandomIndex(flattenArray, selectedAlready);
-      selectedAlready.push(flattenArray[randomIndexOne].english);
-      const randomIndexTwo = this.generateNextRandomIndex(flattenArray, selectedAlready);
-      selectedAlready.push(flattenArray[randomIndexTwo].english);
-      const randomIndexThree = this.generateNextRandomIndex(flattenArray, selectedAlready);
-      selectedAlready.push(flattenArray[randomIndexThree].english);
-      const randomIndexFour = this.generateNextRandomIndex(flattenArray, selectedAlready);
-      selectedAlready.push(flattenArray[randomIndexFour].english);
-      const randomWords = [flattenArray[randomIndexOne], 
-        flattenArray[randomIndexTwo], flattenArray[randomIndexThree],
-        flattenArray[randomIndexFour]];
-      targetWords = _.orderBy(randomWords.map( word => 
-        ({ arabic: word.arabic, english: word.english, orderKey: generateRandomNumber(200) })), ['orderKey']);
-      accepts = randomWords.map( word => word.english );
-      sourceWords = _.orderBy(randomWords, ['orderKey']);
-      title = 'Random';
-    } else {
-      targetWords = _.orderBy(arabicWords[newIndex].words.map( word => 
-        ({ arabic: word.arabic, english: word.english, orderKey: generateRandomNumber(200) })), ['orderKey']);
-      accepts = arabicWords[newIndex].words.map( word => word.english );
-      sourceWords = _.orderBy(arabicWords[newIndex].words, ['orderKey']);
-      title = arabicWords[newIndex].arabic;
-    }
-    
-    this.setState({
-      currentIndex: newIndex,
-      sourceWords,
-      targetWords,
-      accepts,
-      checkIt: false,
-      title,
-      selectedAlready,
+        // Use a functional update for draggableState
+        setDraggableState(prevDraggableState => {
+            const newDraggableState = { ...prevDraggableState };
+            
+            // 3. Hide the dragged item from the source list
+            newDraggableState[draggedImageId] = true;
+
+            // 4. If an item was displaced, make it visible again in the source list
+            if (oldDroppedItemId) {
+                newDraggableState[oldDroppedItemId] = false;
+            }
+            return newDraggableState;
+        });
+
+        // 5. Check if the game is complete
+        checkGameCompletion(newDroppableState);
+
+        return newDroppableState;
     });
   }
-  restartLetter = () => {
-    const currentIndex = 0;
-    const resetValues = this.resetInitiateValues(currentIndex); 
-    this.setState({
-      currentIndex,
-      ...resetValues,
-    });
+  
+  const handleStartLetterChange = (event) => {
+    setStartLetter(event.target.value);
   }
-  render() {
-    const { targetWords, sourceWords, accepts, currentIndex, checkIt, title } = this.state;
-    const { classes } = this.props;
-    return <DndProvider options={HTML5toTouch}>
-      <Grid container>
-        <Grid md="auto" item xs={12} sm={6}>
-          <div className="instruction">Drag the picture to the correct box and click on Check It or Next Button.</div>
-          <div className={classes.filterLtr}>
-          <Select
-            onChange={this.setIndexFilter}
-            value={currentIndex}
-            >
-            <MenuItem
-              value="random"
-              >Random</MenuItem>
-            {arabicWords && arabicWords.map((sel, index) => 
-            <MenuItem
-              key={index}
-              value={index}
-              className={classes.menuClass}
-              >{sel.arabic}</MenuItem>)}
-          </Select></div>
-          <div className={`${classes.letterTitle} arabic-font`}>{title}</div>
-        </Grid>
-        <Grid md="auto" item xs={6} sm={3}>
-          <div style={{textAlign: 'center', padding: '3px'}}><Button
-            style={{backgroundColor: 'green', marginRight: '5px'}}
-            variant="contained" color="primary"
-            startIcon={<HowToReg />}
-            onClick={this.checkValues}
-            >Check It</Button></div>
-          {sourceWords && sourceWords.map((word, index) =>
-            <WordImage key={word.english} word={word} index={index} />
-          )}
-        </Grid>
-        <Grid md="auto" item xs={6} sm={3}>
-          <div style={{textAlign: 'center', padding: '3px'}}>
-            {((currentIndex === 'random' && sourceWords.length > 3) || currentIndex < (arabicWords.length - 1)) && <Button
-              variant="contained" color="primary"
-              startIcon={<NavigateNext />}
-              onClick={this.nextSetWords}
-              >Next</Button>}
-            <Button
-              variant="contained" color="primary"
-              style={{backgroundColor: 'blue', marginLeft: '5px'}}
-              startIcon={<Refresh />}
-              onClick={this.restartLetter}
-              >Restart</Button></div>
-          {targetWords && targetWords.map((word, index) => <Grid key={_.get(word, ['english'], index)} container>
-            <Grid item>
-              <div style={{textAlign: 'center',
-                marginBottom: '3px', border: '1px solid green', maxWidth: '200px'}}>
-                <div style={{ backgroundColor: 'yellow', fontSize: '2em'}} className="arabic-font">{word.arabic}</div>
-                <WordTitle accepts={_.get(word, ['copied','image']) ? [] : accepts}
-                  onReset={this.resetImage}
-                  onDrop={this.handleDrop} word={word} index={index} />
-              </div>
-            </Grid>
-            <Grid item>
-              <div style={{ padding: '30px 0px 0px 0px' }}>
-                {checkIt && ((_.get(word, ['error'], false))
-                  ? <div style={{ color: 'red' }}><ErrorRounded />Wrong</div>
-                  : <div style={{ color: 'green' }}><CheckCircle />Right</div>)}
-              </div>
-            </Grid>
-          </Grid>)}
-        </Grid>
-      </Grid>
-    </DndProvider>
+
+  const handleMaxLetterChange = (event) => {
+    setSelectedLetter(event.target.value);
   }
+
+  const totalPossibleScore = wordsToMatchData.length;
+
+  return (
+    <DndContext onDragEnd={handleDragEnd}>
+        <Typography variant="h4" gutterBottom style={{textAlign: 'center', margin: '20px'}}>
+            Match the Image to the Arabic Word 
+        </Typography>
+        <div style={{textAlign: 'center', marginBottom: '20px'}}>
+            <Grid container justifyContent="center" spacing={2} alignItems="center">
+                
+                {/* MIN LETTER DROPDOWN */}
+                <Grid item>
+                    <Typography component="span" variant="h6">Min Letter for Pool: </Typography>
+                </Grid>
+                <Grid item>
+                    <Select
+                        value={startLetter}
+                        onChange={handleStartLetterChange}
+                        style={{minWidth: 100, fontSize: '1.5rem'}}
+                    >
+                        {arabicWords.map((item) => (
+                            <MenuItem key={`min-${item.arabic}`} value={item.arabic}>
+                                <span className="arabic-font">{item.arabic}</span>
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </Grid>
+
+                {/* MAX LETTER DROPDOWN */}
+                <Grid item>
+                    <Typography component="span" variant="h6">Max Letter for Pool: </Typography>
+                </Grid>
+                <Grid item>
+                    <Select
+                        value={selectedLetter}
+                        onChange={handleMaxLetterChange}
+                        style={{minWidth: 100, fontSize: '1.5rem'}}
+                    >
+                        {arabicWords.map((item) => (
+                            <MenuItem key={`max-${item.arabic}`} value={item.arabic}>
+                                <span className="arabic-font">{item.arabic}</span>
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </Grid>
+            </Grid>
+            
+            <Typography variant="h6" style={{marginTop: '10px'}}>Score: {score} / {totalPossibleScore}</Typography>
+            {(isGameComplete || Object.values(droppableState).some(item => item !== null)) && (
+                <Button variant="contained" color="primary" onClick={restartGame} style={{marginTop: '10px'}}>
+                    Restart Exercise
+                </Button>
+            )}
+            {isGameComplete && (
+                <Typography variant="h5" style={{marginTop: '10px', color: score === totalPossibleScore ? 'green' : 'red'}}>
+                    {score === totalPossibleScore ? "Perfect Match! 🎉" : `Game Over! Your score is ${score}. Try Again!`}
+                </Typography>
+            )}
+        </div>
+        
+        {/* Responsive Grid Layout */}
+        <DndContext onDragEnd={handleDragEnd}>
+            <Grid container justifyContent="space-around" spacing={4}>
+                
+                {/* Draggable Images (Source) */}
+                <Grid item xs={12} md={5}>
+                    <Typography variant="h5" style={{textAlign: 'center'}}>Drag this picture</Typography>
+                    <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
+                        {wordsToMatchData.map((word) => (
+                            <WordImage 
+                                key={word.english}
+                                id={word.english} 
+                                imageFileName={word.image}
+                                isDropped={draggableState[word.english]}
+                            />
+                        ))}
+                    </div>
+                </Grid>
+
+                {/* Droppable Words (Target) - Rendered in random order */}
+                <Grid item xs={12} md={5}>
+                    <Typography variant="h5" style={{textAlign: 'center'}}>Arabic Words (Drop Here)</Typography>
+                    <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
+                        {wordsOrder.map((word) => (
+                            <WordTitle
+                                key={word.english}
+                                id={word.english} 
+                                word={word.arabic} // Pass the Arabic word for display
+                                droppedItem={droppableState[word.english]}
+                            />
+                        ))}
+                    </div>
+                </Grid>
+            </Grid>
+        </DndContext>
+    </DndContext>
+  );
 }
 
-export default withStyles(styles)(ExerciseOne);
+export default ExerciseOne;

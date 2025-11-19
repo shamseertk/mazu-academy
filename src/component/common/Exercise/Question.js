@@ -1,21 +1,14 @@
 import React from 'react';
-import { Grid, withStyles, Typography, } from '@material-ui/core';
-
-const styles = () => ({
-  questNumber: {
-    fontSize: '1.5em',
-    fontWeight: 'bold',
-  },
-});
+import { Grid, Typography } from '@mui/material';
 
 function Question (props){
-  const { classes, questionNumber, questionText, displayFinalContent } = props;
+  const { questionNumber, questionText, displayFinalContent } = props;
   return <React.Fragment>
     {!displayFinalContent 
       ? <Grid container>
         <Grid item>
           <Typography component="h3" style={{padding: '10px'}}>
-            <span className={classes.questNumber}>Question # {questionNumber}.</span>
+            <span className="questNumber">Question # {questionNumber}.</span>
             {questionText}
           </Typography>
         </Grid>
@@ -27,4 +20,4 @@ function Question (props){
   </React.Fragment>;
 }
 
-export default withStyles(styles)(Question);
+export default Question;

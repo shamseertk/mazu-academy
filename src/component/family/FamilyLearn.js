@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, TableHead, TableRow, TableBody, TableCell, TableContainer } from '@material-ui/core';
+import { Table, TableHead, TableRow, TableBody, TableCell, TableContainer } from '@mui/material';
 import { arabicRelations } from '../../utils/data/relationship';
 
 function FamilyLearn(props) {
