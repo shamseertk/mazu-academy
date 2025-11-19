@@ -1,8 +1,17 @@
 import React from 'react';
-import { Button, withStyles, Typography, Dialog,
-  DialogTitle, DialogContent, DialogActions, DialogContentText, Select,
-  MenuItem } from '@material-ui/core';
-import { EmojiEmotions, MoodBad } from '@material-ui/icons';
+import {
+  Button,
+  Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  DialogContentText,
+  Select,
+  MenuItem,
+} from '@mui/material';
+
+import { EmojiEmotions, MoodBad } from '@mui/icons-material';
 import _ from 'lodash';
 import TopPanel from '../common/Exercise/TopPanel';
 import Question from '../common/Exercise/Question';
@@ -10,7 +19,7 @@ import AnswerOptions from '../common/Exercise/AnswerOptions';
 import { arabicWords, allWords } from '../../utils/words';
 import { QUESTION_TYPES, generateRandomNumber, pickRandomFromArray, generateQuestionOptions } from '../../utils/utils';
 
-const styles = () => ({
+const styles = {
   label: {
     fontSize: '3em',
   },
@@ -49,8 +58,7 @@ const styles = () => ({
   resultHighlight: {
     fontSize: '2em',
     color: 'blue'
-  }
-});
+  }};
 
 class ExerciseTwo extends React.Component{
   constructor(props) {
@@ -177,7 +185,7 @@ class ExerciseTwo extends React.Component{
   render() {
     const { openResultAlert, questionNumber, displayFinalResult, maxQuestions, selectedLetter, questionWord,
       right, wrong, answerOptions, result, questionText, optionLabel, optionValue, answer } = this.state;
-    const { classes } = this.props;
+    
     return <React.Fragment>
       <div className="instruction"> Choose the right answer from the options.</div>
       <TopPanel
@@ -205,7 +213,7 @@ class ExerciseTwo extends React.Component{
         options={answerOptions}
         optionLabel={optionLabel}
         optionValue={optionValue}
-        classes={{label: optionLabel === 'arabic' ? classes.label : null}}
+        classes={{label: optionLabel === 'arabic' ? styles.label : null}}
         handleAnswerOptionClick={this.handleAnswerOptionClick}
         />
       <Dialog
@@ -226,10 +234,10 @@ class ExerciseTwo extends React.Component{
                 </Typography>}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description" className={classes.result}>
-            The correct answer is <span className={classes.resultHighlight}> {_.get(questionWord, [optionLabel])}
+          <DialogContentText id="alert-dialog-description" className="result">
+            The correct answer is <span className="resultHighlight"> {_.get(questionWord, [optionLabel])}
             </span><br />
-            You have selected <span className={classes.resultHighlight}> {answer} </span>
+            You have selected <span className="resultHighlight"> {answer} </span>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -244,4 +252,4 @@ class ExerciseTwo extends React.Component{
   }
 }
 
-export default withStyles(styles)(ExerciseTwo);
+export default ExerciseTwo;

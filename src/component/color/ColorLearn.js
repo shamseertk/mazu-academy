@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, TableHead, TableRow, TableBody, TableCell, TableContainer } from '@material-ui/core';
+import { Table, TableHead, TableRow, TableBody, TableCell, TableContainer } from '@mui/material';
 import { arabicColors } from '../../utils/colors';
 
 function NumberLearn(props) {

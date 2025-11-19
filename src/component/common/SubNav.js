@@ -1,61 +1,50 @@
 import React from 'react';
-import { withStyles, Hidden } from '@material-ui/core';
-import { withRouter, Link } from 'react-router-dom';
+
+import {  Link, useLocation } from 'react-router-dom';
 import _ from 'lodash';
 import { menus } from '../../utils/menus';
 import PageTitle from './PageTitle';
+import { Box } from '@mui/material';
 
-const styles = () => ({
-  pageTitle: {
-    fontSize: '20px',
-    padding: '10px 0px 10px 25px',
-    backgroundColor: '#00d0ff',
-    display: 'flex'
-  },
-  subMenuButton: {
-    backgroundColor: '#5f9ea0',
-    textDecoration: 'none',
-    padding: '6px',
-    borderRadius: 5,
-    fontSize: '20px',
-    color: 'white',
-    fontFamily: 'cursive',
-    marginLeft: '5px',
-    whiteSpace:'nowrap',
-    '&:hover': {
-      backgroundColor: '#0b9862',
-    }
-  },
-});
+function SubNavWrapper(props) {
+  const location = useLocation();
+  return <SubNav location={location} {...props} />
+}
 
 class SubNav extends React.Component {
   constructor(props) {
     super(props);
-    const firstPartMenu = _.get(props.match.path.split('/'), ['1'], '');
+    const firstPartMenu = _.get(props.location.pathname.split('/'), ['1'], '');
     const menuSelected = menus.filter(menu => menu.link.includes(firstPartMenu));
     this.state = {
       currentPage: _.get(menuSelected, ['0']),
     }
   }
   render() {
-    const { classes } = this.props;
     const { currentPage } = this.state;
-    return <div className={classes.pageTitle}>
-      <PageTitle pageTitle={this.props.pageTitle} />
-      <Hidden mdDown>
-        <Link
-          key={currentPage.link}
-          to={currentPage.link}
-          className={classes.subMenuButton}
-        >{currentPage.label} Home</Link>
-        {currentPage && _.get(currentPage, ['subMenus'], []).map(menu => _.get(menu, ['active'], true) && <Link
-          key={menu.link}
-          to={menu.link}
-          className={classes.subMenuButton}
-        >{menu.label}</Link>)}
-      </Hidden>
-    </div>
+    return (
+      <div className="pageTitleWrapper">
+        <PageTitle pageTitle={this.props.pageTitle} />
+        <Box sx={{
+          display: {
+            xs: 'none',
+            lg: 'block'
+          }
+        }}>
+          <Link
+            key={currentPage.link}
+            to={currentPage.link}
+            className="subMenuButton"
+          >{currentPage.label} Home</Link>
+          {currentPage && _.get(currentPage, ['subMenus'], []).map(menu => _.get(menu, ['active'], true) && <Link
+            key={menu.link}
+            to={menu.link}
+            className="subMenuButton"
+          >{menu.label}</Link>)}
+        </Box>
+      </div>
+    );
   }
 }
 
-export default withRouter(withStyles(styles)(SubNav));
+export default SubNavWrapper;

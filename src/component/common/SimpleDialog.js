@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog, DialogTitle, DialogActions, DialogContent, Button } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogActions, DialogContent, Button } from '@mui/material';
 
 class SimpleDialog extends React.Component {
   render() {

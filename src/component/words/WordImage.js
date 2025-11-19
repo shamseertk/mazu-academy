@@ -1,32 +1,36 @@
-import React from 'react';
-import { DragSource } from 'react-dnd';
+import { useDraggable } from '@dnd-kit/core';
+import { Paper } from '@mui/material';
 
+// Custom Draggable component to render the image
+function WordImage({ id, imageFileName, isDropped }) {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
+  const style = transform ? { 
+    transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+    cursor: 'grabbing',
+  } : {
+    cursor: 'grab',
+  };
 
-class WordImage extends React.Component {
-  render() {
-    const { word, isDragging, connectDragSource } = this.props;
-    const draggingStyle = isDragging ? {opacity: 0.2, maxWidth: '80px'} : {opacity: 1, maxWidth: '150px'};
-    
-    if (isDragging || !word.image) return null;
-    return connectDragSource(<div style={{ minHeght: '100px', minWidth: '150px',
-      margin: '5px 15px 20px 5px', padding: '3px', textAlign: 'center'}}>
-      <img style={{cursor: 'move', ...draggingStyle}} src={require(`../../images/words/${word.image}`)} alt={word.arabic} />
-    </div>);
-  }
+  const isHidden = isDropped ? { visibility: 'hidden', pointerEvents: 'none' } : {};
+
+  return (
+    <Paper 
+        elevation={3}
+        ref={setNodeRef} 
+        // Apply responsive class and default styles
+        className="dnd-image-container" 
+        style={{...style, ...isHidden, margin: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center'}} 
+        {...listeners} 
+        {...attributes}
+    >
+        <img 
+            // CORRECTED PATH
+            src={require(`../../images/words/${imageFileName}`)} 
+            alt={id} 
+            style={{ maxWidth: '100%', maxHeight: '100%' }}
+        />
+    </Paper>
+  );
 }
 
-export default DragSource(props => 
-  props.word.english,
-  {
-    beginDrag(props) {
-      return {
-        word: props.word,
-        index: props.index
-      }
-    }
-  },
-  (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging(),
-  }),
-)(WordImage);
+export default WordImage;

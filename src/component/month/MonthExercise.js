@@ -1,26 +1,11 @@
 import React from 'react';
-import { withStyles, Button, } from '@material-ui/core';
+import { Button } from '@mui/material';
+
 import _ from 'lodash'
 import { generateRandomNumber, MONTH_QSTN_TYPES } from '../../utils/utils';
 import DragDrop from '../common/DragDrop/DragDrop';
-import { NavigateNext } from '@material-ui/icons';
+import { NavigateNext } from '@mui/icons-material';
 import { arabicMonths } from '../../utils/months';
-
-const styles = () => ({
-  buttonWrapper: {
-    padding: '5px',
-  },
-  letterTitle: {
-    fontSize: '4em',
-    padding: '20px',
-    color: 'blue',
-    textDecoration: 'none dotted #fff',
-    textAlign: 'center',
-    border: '1px solid #453bca',
-    margin: '10px',
-    borderRadius: '40px'
-  }
-});
 
 class MonthExercise extends React.Component {
   constructor(props) {
@@ -146,4 +131,4 @@ class MonthExercise extends React.Component {
   }
 }
 
-export default withStyles(styles)(MonthExercise);
+export default MonthExercise;

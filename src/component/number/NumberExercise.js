@@ -1,26 +1,11 @@
 import React from 'react';
-import { withStyles, Button } from '@material-ui/core';
+import { Button } from '@mui/material';
+
 import { arabicNumbers, convertNumberToAR } from '../../utils/numbers';
 import _ from 'lodash'
 import { generateRandomNumber, NUMBER_QSTN_TYPES } from '../../utils/utils';
 import DragDrop from '../common/DragDrop/DragDrop';
-import { NavigateNext } from '@material-ui/icons';
-
-const styles = () => ({
-  buttonWrapper: {
-    padding: '5px',
-  },
-  letterTitle: {
-    fontSize: '4em',
-    padding: '20px',
-    color: 'blue',
-    textDecoration: 'none dotted #fff',
-    textAlign: 'center',
-    border: '1px solid #453bca',
-    margin: '10px',
-    borderRadius: '40px'
-  }
-});
+import { NavigateNext } from '@mui/icons-material';
 
 class NumberExercise extends React.Component {
   constructor(props) {
@@ -103,16 +88,34 @@ class NumberExercise extends React.Component {
       ...resetValues,
     });
   }
+  // FIX: Implement logic to handle item swapping and returning displaced item to source
   handleDrop = (objDropped, objElem) => {
     const { targetData, sourceData } = this.state;
+    let displacedItem = null; // Variable to hold the item being kicked out of the target slot
+
+    // 1. Update targetData (newTW) and capture the displaced item (if any)
     const newTW = targetData.map(dt => {
-      return dt.itemId === _.get(objDropped, ['targetSrc', 'itemId'])
-        ? {...dt, copied: objElem.objSource}
-        : dt;
+      if (dt.itemId === _.get(objDropped, ['targetSrc', 'itemId'])) {
+        // This is the target slot
+        displacedItem = dt.copied; // Capture the item currently in the slot
+        return {...dt, copied: objElem.objSource}; // Place the new item
       }
-    );
-    
-    const newSW = sourceData.map(dt => dt.itemId !== objElem.objSource.itemId ? dt : {...dt, label: null});
+      return dt;
+    });
+
+    // 2. Update sourceData (newSW) for both the dropped and the displaced item
+    const newSW = sourceData.map(sw => {
+      // Hide the newly dropped item from the source by setting its label to null
+      if (sw.itemId === objElem.objSource.itemId) {
+        return {...sw, label: null};
+      }
+      // If an item was displaced, return its original label to the source list to make it draggable again
+      if (displacedItem && sw.itemId === displacedItem.itemId) {
+        return {...sw, label: displacedItem.label}; 
+      }
+      return sw;
+    });
+
     this.setState({
       targetData: newTW,
       sourceData: newSW,
@@ -140,4 +143,4 @@ class NumberExercise extends React.Component {
   }
 }
 
-export default withStyles(styles)(NumberExercise);
+export default NumberExercise;

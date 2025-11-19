@@ -1,13 +1,6 @@
 import React from 'react';
-import { Card, CardMedia, CardActionArea, makeStyles } from '@material-ui/core';
-import { PlayArrowRounded } from '@material-ui/icons';
-
-const styles = makeStyles({
-  root: {
-    maxWidth: '100px',
-    marginBottom: '8px',
-  }
-});
+import { Card, CardMedia, CardActionArea } from '@mui/material';
+import { PlayArrowRounded } from '@mui/icons-material';
 
 function playTheLetter(audiofile){
   const audio = new Audio(require(`../audio/${audiofile}.m4a`));
@@ -16,8 +9,10 @@ function playTheLetter(audiofile){
 
 function AlphabetTile(props){
   const img = require(`../images/alphabets/${props.letter.image}`);
-  const classes = styles();
-  return <Card className={classes.root}>
+  return <Card sx={{
+    maxWidth: '100px',
+    marginBottom: '8px',
+  }}>
     <CardMedia
       component="img"
       src={img} />

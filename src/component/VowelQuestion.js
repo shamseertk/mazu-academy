@@ -1,50 +1,23 @@
 import React from 'react';
 import { alphabets, learnedAlphabets } from '../utils/alphabets';
-import { Grid, Button, withStyles, Typography, FormControlLabel, Radio, Dialog, DialogTitle,RadioGroup, DialogContent, DialogActions, DialogContentText, Slider, Avatar } from '@material-ui/core';
-import { PlayCircleFilled, Replay, NavigateNext, Forward, EmojiEmotions, MoodBad } from '@material-ui/icons';
-import _ from 'lodash';
+import {
+  Grid,
+  Button,
+  Typography,
+  FormControlLabel,
+  Radio,
+  Dialog,
+  DialogTitle,
+  RadioGroup,
+  DialogContent,
+  DialogActions,
+  DialogContentText,
+  Slider,
+  Avatar,
+} from '@mui/material';
 
-const styles = () => ({
-  buttonStyle: {
-    margin: '4px 0px 0px 4px',
-  },
-  restartButton: {
-    backgroundColor: 'blue'
-  },
-  label: {
-    fontSize: '3em',
-  },
-  nextButton: {
-    backgroundColor: 'green',
-    color: 'white',
-    '&:hover': {
-      backgroundColor: '#9acd32',
-      color: 'blue',
-    }
-  },
-  questNumber: {
-    fontSize: '1.5em',
-    fontWeight: 'bold',
-  },
-  sliderValueLabel: {
-    color: 'green',
-  },
-  rail: {
-    backgroundColor: 'red',
-    height: '15px',
-  },
-  track: {
-    backgroundColor: 'green',
-    height: '15px',
-  },
-  result: {
-    fontSize: '1.5em'
-  },
-  resultHighlight: {
-    fontSize: '2em',
-    color: 'blue'
-  }
-});
+import { PlayCircleFilled, Replay, NavigateNext, Forward, EmojiEmotions, MoodBad } from '@mui/icons-material';
+import _ from 'lodash';
 
 class VowelQuestion extends React.Component{
   constructor(props) {
@@ -180,94 +153,94 @@ class VowelQuestion extends React.Component{
   render() {
     const { openResultAlert, questionNumber, displaFinalResult, 
       right, wrong, options, result } = this.state;
-
-    const { classes } = this.props;
     
-    return <React.Fragment>
-      <div className="instruction">Click on button <Button className={classes.buttonStyle}
-                variant="contained" color="primary"
-                startIcon={<PlayCircleFilled />}
-                >Play</Button>, listen what is the letter and then choose the right answer from the options.
-                Total 112 questions and it will show final percentage once you attend all 112 questions.</div>
-      <Grid container justify="center" style={{border: '1px solid #224422', padding: '5px'}}>
-        <Grid item>
-          <Button className={`${classes.buttonStyle} ${classes.restartButton}`}
-            variant="contained" color="primary" onClick={this.restart}
-            startIcon={<Replay />}
-            >Restart</Button>
-        </Grid>
-        <Grid item style={{ paddingLeft: '10px' }}>
-          <Slider
-            max={28 * 4}
-            disabled
-            valueLabelDisplay="on"
-            value={right}
-            classes={{valueLabel: classes.sliderValueLabel, rail: classes.rail, track: classes.track}}
-            />
-          <Typography component="h3" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-             You have <Avatar style={{margin: '0px 5px', backgroundColor: 'green'}}>{right}</Avatar> right answers and 
-             <Avatar style={{margin: '0px 5px', backgroundColor: 'red'}}>{wrong}</Avatar> wrong answers.</Typography>
-        </Grid>
-      </Grid>
-      {!displaFinalResult 
-        ? <Grid container>
-          <Grid item>
-            <Typography component="h3" style={{padding: '10px'}}><span className={classes.questNumber}>Question # {questionNumber}.</span>
-            Play this first <Button className={classes.buttonStyle}
-                  variant="contained" color="primary" onClick={this.playSound}
+    return (
+      <React.Fragment>
+        <div className="instruction">Click on button <Button className="buttonStyle"
+                  variant="contained" color="primary"
                   startIcon={<PlayCircleFilled />}
-                  >Play</Button> and then choose right answer.</Typography>
-            <RadioGroup row style={{ justifyContent: 'space-between', padding: '10px' }}>
-              {options && options.map(opt => <FormControlLabel
-                key={opt}
-                onChange={this.handleAnswerOptionClick}
-                classes={{ label: classes.label }}
-                control={<Radio />}
-                value={opt}
-                label={opt} />)}
-            </RadioGroup>
-            <div style={{textAlign: 'right'}}>
-              <Button
-                className={classes.nextButton}
-                startIcon={<NavigateNext />}
-                endIcon={<Forward />}
-                onClick={this.validateAnswer}
-                >Next</Button> </div>
+                  >Play</Button>, listen what is the letter and then choose the right answer from the options.
+                  Total 112 questions and it will show final percentage once you attend all 112 questions.</div>
+        <Grid container justifyContent="center" style={{border: '1px solid #224422', padding: '5px'}}>
+          <Grid item>
+            <Button className="buttonStyle restartButton"
+              variant="contained" color="primary" onClick={this.restart}
+              startIcon={<Replay />}
+              >Restart</Button>
+          </Grid>
+          <Grid item style={{ paddingLeft: '10px' }}>
+            <Slider
+              max={28 * 4}
+              disabled
+              valueLabelDisplay="on"
+              value={right}
+              classes={{valueLabel: 'sliderValueLabel', rail: 'rail', track: 'track'}}
+              />
+            <Typography component="h3" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+               You have <Avatar style={{margin: '0px 5px', backgroundColor: 'green'}}>{right}</Avatar> right answers and 
+               <Avatar style={{margin: '0px 5px', backgroundColor: 'red'}}>{wrong}</Avatar> wrong answers.</Typography>
           </Grid>
         </Grid>
-        : <Typography component="div"
-            style={{textAlign: 'center', color: 'blue', backgroundColor: 'orange', padding: '20px', fontSize: '2em'}}>
-              Your percentage is {(right * 100/(28*4)).toFixed(2)} %</Typography>  }
-      <Dialog
-        open={openResultAlert}
-        onClose={this.handleCloseAlert}
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description"
-        >
-        <DialogTitle id="alert-dialog-title">
-          {_.get(result, ['status']) === 'right' 
-            ? <React.Fragment><Typography component="div"
-                style={{backgroundColor: 'green', textAlign: 'center', color: 'white', fontSize: '1.5em'}}>Correct<EmojiEmotions /></Typography>
-              </React.Fragment>
-            : <Typography component="div"
-                style={{backgroundColor: 'red', textAlign: 'center', color: 'white', fontSize: '1.5em'}}>Wrong<MoodBad /></Typography>}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description" className={classes.result}>
-            The correct answer is <span className={classes.resultHighlight}> {_.get(result, ['rightAnswer'])} </span><br />
-            You have selected <span className={classes.resultHighlight}> {_.get(result, ['answer'])} </span>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            color="primary"
-            variant="contained"
-            onClick={this.handleCloseAlert}
-            >Close</Button>
-        </DialogActions>
-      </Dialog>
-    </React.Fragment>;
+        {!displaFinalResult 
+          ? <Grid container>
+            <Grid item>
+              <Typography component="h3" style={{padding: '10px'}}><span className="questNumber">Question # {questionNumber}.</span>
+              Play this first <Button className="buttonStyle"
+                    variant="contained" color="primary" onClick={this.playSound}
+                    startIcon={<PlayCircleFilled />}
+                    >Play</Button> and then choose right answer.</Typography>
+              <RadioGroup row style={{ justifyContent: 'space-between', padding: '10px' }}>
+                {options && options.map(opt => <FormControlLabel
+                  key={opt}
+                  onChange={this.handleAnswerOptionClick}
+                  classes={{ label: 'label' }}
+                  control={<Radio />}
+                  value={opt}
+                  label={opt} />)}
+              </RadioGroup>
+              <div style={{textAlign: 'right'}}>
+                <Button
+                  className="nextButton"
+                  startIcon={<NavigateNext />}
+                  endIcon={<Forward />}
+                  onClick={this.validateAnswer}
+                  >Next</Button> </div>
+            </Grid>
+          </Grid>
+          : <Typography component="div"
+              style={{textAlign: 'center', color: 'blue', backgroundColor: 'orange', padding: '20px', fontSize: '2em'}}>
+                Your percentage is {(right * 100/(28*4)).toFixed(2)} %</Typography>  }
+        <Dialog
+          open={openResultAlert}
+          onClose={this.handleCloseAlert}
+          aria-labelledby="alert-dialog-slide-title"
+          aria-describedby="alert-dialog-slide-description"
+          >
+          <DialogTitle id="alert-dialog-title">
+            {_.get(result, ['status']) === 'right' 
+              ? <React.Fragment><Typography component="div"
+                  style={{backgroundColor: 'green', textAlign: 'center', color: 'white', fontSize: '1.5em'}}>Correct<EmojiEmotions /></Typography>
+                </React.Fragment>
+              : <Typography component="div"
+                  style={{backgroundColor: 'red', textAlign: 'center', color: 'white', fontSize: '1.5em'}}>Wrong<MoodBad /></Typography>}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description" className="result">
+              The correct answer is <span className="resultHighlight"> {_.get(result, ['rightAnswer'])} </span><br />
+              You have selected <span className="resultHighlight"> {_.get(result, ['answer'])} </span>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={this.handleCloseAlert}
+              >Close</Button>
+          </DialogActions>
+        </Dialog>
+      </React.Fragment>
+    );
   }
 }
 
-export default withStyles(styles)(VowelQuestion);
+export default VowelQuestion;

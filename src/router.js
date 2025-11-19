@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Game from './container/Game';
 import Fun from './container/Fun';
 import Letters from './container/Letters';
@@ -17,22 +17,22 @@ import Months from './container/level2/Months';
 import Family from './container/level2/Family';
 
 export default function Router() {
-  return <Switch>
-    <Route exact path="/"><Home /></Route>
-    <Route exact path="/level1"><Letters /></Route>
-    <Route path="/level1/vowels"><Vowels /></Route>
-    <Route path="/level1/games"><Game /> </Route>
-    <Route path="/level1/vowel-practice"><VowelPractice /> </Route>
-    <Route path="/level1/fun"><Fun /> </Route>
-    <Route path="/level1/test"><Test /></Route>
-    <Route path="/level1/writing"><Writing /></Route>
-    <Route path="/level1/writing-practice"><WritingPractice /></Route>
-    <Route exact path="/level2"><Words /></Route>
-    <Route path="/level2/more-words"><MoreWords /></Route>
-    <Route path="/level2/numbers"><Numbers /></Route>
-    <Route path="/level2/months"><Months /></Route>
-    <Route path="/level2/colors"><Colors /></Route>
-    <Route path="/level2/family"><Family /></Route>
-    <Route path="*"><Letters /></Route>
-  </Switch>
+  return <Routes>
+    <Route exact path="/" element={<Home />} />
+    <Route exact path="/level1" element={<Letters />} />
+    <Route path="/level1/vowels" element={<Vowels />} />
+    <Route path="/level1/games" element={<Game />} />
+    <Route path="/level1/vowel-practice" element={<VowelPractice />} />
+    <Route path="/level1/fun" element={<Fun />} />
+    <Route path="/level1/test" element={<Test />} />
+    <Route path="/level1/writing" element={<Writing />} />
+    <Route path="/level1/writing-practice" element={<WritingPractice />} />
+    <Route exact path="/level2" element={<Words />} />
+    <Route path="/level2/more-words" element={<MoreWords />} />
+    <Route path="/level2/numbers" element={<Numbers />} />
+    <Route path="/level2/months" element={<Months />} />
+    <Route path="/level2/colors" element={<Colors />} />
+    <Route path="/level2/family" element={<Family />} />
+    <Route path="*" element={<Letters />} />
+  </Routes>
 }

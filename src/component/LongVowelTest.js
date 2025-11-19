@@ -1,25 +1,9 @@
 import React from 'react';
 import { alphabets } from '../utils/alphabets';
-import { Grid, Button, withStyles, Typography } from '@material-ui/core';
-import { Replay, NavigateNext, Forward } from '@material-ui/icons';
-import { isCharTashkeel } from '../utils/utils';
+import { Grid, Button, Typography } from '@mui/material';
 
-const styles = () => ({
-  buttonStyle: {
-    margin: '4px 0px 0px 4px',
-  },
-  restartButton: {
-    backgroundColor: 'blue'
-  },
-  nextButton: {
-    backgroundColor: 'green',
-    color: 'white',
-    '&:hover': {
-      backgroundColor: '#9acd32',
-      color: 'blue',
-    }
-  },
-});
+import { Replay, NavigateNext, Forward } from '@mui/icons-material';
+import { isCharTashkeel } from '../utils/utils';
 
 const longVowelChars = ['ا', 'ي', 'و'];
 
@@ -102,28 +86,29 @@ class LongVowelTest extends React.Component{
   }
   render() {
     const { learnedLocalAlphabets, displayCurrent, displayVowel } = this.state;
-    const { classes } = this.props;
     
-    return <React.Fragment>
-      <Grid container justify="center" style={{border: '1px solid #224422', padding: '5px'}}>
-        <Grid item>
-          <Button className={`${classes.buttonStyle} ${classes.restartButton}`}
-            variant="contained" color="primary" onClick={this.restart}
-            startIcon={<Replay />}
-            >Restart</Button>
-          <Button
-            className={`${classes.buttonStyle} ${classes.nextButton}`}
-            startIcon={<NavigateNext />}
-            endIcon={<Forward />}
-            onClick={this.validateAnswer}
-            >Next</Button>
+    return (
+      <React.Fragment>
+        <Grid container justifyContent="center" style={{border: '1px solid #224422', padding: '5px'}}>
+          <Grid item>
+            <Button className="buttonStyle restartButton"
+              variant="contained" color="primary" onClick={this.restart}
+              startIcon={<Replay />}
+              >Restart</Button>
+            <Button
+              className="buttonStyle nextButton"
+              startIcon={<NavigateNext />}
+              endIcon={<Forward />}
+              onClick={this.validateAnswer}
+              >Next</Button>
+          </Grid>
         </Grid>
-      </Grid>
-        <Typography component="div"
-            style={{textAlign: 'center', color: 'blue', padding: '10px', fontSize: '6em'}}>
-              {this.makeLongVowel(learnedLocalAlphabets[displayCurrent].harakat.letters.split(' ')[displayVowel])}</Typography>
-    </React.Fragment>;
+          <Typography component="div"
+              style={{textAlign: 'center', color: 'blue', padding: '10px', fontSize: '6em'}}>
+                {this.makeLongVowel(learnedLocalAlphabets[displayCurrent].harakat.letters.split(' ')[displayVowel])}</Typography>
+      </React.Fragment>
+    );
   }
 }
 
-export default withStyles(styles)(LongVowelTest);
+export default LongVowelTest;

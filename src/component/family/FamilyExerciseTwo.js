@@ -1,55 +1,21 @@
 import React from 'react';
-import { Button, withStyles, Typography, Dialog,
-  DialogTitle, DialogContent, DialogActions, DialogContentText, } from '@material-ui/core';
-import { EmojiEmotions, MoodBad } from '@material-ui/icons';
+import {
+  Button,
+  Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  DialogContentText,
+} from '@mui/material';
+
+import { EmojiEmotions, MoodBad } from '@mui/icons-material';
 import _ from 'lodash';
 import TopPanel from '../common/Exercise/TopPanel';
 import Question from '../common/Exercise/Question';
 import AnswerOptions from '../common/Exercise/AnswerOptions';
 import { QUESTION_TYPES, generateRandomNumber, pickRandomFromArray, generateQuestionOptions } from '../../utils/utils';
 import { arabicRelations } from '../../utils/data/relationship';
-
-const styles = () => ({
-  label: {
-    fontSize: '3em',
-  },
-  buttonStyle: {
-    margin: '4px 0px 0px 4px',
-  },
-  restartButton: {
-    backgroundColor: 'blue'
-  },
-  nextButton: {
-    backgroundColor: 'green',
-    color: 'white',
-    '&:hover': {
-      backgroundColor: '#9acd32',
-      color: 'blue',
-    }
-  },
-  questNumber: {
-    fontSize: '1.5em',
-    fontWeight: 'bold',
-  },
-  sliderValueLabel: {
-    color: 'green',
-  },
-  rail: {
-    backgroundColor: 'red',
-    height: '15px',
-  },
-  track: {
-    backgroundColor: 'green',
-    height: '15px',
-  },
-  result: {
-    fontSize: '1.5em'
-  },
-  resultHighlight: {
-    fontSize: '2em',
-    color: 'blue'
-  }
-});
 
 class FamilyExerciseTwo extends React.Component{
   constructor(props) {
@@ -153,7 +119,6 @@ class FamilyExerciseTwo extends React.Component{
   render() {
     const { openResultAlert, questionNumber, displayFinalResult, maxQuestions, questionWord,
       right, wrong, answerOptions, result, questionText, optionLabel, optionValue, answer } = this.state;
-    const { classes } = this.props;
     return <React.Fragment>
       <div className="instruction"> Choose the right answer from the options.</div>
       <TopPanel
@@ -172,7 +137,7 @@ class FamilyExerciseTwo extends React.Component{
         options={answerOptions}
         optionLabel={optionLabel}
         optionValue={optionValue}
-        classes={{label: optionLabel === 'arabic' ? classes.label : null}}
+        classes={{label: optionLabel === 'arabic' ? "label" : null}}
         handleAnswerOptionClick={this.handleAnswerOptionClick}
         />
       <Dialog
@@ -193,10 +158,10 @@ class FamilyExerciseTwo extends React.Component{
                 </Typography>}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description" className={classes.result}>
-            The correct answer is <span className={classes.resultHighlight}> {_.get(questionWord, [optionLabel])}
+          <DialogContentText id="alert-dialog-description" className="result">
+            The correct answer is <span className="resultHighlight"> {_.get(questionWord, [optionLabel])}
             </span><br />
-            You have selected <span className={classes.resultHighlight}> {answer} </span>
+            You have selected <span className="resultHighlight"> {answer} </span>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -211,4 +176,4 @@ class FamilyExerciseTwo extends React.Component{
   }
 }
 
-export default withStyles(styles)(FamilyExerciseTwo);
+export default FamilyExerciseTwo;

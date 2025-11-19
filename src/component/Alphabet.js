@@ -1,34 +1,17 @@
 import React from 'react';
 import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
-import { Grid, Button, withStyles, Typography, List, ListItem, ListItemIcon, ListItemText, Paper } from '@material-ui/core';
-import { Done, Close, Mood, SentimentVeryDissatisfied, PlayCircleFilled, Replay, TrendingFlat, Score, HelpOutline } from '@material-ui/icons';
+import {
+  Grid,
+  Button,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Paper,
+} from '@mui/material';
+import { Done, Close, Mood, SentimentVeryDissatisfied, PlayCircleFilled, Replay, TrendingFlat, Score, HelpOutline } from '@mui/icons-material';
 import _ from 'lodash';
-
-const styles = () => ({
-  buttonStyle: {
-    margin: '4px 0px 0px 4px',
-  },
-  buttonCorrect: {
-    backgroundColor: 'green',
-  },
-  buttonWrong: {
-    backgroundColor: 'red',
-  },
-  restartButton: {
-    backgroundColor: 'blue'
-  },
-  image: {
-    maxWidth: '100%;',
-    heigt: 'auto',
-  },
-  scoreCard: {
-    margin: '5px 0px 0px 5px',
-  },
-  scorecardTitle: {
-    textAlign: 'center',
-    fontSize: '18px',
-  }
-});
 
 class Alphabet extends React.Component{
   constructor(props) {
@@ -99,19 +82,17 @@ class Alphabet extends React.Component{
   render() {
     const { learnedAlphabets, displayCurrent, displayResultButton, displaFinalResult, questionNumber, score,
       right, wrong } = this.state;
-
-    const { classes } = this.props;
     
     return <React.Fragment>
-      <div>Read the letter, click on <Button className={classes.buttonStyle}
+      <div>Read the letter, click on <Button className="buttonStyle"
         variant="contained" color="primary"
         startIcon={<PlayCircleFilled />}
         >Verify It</Button> button to check whether you read it correct or not. If correct click on the 
-        <Button className={`${classes.buttonStyle} ${classes.buttonCorrect}`} variant="contained" color="primary"
+        <Button className="buttonStyle buttonCorrect" variant="contained" color="primary"
           startIcon={<Done />}
           endIcon={<Mood />}
           >Right</Button>
-        button otherwise on <Button className={`${classes.buttonStyle} ${classes.buttonWrong}`} variant="contained" color="secondary"
+        button otherwise on <Button className="buttonStyle buttonWrong" variant="contained" color="secondary"
             startIcon={<Close />}
             endIcon={<SentimentVeryDissatisfied />}
             >Wrong</Button> button. Then it will show next letter. Do the same until you get final score.
@@ -122,23 +103,23 @@ class Alphabet extends React.Component{
         </Grid>
         <Grid item>
           {!displaFinalResult
-            && <Button className={classes.buttonStyle}
+            && <Button className="buttonStyle"
                 variant="contained" color="primary" onClick={this.verifyIt}
                 startIcon={<PlayCircleFilled />}
                 >Verify It</Button>}
           {displaFinalResult
-            && <Button className={`${classes.buttonStyle} ${classes.restartButton}`}
+            && <Button className="buttonStyle restartButton"
                 variant="contained" color="primary" onClick={this.restart}
                 startIcon={<Replay />}
                 >Restart</Button>}
         </Grid>
         {displayResultButton && <Grid item>
-          <Button className={`${classes.buttonStyle} ${classes.buttonCorrect}`} variant="contained" color="primary"
+          <Button className="buttonStyle buttonCorrect" variant="contained" color="primary"
             onClick={() => this.logResult('right')}
             startIcon={<Done />}
             endIcon={<Mood />}
             >Right</Button>
-          <Button className={`${classes.buttonStyle} ${classes.buttonWrong}`} variant="contained" color="secondary"
+          <Button className="buttonStyle buttonWrong" variant="contained" color="secondary"
             onClick={() => this.logResult('wrong')}
             startIcon={<Close />}
             endIcon={<SentimentVeryDissatisfied />}
@@ -148,13 +129,13 @@ class Alphabet extends React.Component{
       <Grid container>
         <Grid item>
         {_.get(learnedAlphabets, [displayCurrent, 'image'])
-          && <img className={classes.image}
+          && <img className="image"
               src={require(`../images/alphabets/${_.get(learnedAlphabets, [displayCurrent, 'image'])}`)}
               style={{border: '1px solid #cb2312'}} alt="alphabet" />}
         </Grid>
         <Grid item>
-          <Paper elevation={4} className={classes.scoreCard}>
-            <div className={classes.scorecardTitle}>SCORE CARD</div>
+          <Paper elevation={4} className="scoreCard">
+            <div className="scorecardTitle">SCORE CARD</div>
             <List>
               <ListItem style={{ backgroundColor: 'gray', color: 'white'}}>
                 <ListItemIcon><HelpOutline style={{color: 'white'}} /></ListItemIcon>
@@ -188,4 +169,4 @@ class Alphabet extends React.Component{
   }
 }
 
-export default withStyles(styles)(Alphabet);
+export default Alphabet;

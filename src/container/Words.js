@@ -1,25 +1,10 @@
 import React from 'react';
 import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
-import { withStyles } from '@material-ui/core';
+
 import SubNav from '../component/common/SubNav';
 import SimpleTabs from '../component/common/SimpleTabs';
 import WordLevelOne from '../component/words/WordLevelOne';
 import WordOneTest from '../component/words/WordOneTest';
-
-const style = () => ({
-  bookWrapper: {
-    width: '900px',
-    selfAlign: 'center',
-    margin: 'auto',
-  },
-  '@media screen and (max-width: 900px)': {
-    bookWrapper: {
-      width: '100%',
-      selfAlign: 'center',
-      margin: 'auto',
-    },
-  }
-});
 
 class Words extends React.Component {
   constructor(props) {
@@ -91,4 +76,4 @@ class Words extends React.Component {
   }
 }
 
-export default withStyles(style)(Words);
+export default Words;

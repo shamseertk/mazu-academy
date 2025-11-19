@@ -1,16 +1,8 @@
 import React from 'react';
-import { withStyles, Dialog, DialogContent, DialogTitle } from '@material-ui/core';
+import { Dialog, DialogContent, DialogTitle } from '@mui/material';
+
 import { learnedAlphabets } from '../utils/alphabets';
 import SubNav from '../component/common/SubNav';
-
-const style = () => ({
-  highlighted: {
-    height: '70px',
-    width: '70px',
-    border: '1px solid #abc234',
-    cursor: 'pointer',
-  },
-});
 
 class Writing extends React.Component {
   constructor(props) {
@@ -32,7 +24,6 @@ class Writing extends React.Component {
     })
   }
   render() {
-    const { classes } = this.props;
     const { writingPopup, selectedIndex } = this.state;
     return <React.Fragment>
       <SubNav pageTitle="Level1 &#8608; Learn to Write" />
@@ -44,7 +35,7 @@ class Writing extends React.Component {
           (alphabet, index) => {
             return <img
               key={alphabet.letter}
-              className={classes.highlighted}
+              className="highlighted"
               src={require(`../images/alphabets/${alphabet.image}`)}
               alt="alphabet"
               onClick={() => this.openWriting(index)}
@@ -75,4 +66,4 @@ class Writing extends React.Component {
   }
 }
 
-export default withStyles(style)(Writing);
+export default Writing;

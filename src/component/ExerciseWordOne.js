@@ -1,29 +1,25 @@
-import React from 'react';
-import { Card, CardContent, withStyles, Button, Typography,
-} from '@material-ui/core';
+import { Info, SkipNext } from '@mui/icons-material';
+import { Button, Card, CardContent, Typography } from '@mui/material';
 import _ from 'lodash';
+import React from 'react';
 import { generateRandomNumber, isCharTashkeel } from '../utils/utils';
-import { SkipNext, Info } from '@material-ui/icons';
-import WritingArea from './common/WritingArea';
 import SimpleDialog from './common/SimpleDialog';
+import WritingArea from './common/WritingArea';
 
-const styles = () => ({
-  question: {
-    fontSize: '4em',
-  },
-  hideLetter: {
+ 
+  const hideLetter = {
     textDecoration: 'underline #f00',
     color: '#fff',
     '&::selection': {
       backgroundColor: '#fff',
     }
-  },
-  questionWrapper: {
+  };
+  const questionWrapper = {
     textAlign: 'center',
     width: '100%',
     alignContent: 'center',
-  },
-  nextButton: {
+  };
+  const nextButton = {
     backgroundColor: '#0b5a0b',
     margin: '0px 0px 0px 10px',
     color: '#fff',
@@ -32,18 +28,17 @@ const styles = () => ({
       backgroundColor: '#0d4f3b',
       color: '#fff',
     }
-  }
-});
+  };
 
 class ExerciseWordOne extends React.Component {
   constructor(props) {
     super(props);
     const { data } = props;
-    const justLetters = data[0].words[0].together.split('').filter(ltr => !isCharTashkeel(ltr));
+    const justLetters = data[0]?.words[0]?.together?.split('')?.filter(ltr => !isCharTashkeel(ltr));
     this.state = {
       data,
       indexLetter: 0,
-      indexMissingLetter: generateRandomNumber(justLetters.length - 1),
+      indexMissingLetter: justLetters ? generateRandomNumber(justLetters.length - 1) : 0,
       openDialog: false,
       clueImage: data[0].words[0].image,
       score: 0,
@@ -74,18 +69,20 @@ class ExerciseWordOne extends React.Component {
       newScore = score + pointVal;
       newWrong = right + 1;
     }
-
-    const indexLtr = indexLetter + 1;
-    const justLetters = data[indexLtr].words[0].together.split('').filter(ltr => !isCharTashkeel(ltr));
-    this.setState({
-      indexLetter: indexLtr,
-      indexMissingLetter: generateRandomNumber(justLetters.length - 1),
-      clueImage: data[indexLtr].words[0].image,
-      score: newScore,
-      right: newRight,
-      wrong: newWrong,
-      openDialog: false,
-    });
+    if (indexLetter < (data.length - 1)) {
+      const indexLtr = indexLetter + 1;
+      const justLetters = data[indexLtr]?.words[0]?.together?.split('')?.filter(ltr => !isCharTashkeel(ltr));
+      this.setState({
+        indexLetter: indexLtr,
+        indexMissingLetter: generateRandomNumber(justLetters.length - 1),
+        clueImage: data[indexLtr].words[0].image,
+        score: newScore,
+        right: newRight,
+        wrong: newWrong,
+        openDialog: false,
+      });
+    }
+    
   }
   displayClue = () => {
     const { clueImage } = this.state;
@@ -105,11 +102,11 @@ class ExerciseWordOne extends React.Component {
   render() {
     const { data, indexLetter, indexMissingLetter, dialogContent, openDialog, dialogTitle,
       dialogActions, right, wrong } = this.state;
-    const { classes } = this.props;
     let wordIndex = -1;
+    
     return <React.Fragment>
-      <Card className={classes.questionWrapper}>
-        <CardContent className={`${classes.question}  arabic-font`}>
+      <Card sx={questionWrapper}>
+        <CardContent className="question arabic-font">
           <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
           <Typography component="h1">
              Question {indexLetter + 1}. Identify the word, fill in the blank.&nbsp;&nbsp;&nbsp;</Typography>
@@ -119,18 +116,18 @@ class ExerciseWordOne extends React.Component {
                 wordIndex++;
               }
               return (wordIndex === indexMissingLetter) 
-                ? <span className={classes.hideLetter} key={word}>ب</span>
+                ? <span style={hideLetter} key={word}>ب</span>
                 : word
               }
             )}</div>
           <div style={{padding: '0px 0px 0px 25px'}}>
             <Button
-              className={classes.nextButton}
+              style={nextButton}
               onClick={this.displayClue}
               endIcon={<Info />}
               >Clue</Button>
             {indexLetter < (data.length - 1) && <Button
-              className={classes.nextButton}
+              style={nextButton}
               onClick={this.nextQuestion}
               endIcon={<SkipNext />}
               >Next Question</Button>}</div>
@@ -152,4 +149,4 @@ class ExerciseWordOne extends React.Component {
   }
 }
 
-export default withStyles(styles)(ExerciseWordOne);
+export default ExerciseWordOne;

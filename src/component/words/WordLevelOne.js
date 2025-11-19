@@ -1,22 +1,8 @@
 import React from 'react';
 import { alphabets, LEARNED_SO_FAR } from '../../utils/alphabets';
 import WordTile from '../WordTile';
-import { MobileStepper, Button, withStyles, Switch, FormControlLabel } from '@material-ui/core';
+import { MobileStepper, Button, Switch, FormControlLabel } from '@mui/material';
 
-const style = () => ({
-  bookWrapper: {
-    width: '900px',
-    selfAlign: 'center',
-    margin: 'auto',
-  },
-  '@media screen and (max-width: 900px)': {
-    bookWrapper: {
-      width: '100%',
-      selfAlign: 'center',
-      margin: 'auto',
-    },
-  }
-});
 
 class WordLevelOne extends React.Component {
   constructor(props) {
@@ -62,7 +48,6 @@ class WordLevelOne extends React.Component {
   
   render() {
     const { alphabetsUpdated, activeStep, enableJoinedWords } = this.state;
-    const { classes } = this.props;
     return <React.Fragment>
       <div>
         <FormControlLabel
@@ -74,7 +59,7 @@ class WordLevelOne extends React.Component {
           label="Joined Words"
           labelPlacement="start"
           />
-        <div className={classes.bookWrapper}>
+        <div className="bookWrapper">
           <MobileStepper
             steps={alphabetsUpdated.length}
             position="static"
@@ -101,4 +86,4 @@ class WordLevelOne extends React.Component {
   }
 }
 
-export default withStyles(style)(WordLevelOne);
+export default WordLevelOne;

@@ -1,0 +1,95 @@
+
+/* Menu */
+
+.menuButton {
+    background-color: darkcyan;
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 5;
+    font-size: 20px;
+    color: white;
+    font-family: cursive;
+    margin-left: 10px;
+  }
+
+
+.menuButton:hover {
+      background-color: #28c0c0;
+  }
+
+  .menuWrapper {
+    margin-left: 10px;
+    flex: 1;
+    justify-content: flex-start;
+    display: flex;
+  }
+
+  .menuButtonDrawer {
+    background-color: darkcyan;
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 5;
+    font-size: 20px;
+    color: white;
+    font-family: cursive;
+    margin-top: 10px;
+  }
+
+  .menuButtonDrawer:hover {
+      background-color: #28c0c0;
+  }
+
+  .subMenuButtonDrawer {
+    background-color: #5f9ea0;
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 5;
+    font-size: 20px;
+    color: white;
+    font-family: cursive;
+    margin-top: 1px;
+    padding-left: 5px;
+  }
+
+  .subMenuButtonDrawer:hover {
+      background-color: #0b9862;
+  }
+
+
+
+  /* 
+  Submenu
+  
+  */
+
+.pageTitleWrapper {
+  font-size: 20px;
+  padding: 10px 0px 10px 25px;
+  background-color: #00d0ff;
+  display: flex;
+}
+
+/* Styling for the subMenuButton */
+.subMenuButton {
+  background-color: #5f9ea0;
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 5px; /* Use 'px' or remove for pure number */
+  font-size: 20px;
+  color: white;
+  font-family: cursive;
+  margin-left: 5px;
+  white-space: nowrap; /* Converted from whiteSpace */
+}
+
+/* Hover state for subMenuButton */
+.subMenuButton:hover {
+  background-color: #0b9862;
+}
+
+.pageTitle {
+  padding: 8px;
+  background-color: #00d0ff;
+  font-family: sans-serif;
+  color: #083f92;
+}

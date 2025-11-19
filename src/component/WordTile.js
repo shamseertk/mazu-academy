@@ -1,58 +1,8 @@
 import React from 'react';
-import { Card, CardMedia, withStyles, CardContent, Paper } from '@material-ui/core';
+import { Card, CardMedia, CardContent, Paper } from '@mui/material';
+
 import _, { get } from 'lodash';
 import { alphabets } from '../utils/alphabets';
-
-const styles = () => ({
-  root: {
-    maxWidth: '100%',
-    marginBottom: '8px',
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  '@media screen and (min-width: 1250px)': {
-    root: {
-      maxWidth: '100%'
-    }
-  },
-  letterTitle: {
-    fontSize: '40px',
-    color: 'blue',
-    textAlign: 'center',
-    backgroundColor: '#faf0dd',
-    marginBottom: '10px',
-  },
-  gridBox: {
-    border: '1px solid #bca234',
-    padding: '10px 35px',
-    textAlign: 'center',
-    margin: '0px 10px 0px 10px',
-    fontSize: '2.5em',
-  },
-  boxContainer: {
-    width: '100%',
-    margin: 'auto',
-    display: 'flex',
-    justifyContent: 'space-around',
-  },
-  word: {
-    margin: '10px 0px 0px 0px',
-    fontSize: '3em',
-    textAlign: 'center',
-    backgroundColor: '#afd275',
-    padding: '10px',
-    '&:nth-child(even)': {
-      borderLeft: '1px solid #bca234',
-    }
-  },
-  wordWrapper: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    '& div': {
-      width: '50%',
-    }
-  }
-});
 
 class WordTile extends React.Component{
   constructor(props) {
@@ -91,30 +41,30 @@ class WordTile extends React.Component{
     return 'a';
   }
   render() {
-    const { letter, enableJoinedWords, classes } = this.props;
+    const { letter, enableJoinedWords } = this.props;
     const img = require(`../images/words/${letter.words[0].image}`);
     
-    return <Card className={classes.root}>
+    return <Card className="wordRoot">
       <CardContent style={{textAlign: 'right', width: '100%'}}>
-        <div className={`${classes.letterTitle} arabic-font`}>{letter.arabic}</div>
-        <div className={classes.boxContainer}>
-          <div className={classes.gridBox}>
+        <div className="letterTitle arabic-font">{letter.arabic}</div>
+        <div className="boxWordContainer">
+          <div className="gridBox">
             {_.get(_.get(letter, ['harakat', 'letters'], '').split(' '), ['2'], '')}
           </div>
-          <div className={classes.gridBox}>
+          <div className="gridBox">
           {_.get(_.get(letter, ['harakat', 'letters'], '').split(' '), ['1'], '')}
           </div>
-          <div className={classes.gridBox}>
+          <div className="gridBox">
           {_.get(_.get(letter, ['harakat', 'letters'], '').split(' '), ['0'], '')}
           </div>
         </div>
-        <Paper elevation={10} className={classes.word}>
+        <Paper elevation={10} className="word">
           {letter.words[0].separate.split('').map((lttr, index) =>
           (lttr === letter.arabic || get(letter, ['arabicAlternative'], '').split('').includes(lttr))
             ? <span key={index} style={{color: 'red'}}>{lttr}</span> 
             : lttr)} 
         </Paper>
-        {enableJoinedWords && <Paper elevation={10} className={classes.word}>
+        {enableJoinedWords && <Paper elevation={10} className="word">
             {letter.words[0].together.split('').map((lttr, index) =>
             (lttr === letter.arabic || get(letter, ['arabicAlternative'], '').split('').includes(lttr))
               ? <span key={index} style={{color: 'red'}}>{lttr}</span> 
@@ -129,4 +79,4 @@ class WordTile extends React.Component{
   }
 }
 
-export default withStyles(styles)(WordTile);
+export default WordTile;
