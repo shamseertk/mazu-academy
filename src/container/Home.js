@@ -1,9 +1,8 @@
 import React from 'react';
-import { Card, CardContent, Typography, Divider, List, ListItem, ListItemText, Box, Link } from '@mui/material';
+// Import Link from react-router-dom for proper navigation (crucial for HashRouter)
+import { Link } from 'react-router-dom'; 
+import { Card, CardContent, Typography, Divider, List, ListItem, ListItemText, Box, Link as MuiLink } from '@mui/material';
 import { School, Translate, Abc, Apps } from '@mui/icons-material';
-// NOTE: For a working React application, you must import Link from 'react-router-dom'
-// For this example, we assume Link is correctly imported and passed, or configured.
-// For example: import { Link } from 'react-router-dom';
 
 function Syllabus() {
   return (
@@ -23,7 +22,8 @@ function Syllabus() {
           <Divider />
 
           {/* Chapter 1: Letters and its practices - Level One with Link */}
-          <Link href="/level1" component="a" underline="hover" sx={{ textDecoration: 'none' }}>
+          {/* MuiLink renders as react-router-dom Link, using 'to' prop for routing */}
+          <MuiLink to="/level1" component={Link} underline="none" sx={{ textDecoration: 'none' }}>
             <Typography 
               variant="h5" 
               component="h2" 
@@ -34,14 +34,13 @@ function Syllabus() {
                 display: 'flex', 
                 alignItems: 'center',
                 fontWeight: 'bold',
-                // Style to ensure it looks like a clickable heading
                 '&:hover': { color: 'primary.main' }
               }}
             >
               <Abc sx={{ mr: 1 }} />
               Chapter 1: Letters and its practices - Level One
             </Typography>
-          </Link>
+          </MuiLink>
           
           <List dense>
             <ListItem>
@@ -70,7 +69,7 @@ function Syllabus() {
           <Divider sx={{ my: 2 }} />
 
           {/* Chapter 2: Words and Its Excercises in Chapter 2 with Link */}
-          <Link href="/level2" component="a" underline="hover" sx={{ textDecoration: 'none' }}>
+          <MuiLink to="/level2" component={Link} underline="none" sx={{ textDecoration: 'none' }}>
             <Typography 
               variant="h5" 
               component="h2" 
@@ -81,14 +80,13 @@ function Syllabus() {
                 display: 'flex', 
                 alignItems: 'center',
                 fontWeight: 'bold',
-                // Style to ensure it looks like a clickable heading
                 '&:hover': { color: 'primary.main' }
               }}
             >
               <Translate sx={{ mr: 1 }} />
               Chapter 2: Words and Its Excercises in Chapter 2 (Level Two)
             </Typography>
-          </Link>
+          </MuiLink>
 
           <List dense>
             <ListItem>

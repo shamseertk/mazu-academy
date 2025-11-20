@@ -22,6 +22,8 @@ class SubNav extends React.Component {
   }
   render() {
     const { currentPage } = this.state;
+    const currentPath = this.props.location.pathname; // Get current path
+
     return (
       <div className="pageTitleWrapper">
         <PageTitle pageTitle={this.props.pageTitle} />
@@ -31,16 +33,29 @@ class SubNav extends React.Component {
             lg: 'block'
           }
         }}>
+          {/* Main Level Link (e.g., /level1) - Highlight if the path is exactly the link */}
           <Link
             key={currentPage.link}
             to={currentPage.link}
-            className="subMenuButton"
+            className={`subMenuButton ${currentPath === currentPage.link ? 'subMenuButtonActive' : ''}`}
           >{currentPage.label} Home</Link>
-          {currentPage && _.get(currentPage, ['subMenus'], []).map(menu => _.get(menu, ['active'], true) && <Link
-            key={menu.link}
-            to={menu.link}
-            className="subMenuButton"
-          >{menu.label}</Link>)}
+
+          {/* Sub-Menu Links */}
+          {currentPage && _.get(currentPage, ['subMenus'], []).map(menu => {
+            // Determine if the sub-menu link is the currently active one
+            const isActive = currentPath === menu.link;
+
+            return _.get(menu, ['active'], true) && (
+              <Link
+                key={menu.link}
+                to={menu.link}
+                // Conditionally apply new active class
+                className={`subMenuButton ${isActive ? 'subMenuButtonActive' : ''}`}
+              >
+                {menu.label}
+              </Link>
+            )
+          })}
         </Box>
       </div>
     );
