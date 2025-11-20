@@ -2,7 +2,7 @@ export const menus =[{
   label: 'Home',
   link: '/',
 }, {
-  label: 'Level One',
+  label: 'Level One(Letters)',
   link: '/level1',
   subMenus: [{
     label: 'Practice Alphabets',
@@ -30,7 +30,7 @@ export const menus =[{
     link: '/level1/test'
   }]
 }, {
-  label: 'Level Two',
+  label: 'Level Two(Words)',
   link: '/level2',
   active: true,
   subMenus: [{
