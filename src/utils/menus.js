@@ -1,7 +1,4 @@
-export const menus =[{
-  label: 'Home',
-  link: '/',
-}, {
+export const menus = [{
   label: 'Level One(Letters)',
   link: '/level1',
   subMenus: [{

@@ -9,16 +9,22 @@ const Canvas = (props) => {
   const imageRef = React.useRef(null);
   const lastPos = React.useRef(null);
 
+  /* Existing useMemo block for canvas creation */
   const { canvas, context } = React.useMemo(() => {
     const canvas = document.createElement('canvas');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight - 25;
     const context = canvas.getContext('2d');
-    context.strokeStyle = 'black';
+    context.strokeStyle = 'black'; // Default, will be overridden by useEffect
     context.lineJoin = 'round';
     context.lineWidth = 5;
     return { canvas, context };
   }, []);
+
+  React.useEffect(() => {
+    const defaultColor = props.themeMode === 'dark' ? 'white' : 'black';
+    context.strokeStyle = defaultColor;
+  }, [props.themeMode, context]);
 
   const handleMouseDown = (e) => {
     isDrawing.current = true;
@@ -67,30 +73,34 @@ const Canvas = (props) => {
     context.reset();
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight - 25;
-    context.strokeStyle = 'black';
+    context.strokeStyle = props.themeMode === 'dark' ? 'white' : 'black';
     context.lineJoin = 'round';
     context.lineWidth = 5;
     if (imageRef.current) {
-      imageRef.current.getLayer().batchDraw(); 
+      imageRef.current.getLayer().batchDraw();
     }
   }
 
   return (
     <>
-    <Button className="buttonStyle eraseButton" variant="contained" color="primary"
-              onClick={eraseWindow}
-              startIcon={<Backspace />}
-              >Erase All</Button>
-      <IconButton onClick={() => changeColorTo('black')} size="large" >
-        <FiberManualRecord style={{backgroundColor: 'black'}} className={context.strokeStyle === '#000000' ? 'brush-color-icon-selected' : 'brush-color-icon'} /></IconButton>
+      <Button className="buttonStyle eraseButton" variant="contained" color="primary"
+        onClick={eraseWindow}
+        startIcon={<Backspace />}
+      >Erase All</Button>
+      <IconButton onClick={() => changeColorTo(props.themeMode === 'dark' ? 'white' : 'black')} size="large" >
+        <FiberManualRecord
+          style={{ backgroundColor: props.themeMode === 'dark' ? 'white' : 'black' }}
+          // Simple selection check, might need refinement if context.strokeStyle is converted to hex by browser
+          className={context.strokeStyle === (props.themeMode === 'dark' ? 'white' : 'black') || context.strokeStyle === (props.themeMode === 'dark' ? '#ffffff' : '#000000') ? 'brush-color-icon-selected' : 'brush-color-icon'}
+        /></IconButton>
       <IconButton onClick={() => changeColorTo('green')} size="large">
-        <FiberManualRecord  style={{backgroundColor: 'green'}} /></IconButton>
+        <FiberManualRecord style={{ backgroundColor: 'green' }} /></IconButton>
       <IconButton onClick={() => changeColorTo('red')} size="large">
-        <FiberManualRecord style={{backgroundColor: 'red'}} /></IconButton>
+        <FiberManualRecord style={{ backgroundColor: 'red' }} /></IconButton>
       <IconButton onClick={() => changeColorTo('blue')} size="large">
-        <FiberManualRecord style={{backgroundColor: 'blue'}} /></IconButton>
+        <FiberManualRecord style={{ backgroundColor: 'blue' }} /></IconButton>
       <IconButton onClick={() => changeColorTo('orange')} size="large">
-        <FiberManualRecord style={{backgroundColor: 'orange'}} /></IconButton>
+        <FiberManualRecord style={{ backgroundColor: 'orange' }} /></IconButton>
       <select
         value={tool}
         onChange={(e) => {

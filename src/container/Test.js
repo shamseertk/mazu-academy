@@ -5,7 +5,9 @@ import ShortVowelTest from '../component/ShortVowelTest';
 import LongVowelTest from '../component/LongVowelTest';
 import SimpleTabs from '../component/common/SimpleTabs';
 
-class TestContainer extends React.Component{
+import PageTitle from '../component/common/PageTitle';
+
+class TestContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,8 +22,9 @@ class TestContainer extends React.Component{
   render() {
     const { selectedTab } = this.state;
     return <React.Fragment>
-      <SubNav pageTitle="Level1 &#8608; Test" />
+      <SubNav />
       <div className="container">
+        <PageTitle pageTitle="Level1 &#8608; Test" />
         <div className="instruction">This is for Teacher or Parents, to examine the students/their kids.
           Page displays some random letters and see if they can answer it. </div>
         <SimpleTabs
@@ -40,7 +43,7 @@ class TestContainer extends React.Component{
             value: 'long',
             component: <LongVowelTest />
           }]}
-          />
+        />
       </div>
     </React.Fragment>
   }

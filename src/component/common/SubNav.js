@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {  Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import _ from 'lodash';
 import { menus } from '../../utils/menus';
-import PageTitle from './PageTitle';
+
 import { Box } from '@mui/material';
 
 function SubNavWrapper(props) {
@@ -26,7 +26,6 @@ class SubNav extends React.Component {
 
     return (
       <div className="pageTitleWrapper">
-        <PageTitle pageTitle={this.props.pageTitle} />
         <Box sx={{
           display: {
             xs: 'none',

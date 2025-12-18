@@ -5,6 +5,8 @@ import ColorLearn from '../../component/color/ColorLearn';
 import ColorExercise from '../../component/color/ColorExercise';
 import ColorExerciseTwo from '../../component/color/ColorExerciseTwo';
 
+import PageTitle from '../../component/common/PageTitle';
+
 class Colors extends React.Component {
   constructor(props) {
     super(props);
@@ -20,26 +22,27 @@ class Colors extends React.Component {
   render() {
     const { selectedTab } = this.state;
     return <React.Fragment>
-    <SubNav pageTitle="Level2 &#8608; Colors" />
-    <div className="container">
-      <SimpleTabs
-        selectedTab={selectedTab}
-        handleChangeTab={this.changeTab}
-        tabsInfo={[{
-          label: 'Colors',
-          value: 'color',
-          component: <ColorLearn />
-        }, {
-          label: 'Exercise',
-          value: 'exercise',
-          component: <ColorExercise />
-        }, {
-          label: 'Exercise Two',
-          value: 'exercise2',
-          component: <ColorExerciseTwo />
-        },]}
+      <SubNav />
+      <div className="container">
+        <PageTitle pageTitle="Level2 &#8608; Colors" />
+        <SimpleTabs
+          selectedTab={selectedTab}
+          handleChangeTab={this.changeTab}
+          tabsInfo={[{
+            label: 'Colors',
+            value: 'color',
+            component: <ColorLearn />
+          }, {
+            label: 'Exercise',
+            value: 'exercise',
+            component: <ColorExercise />
+          }, {
+            label: 'Exercise Two',
+            value: 'exercise2',
+            component: <ColorExerciseTwo />
+          },]}
         />
-    </div>
+      </div>
     </React.Fragment>
   }
 }

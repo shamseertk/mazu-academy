@@ -5,6 +5,8 @@ import NumberLearn from '../../component/number/NumberLearn';
 import NumberExercise from '../../component/number/NumberExercise';
 import NumberExerciseTwo from '../../component/number/NumberExerciseTwo';
 
+import PageTitle from '../../component/common/PageTitle';
+
 class Numbers extends React.Component {
   constructor(props) {
     super(props);
@@ -20,26 +22,27 @@ class Numbers extends React.Component {
   render() {
     const { selectedTab } = this.state;
     return <React.Fragment>
-    <SubNav pageTitle="Level2 &#8608; Numbers" />
-    <div className="container">
-      <SimpleTabs
-        selectedTab={selectedTab}
-        handleChangeTab={this.changeTab}
-        tabsInfo={[{
-          label: 'Numbers',
-          value: 'number',
-          component: <NumberLearn />
-        }, {
-          label: 'Exercise',
-          value: 'exercise',
-          component: <NumberExercise />
-        }, {
-          label: 'Exercise Two',
-          value: 'exercise2',
-          component: <NumberExerciseTwo />
-        },]}
+      <SubNav />
+      <div className="container">
+        <PageTitle pageTitle="Level2 &#8608; Numbers" />
+        <SimpleTabs
+          selectedTab={selectedTab}
+          handleChangeTab={this.changeTab}
+          tabsInfo={[{
+            label: 'Numbers',
+            value: 'number',
+            component: <NumberLearn />
+          }, {
+            label: 'Exercise',
+            value: 'exercise',
+            component: <NumberExercise />
+          }, {
+            label: 'Exercise Two',
+            value: 'exercise2',
+            component: <NumberExerciseTwo />
+          },]}
         />
-    </div>
+      </div>
     </React.Fragment>
   }
 }
