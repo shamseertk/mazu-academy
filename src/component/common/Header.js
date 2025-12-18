@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppBar, Typography, Toolbar, IconButton, Box, useTheme } from '@mui/material';
+import { AppBar, Typography, Toolbar, IconButton, Box } from '@mui/material';
 import AppNav from './AppNav';
 import { Menu, Brightness4, Brightness7 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
