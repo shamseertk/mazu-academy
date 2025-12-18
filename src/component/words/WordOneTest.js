@@ -14,7 +14,8 @@ class WordOneTest extends React.Component {
     return <React.Fragment>
       <ExerciseWordOne
         data={allAlphabets}
-        />
+        themeMode={this.props.themeMode}
+      />
     </React.Fragment>
   }
 }

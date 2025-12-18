@@ -7,7 +7,7 @@ class WritingArea extends React.Component {
     return (
       <div>
         <div>
-          <Canvas /></div>
+          <Canvas themeMode={this.props.themeMode} /></div>
       </div>
     );
   }

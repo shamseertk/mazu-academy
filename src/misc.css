@@ -5,17 +5,17 @@
 
 /* buttonCorrect */
 .buttonCorrect {
-  background-color: green;
+  background-color: var(--btn-correct-bg);
 }
 
 /* buttonWrong */
 .buttonWrong {
-  background-color: red;
+  background-color: var(--btn-wrong-bg);
 }
 
 /* restartButton */
 .restartButton {
-  background-color: blue;
+  background-color: var(--btn-restart-bg);
 }
 
 /* image */
@@ -38,31 +38,31 @@
 
 /* sliderValueLabel */
 .sliderValueLabel {
-  color: green;
+  color: var(--slider-label);
 }
 
 /* rail */
 .rail {
-  background-color: red;
+  background-color: var(--rail-bg);
   height: 15px;
 }
 
 /* track */
 .track {
-  background-color: green;
+  background-color: var(--track-bg);
   height: 15px;
 }
 
 /* nextButton */
 .nextButton {
-  background-color: green;
-  color: white;
+  background-color: var(--next-btn-bg);
+  color: var(--next-btn-text);
 }
 
 /* Hover state for nextButton */
 .nextButton:hover {
-  background-color: #9acd32;
-  color: blue;
+  background-color: var(--next-btn-hover);
+  color: var(--next-btn-hover-text);
 }
 
 
@@ -85,13 +85,13 @@
 /* resultHighlight */
 .resultHighlight {
   font-size: 2em;
-  color: blue;
+  color: var(--result-highlight);
 }
 
 .highlighted {
   height: 70px;
   width: 70px;
-  border: 1px solid #abc234;
+  border: 1px solid var(--highlighted-border);
   cursor: pointer;
 }
 
@@ -115,6 +115,7 @@
 
 /* Media Query for min-width: 1250px */
 @media screen and (min-width: 1250px) {
+
   /* Assuming 'root' corresponds to a top-level container class */
   .root {
     max-width: 100%;
@@ -139,12 +140,12 @@
 }
 
 
-  .menuClass {
-    font-size: '2em';
-  }
+.menuClass {
+  font-size: '2em';
+}
 
 
-  /* vowelRoot */
+/* vowelRoot */
 .vowelRoot {
   max-width: 100%;
   margin-bottom: 8px;
@@ -155,16 +156,16 @@
 /* letterTitle */
 .letterTitle {
   font-size: 30px;
-  color: blue;
+  color: var(--letter-title-color);
   text-align: center;
-  background-color: #faf0dd;
+  background-color: var(--letter-title-bg);
   margin-bottom: 10px;
   padding: 0px 0px 5px 0px;
 }
 
 /* gridBox */
 .gridBox {
-  border: 1px solid #bca234;
+  border: 1px solid var(--grid-box-border);
   padding: 10px 15px;
   text-align: center;
   margin: 0px 10px 0px 10px;
@@ -173,7 +174,7 @@
 
 /* Hover state for gridBox */
 .gridBox:hover {
-  background-color: #ffdab9;
+  background-color: var(--grid-box-hover-bg);
   cursor: pointer;
 }
 
@@ -199,7 +200,7 @@
   margin: 10px 0px 0px 0px;
   font-size: 3em;
   text-align: center;
-  background-color: #afd275;
+  background-color: var(--word-bg);
 }
 
 
@@ -231,13 +232,13 @@
   margin: 10px 0px 0px 0px;
   font-size: 3em;
   text-align: center;
-  background-color: #afd275;
+  background-color: var(--word-bg);
   padding: 10px;
 }
 
 /* Nested Selector: Apply border to every even-numbered child of the element with class 'word' */
 .word:nth-child(even) {
-  border-left: 1px solid #bca234;
+  border-left: 1px solid var(--word-border);
 }
 
 /* wordWrapper */
@@ -247,20 +248,20 @@
 }
 
 /* Nested Selector: Apply width style to all direct <div> children of the element with class 'wordWrapper' */
-.wordWrapper > div {
+.wordWrapper>div {
   width: 50%;
 }
 
 /* tabsRoot */
 .tabsRoot {
-  background-color: #fff;
-  color: white;
+  background-color: var(--tabs-root-bg);
+  color: var(--tabs-root-text);
 }
 
 /* tabLabelIcon */
 .tabLabelIcon {
   overflow: auto;
-  border-bottom: 20px solid #597d8c;
+  border-bottom: 20px solid var(--tab-label-icon-border);
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
 }
@@ -268,14 +269,14 @@
 /* tabRoot */
 .tabRoot {
   border-radius: 0px 20px 0px 0px;
-  background-color: #6e8194;
+  background-color: var(--tab-root-bg);
   border-right: 1px solid #fff;
   color: white;
 }
 
 /* tabSelected */
 .tabSelected {
-  background-color: #597d8c;
+  background-color: var(--tab-selected-bg);
 }
 
 /* wordRoot - Base Styles */
@@ -306,13 +307,13 @@
   margin: 10px 0px 0px 0px;
   font-size: 3em;
   text-align: center;
-  background-color: #afd275;
+  background-color: var(--word-bg);
   padding: 10px;
 }
 
 /* Nested Selector: Apply border to every even-numbered child of the element with class 'word' */
 .word:nth-child(even) {
-  border-left: 1px solid #bca234;
+  border-left: 1px solid var(--word-border);
 }
 
 /* wordWrapper */
@@ -322,23 +323,24 @@
 }
 
 /* Nested Selector: Apply width style to all direct <div> children of the element with class 'wordWrapper' */
-.wordWrapper > div {
+.wordWrapper>div {
   width: 50%;
 }
 
- .question {
-    font-size: 4em;
-  }
+.question {
+  font-size: 4em;
+}
 
 
-  /* ... existing styles ... */
+/* ... existing styles ... */
 
 /* dnd-image-container */
 .dnd-image-container {
   /* Set fixed size for all screens as requested */
   width: 100px !important;
   height: 100px !important;
-  min-height: 100px !important; /* Ensures droppable area maintains minimum height */
+  min-height: 100px !important;
+  /* Ensures droppable area maintains minimum height */
 }
 
 /* The previous media query is now removed as the size is fixed */
@@ -354,17 +356,19 @@
   width: 150px;
   height: 100px;
   min-height: 100px;
-  
+
   /* Bold and Rectangular Look */
   font-weight: bold;
-  font-size: 1.5em; /* Larger font */
-  border: 3px solid #234; /* Bold border */
-  
+  font-size: 1.5em;
+  /* Larger font */
+  border: 3px solid var(--dnd-source-border);
+  /* Bold border */
+
   /* Centering the text content */
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   /* Overriding previous non-dnd kit inline styles */
   padding-top: 0 !important;
   line-height: normal;
@@ -375,7 +379,8 @@
   /* Set fixed size for all screens as requested */
   width: 100px !important;
   height: 100px !important;
-  min-height: 100px !important; /* Ensures droppable area maintains minimum height */
+  min-height: 100px !important;
+  /* Ensures droppable area maintains minimum height */
 }
 
 /* The previous media query is now removed as the size is fixed */

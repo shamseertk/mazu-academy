@@ -15,7 +15,7 @@ class MoreWordsComponent extends React.Component {
 
   nextPage = () => {
     const { activeStep } = this.state;
-    if(arabicWords.length - 1 === activeStep) {
+    if (arabicWords.length - 1 === activeStep) {
       this.setState({
         activeStep: 0,
       });
@@ -28,7 +28,7 @@ class MoreWordsComponent extends React.Component {
 
   prevPage = () => {
     const { activeStep } = this.state;
-    if(activeStep === 0) {
+    if (activeStep === 0) {
       this.setState({
         activeStep: arabicWords.length - 1,
       })
@@ -50,7 +50,7 @@ class MoreWordsComponent extends React.Component {
   }
   render() {
     const { activeStep } = this.state;
-    
+
     return <React.Fragment>
       <div className="bookWrapper">
         <BookNavigation
@@ -60,19 +60,19 @@ class MoreWordsComponent extends React.Component {
           clickPrevButton={this.prevPage}
           selectDropDown={this.onSelectLetter}
           selectOptions={arabicWords}
-          selectLabelValue={{label: 'arabic', value: 'arabic'}}
+          selectLabelValue={{ label: 'arabic', value: 'arabic' }}
           selectedValue={arabicWords[activeStep].arabic}
-          />
+        />
       </div>
       <div style={{
         textAlign: 'center',
         fontSize: '2.5em',
         color: 'brown',
         backgroundColor: 'yellow'
-        }} className="arabic-font">{arabicWords[activeStep].arabic}</div>
+      }} className="arabic-font">{arabicWords[activeStep].arabic}</div>
       <WordPage
         letter={arabicWords[activeStep]}
-        />
+      />
     </React.Fragment>
   }
 }

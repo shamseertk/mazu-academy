@@ -1,60 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AppBar, Typography, Toolbar, IconButton, Box } from '@mui/material';
-
 import AppNav from './AppNav';
-import { Menu } from '@mui/icons-material';
+import { Menu, Brightness4, Brightness7 } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
+import { useThemeContext } from '../../contexts/ThemeContext';
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      drawerOpen: false,
-    }
-  }
-  openDrawer = () => {
-    this.setState({
-      drawerOpen: true,
-    })
-  }
-  closeDrawer = () => {
-    this.setState({
-      drawerOpen: false,
-    })
-  }
-  render () {
-    const { drawerOpen } = this.state;
-    return (
-      <React.Fragment><AppBar
+const Header = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const { toggleColorMode, mode } = useThemeContext();
+
+  const openDrawer = () => {
+    setDrawerOpen(true);
+  };
+
+  const closeDrawer = () => {
+    setDrawerOpen(false);
+  };
+
+  return (
+    <React.Fragment>
+      <AppBar
         position="sticky"
-        >
-          <Toolbar>
-            <Box
-              sx={{
-                display: {
-                  xs: 'block',
-                  lg: 'none'
-                }
-              }}
-              >
-              <IconButton onClick={this.openDrawer} size="large">
-                <Menu
-                  style={{color: '#fff'}}
-                  />
-              </IconButton>
-            </Box>
-            <Typography
-              component="h1"
-              style={{fontSize: '25px'}}
-              >Arabic Learning</Typography>
-            <AppNav
-              drawerOpen={drawerOpen}
-              closeDrawer={this.closeDrawer}
+        // Remove hardcoded background color to let MUI theme handle it, or use theme variables
+        sx={{ backgroundColor: 'var(--header-bg-color)', color: 'var(--header-text-color)' }}
+      >
+        <Toolbar>
+          <Box
+            sx={{
+              display: {
+                xs: 'block',
+                lg: 'none'
+              }
+            }}
+          >
+            <IconButton onClick={openDrawer} size="large">
+              <Menu
+                style={{ color: 'var(--menu-icon-color)' }}
               />
-          </Toolbar>
-        </AppBar>
-      </React.Fragment>
-    );
-  }
-}
+            </IconButton>
+          </Box>
+          <Typography
+            component="h1"
+            style={{ fontSize: '25px' }}
+          >
+            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>Arabic Learning</Link>
+          </Typography>
+          <AppNav
+            drawerOpen={drawerOpen}
+            closeDrawer={closeDrawer}
+          />
+          <Box sx={{ flexGrow: 1 }} />
+          <Typography variant="body1" component="div" sx={{ mr: 1, color: 'inherit' }}>
+            Theme
+          </Typography>
+          <IconButton sx={{ ml: 0 }} onClick={toggleColorMode} color="inherit">
+            {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+    </React.Fragment>
+  );
+};
 
 export default Header;

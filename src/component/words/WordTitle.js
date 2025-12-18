@@ -6,8 +6,8 @@ import { Paper, Typography } from '@mui/material';
 function WordTitle({ id, word, droppedItem }) {
   const { setNodeRef, isOver } = useDroppable({ id });
   const staticStyle = {
-    border: `3px dashed ${isOver ? 'blue' : '#ccc'}`,
-    backgroundColor: droppedItem ? '#d4edda' : '#f8f9fa',
+    border: `3px dashed ${isOver ? 'var(--drop-zone-border-active)' : 'var(--drop-zone-border)'}`,
+    backgroundColor: droppedItem ? 'var(--drop-zone-bg-active)' : 'var(--drop-zone-bg)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -20,21 +20,21 @@ function WordTitle({ id, word, droppedItem }) {
 
   return (
     <Paper
-        elevation={3} 
-        ref={setNodeRef} 
-        // Apply responsive class and merge styles
-        className="dnd-image-container"
-        style={staticStyle}
+      elevation={3}
+      ref={setNodeRef}
+      // Apply responsive class and merge styles
+      className="dnd-image-container"
+      style={staticStyle}
     >
       <Typography variant="h5" style={{ marginBottom: '10px' }}>{word}</Typography>
       {droppedItem && (
-          // Display the dropped image on successful match
-          <img 
-              // CORRECTED PATH
-              src={require(`../../images/words/${droppedItem.imageFileName}`)} 
-              alt={droppedItem.id} 
-              style={{ maxWidth: '100%', maxHeight: '100px' }}
-          />
+        // Display the dropped image on successful match
+        <img
+          // CORRECTED PATH
+          src={require(`../../images/words/${droppedItem.imageFileName}`)}
+          alt={droppedItem.id}
+          style={{ maxWidth: '100%', maxHeight: '100px' }}
+        />
       )}
     </Paper>
   );

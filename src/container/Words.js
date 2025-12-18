@@ -5,6 +5,14 @@ import SubNav from '../component/common/SubNav';
 import SimpleTabs from '../component/common/SimpleTabs';
 import WordLevelOne from '../component/words/WordLevelOne';
 import WordOneTest from '../component/words/WordOneTest';
+import { useThemeContext } from '../contexts/ThemeContext';
+import PageTitle from '../component/common/PageTitle';
+
+const WordsWrapper = (props) => {
+  const mode = useThemeContext();
+
+  return <Words {...props} themeMode={mode} />
+}
 
 class Words extends React.Component {
   constructor(props) {
@@ -20,7 +28,7 @@ class Words extends React.Component {
 
   nextPage = () => {
     const { activeStep, alphabetsUpdated } = this.state;
-    if(alphabetsUpdated.length - 1 === activeStep) {
+    if (alphabetsUpdated.length - 1 === activeStep) {
       this.setState({
         activeStep: 0,
       });
@@ -33,7 +41,7 @@ class Words extends React.Component {
 
   prevPage = () => {
     const { activeStep, alphabetsUpdated } = this.state;
-    if(activeStep === 0) {
+    if (activeStep === 0) {
       this.setState({
         activeStep: alphabetsUpdated.length - 1,
       })
@@ -56,8 +64,9 @@ class Words extends React.Component {
   render() {
     const { selectedTab, alphabetsUpdated } = this.state;
     return <React.Fragment>
-      <SubNav pageTitle="Level2 &#8608; Words-Beginners" />
+      <SubNav />
       <div className="container">
+        <PageTitle pageTitle="Level2 &#8608; Words-Beginners" />
         <SimpleTabs
           selectedTab={selectedTab}
           tabsInfo={[{
@@ -67,13 +76,13 @@ class Words extends React.Component {
           }, {
             label: 'Exercise',
             value: 'exercise',
-            component: <WordOneTest data={alphabetsUpdated} />
+            component: <WordOneTest data={alphabetsUpdated} themeMode={this.props.mode} />
           }]}
           handleChangeTab={this.changeTab}
-          />
+        />
       </div>
     </React.Fragment>
   }
 }
 
-export default Words;
+export default WordsWrapper;

@@ -6,29 +6,29 @@ import { generateRandomNumber, isCharTashkeel } from '../utils/utils';
 import SimpleDialog from './common/SimpleDialog';
 import WritingArea from './common/WritingArea';
 
- 
-  const hideLetter = {
-    textDecoration: 'underline #f00',
+
+const hideLetter = {
+  textDecoration: 'underline #f00',
+  color: 'var(--card-bg)',
+  '&::selection': {
+    backgroundColor: 'var(--card-bg)',
+  }
+};
+const questionWrapper = {
+  textAlign: 'center',
+  width: '100%',
+  alignContent: 'center',
+};
+const nextButton = {
+  backgroundColor: '#0b5a0b',
+  margin: '0px 0px 0px 10px',
+  color: '#fff',
+  whiteSpace: 'nowrap',
+  '&:hover': {
+    backgroundColor: '#0d4f3b',
     color: '#fff',
-    '&::selection': {
-      backgroundColor: '#fff',
-    }
-  };
-  const questionWrapper = {
-    textAlign: 'center',
-    width: '100%',
-    alignContent: 'center',
-  };
-  const nextButton = {
-    backgroundColor: '#0b5a0b',
-    margin: '0px 0px 0px 10px',
-    color: '#fff',
-    whiteSpace: 'nowrap',
-    '&:hover': {
-      backgroundColor: '#0d4f3b',
-      color: '#fff',
-    }
-  };
+  }
+};
 
 class ExerciseWordOne extends React.Component {
   constructor(props) {
@@ -82,7 +82,7 @@ class ExerciseWordOne extends React.Component {
         openDialog: false,
       });
     }
-    
+
   }
   displayClue = () => {
     const { clueImage } = this.state;
@@ -103,39 +103,39 @@ class ExerciseWordOne extends React.Component {
     const { data, indexLetter, indexMissingLetter, dialogContent, openDialog, dialogTitle,
       dialogActions, right, wrong } = this.state;
     let wordIndex = -1;
-    
+
     return <React.Fragment>
       <Card sx={questionWrapper}>
         <CardContent className="question arabic-font">
           <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
-          <Typography component="h1">
-             Question {indexLetter + 1}. Identify the word, fill in the blank.&nbsp;&nbsp;&nbsp;</Typography>
-          <div style={{border: '1px solid gray', padding: '5px 5px 0px 5px'}}>
-            {_.map(data[indexLetter].words[0].together, word => {
-              if (!isCharTashkeel(word)) {
-                wordIndex++;
+            <Typography component="h1">
+              Question {indexLetter + 1}. Identify the word, fill in the blank.&nbsp;&nbsp;&nbsp;</Typography>
+            <div style={{ border: '1px solid gray', padding: '5px 5px 0px 5px' }}>
+              {_.map(data[indexLetter].words[0].together, word => {
+                if (!isCharTashkeel(word)) {
+                  wordIndex++;
+                }
+                return (wordIndex === indexMissingLetter)
+                  ? <span style={hideLetter} key={word}>ب</span>
+                  : word
               }
-              return (wordIndex === indexMissingLetter) 
-                ? <span style={hideLetter} key={word}>ب</span>
-                : word
-              }
-            )}</div>
-          <div style={{padding: '0px 0px 0px 25px'}}>
-            <Button
-              style={nextButton}
-              onClick={this.displayClue}
-              endIcon={<Info />}
+              )}</div>
+            <div style={{ padding: '0px 0px 0px 25px' }}>
+              <Button
+                style={nextButton}
+                onClick={this.displayClue}
+                endIcon={<Info />}
               >Clue</Button>
-            {indexLetter < (data.length - 1) && <Button
-              style={nextButton}
-              onClick={this.nextQuestion}
-              endIcon={<SkipNext />}
+              {indexLetter < (data.length - 1) && <Button
+                style={nextButton}
+                onClick={this.nextQuestion}
+                endIcon={<SkipNext />}
               >Next Question</Button>}</div>
           </div>
           <div style={{ border: '1px solid #234', fontSize: '.5em' }}>
             Right: {right} Wrong: {wrong}
           </div>
-          <WritingArea />
+          <WritingArea themeMode={this.props.themeMode} />
         </CardContent>
       </Card>
       <SimpleDialog
@@ -144,7 +144,7 @@ class ExerciseWordOne extends React.Component {
         title={dialogTitle}
         dialogContent={dialogContent}
         dialogActions={dialogActions}
-        />
+      />
     </React.Fragment>
   }
 }
