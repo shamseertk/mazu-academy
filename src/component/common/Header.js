@@ -8,7 +8,6 @@ import { useThemeContext } from '../../contexts/ThemeContext';
 const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { toggleColorMode, mode } = useThemeContext();
-  const theme = useTheme();
 
   const openDrawer = () => {
     setDrawerOpen(true);
