@@ -1,0 +1,172 @@
+import React from 'react';
+import { alphabets, LEARNED_SO_FAR } from '../utils/alphabets';
+import {
+  Grid,
+  Button,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Paper,
+} from '@mui/material';
+import { Done, Close, Mood, SentimentVeryDissatisfied, PlayCircleFilled, Replay, TrendingFlat, Score, HelpOutline } from '@mui/icons-material';
+import _ from 'lodash';
+
+class Alphabet extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      learnedAlphabets: [],
+      displayCurrent: 0,
+      displayResultButton: false,
+      right: 0,
+      wrong: 0,
+      score: 0,
+      displaFinalResult: false,
+      questionNumber: 1,
+    };
+  }
+  componentDidMount() {
+    this.startAgain();
+  }
+  startAgain = () => {
+    const learnedAlphabets = alphabets.slice(0, LEARNED_SO_FAR);
+    const displayCurrent = Math.floor(Math.random() * Math.floor(learnedAlphabets.length));
+    this.setState({
+      learnedAlphabets,
+      displayCurrent,
+    });
+  }
+  restart = () => {
+    this.startAgain();
+    this.setState({
+      displayResultButton: false,
+      right: 0,
+      wrong: 0,
+      score: 0,
+      displaFinalResult: false,
+      questionNumber: 1,
+    });
+  }
+  verifyIt = () => {
+    const { learnedAlphabets, displayCurrent } = this.state;
+    const audio = new Audio(require(`../audio/${learnedAlphabets[displayCurrent].letter}.m4a`));
+    audio.play();
+    this.setState({
+      displayResultButton: true,
+    })
+  }
+  logResult = (res) => {
+    const { score, learnedAlphabets, displayCurrent, questionNumber, right, wrong} = this.state;
+    learnedAlphabets.splice(displayCurrent, 1);
+    this.setState({
+      score: res === 'right' ? score + 1 : score - 1,
+      right: res === 'right' ? right + 1 : right,
+      wrong: res === 'right' ? wrong : wrong + 1,
+      displayResultButton: false,
+      learnedAlphabets,
+    })
+    if (learnedAlphabets.length > 0) {
+      const displayCurrentNew = Math.floor(Math.random() * Math.floor(learnedAlphabets.length));
+      this.setState({
+        displayCurrent: displayCurrentNew,
+        questionNumber: questionNumber + 1,
+      });
+    } else {
+      this.setState({
+        displaFinalResult: true,
+      })
+    }
+  }
+  render() {
+    const { learnedAlphabets, displayCurrent, displayResultButton, displaFinalResult, questionNumber, score,
+      right, wrong } = this.state;
+    
+    return <React.Fragment>
+      <div>Read the letter, click on <Button className="buttonStyle"
+        variant="contained" color="primary"
+        startIcon={<PlayCircleFilled />}
+        >Verify It</Button> button to check whether you read it correct or not. If correct click on the 
+        <Button className="buttonStyle buttonCorrect" variant="contained" color="primary"
+          startIcon={<Done />}
+          endIcon={<Mood />}
+          >Right</Button>
+        button otherwise on <Button className="buttonStyle buttonWrong" variant="contained" color="secondary"
+            startIcon={<Close />}
+            endIcon={<SentimentVeryDissatisfied />}
+            >Wrong</Button> button. Then it will show next letter. Do the same until you get final score.
+      </div>
+      <Grid container style={{border: '1px solid #224422', padding: '5px'}}>
+        <Grid item>
+          <Typography component="h1">Question # {questionNumber}. </Typography>
+        </Grid>
+        <Grid item>
+          {!displaFinalResult
+            && <Button className="buttonStyle"
+                variant="contained" color="primary" onClick={this.verifyIt}
+                startIcon={<PlayCircleFilled />}
+                >Verify It</Button>}
+          {displaFinalResult
+            && <Button className="buttonStyle restartButton"
+                variant="contained" color="primary" onClick={this.restart}
+                startIcon={<Replay />}
+                >Restart</Button>}
+        </Grid>
+        {displayResultButton && <Grid item>
+          <Button className="buttonStyle buttonCorrect" variant="contained" color="primary"
+            onClick={() => this.logResult('right')}
+            startIcon={<Done />}
+            endIcon={<Mood />}
+            >Right</Button>
+          <Button className="buttonStyle buttonWrong" variant="contained" color="secondary"
+            onClick={() => this.logResult('wrong')}
+            startIcon={<Close />}
+            endIcon={<SentimentVeryDissatisfied />}
+            >Wrong</Button>
+        </Grid>}
+      </Grid>
+      <Grid container>
+        <Grid item>
+        {_.get(learnedAlphabets, [displayCurrent, 'image'])
+          && <img className="image"
+              src={require(`../images/alphabets/${_.get(learnedAlphabets, [displayCurrent, 'image'])}`)}
+              style={{border: '1px solid #cb2312'}} alt="alphabet" />}
+        </Grid>
+        <Grid item>
+          <Paper elevation={4} className="scoreCard">
+            <div className="scorecardTitle">SCORE CARD</div>
+            <List>
+              <ListItem style={{ backgroundColor: 'gray', color: 'white'}}>
+                <ListItemIcon><HelpOutline style={{color: 'white'}} /></ListItemIcon>
+                <ListItemText>Total alphabets(Questions) </ListItemText>
+                <ListItemIcon><TrendingFlat style={{color: 'white'}} /></ListItemIcon>
+                <ListItemText>{questionNumber}</ListItemText>
+              </ListItem>
+              <ListItem style={{ backgroundColor: 'green', color: 'white'}}>
+                <ListItemIcon><Done style={{color: 'white'}} /></ListItemIcon>
+                <ListItemText>Right Answers </ListItemText>
+                <ListItemIcon><TrendingFlat style={{color: 'white'}} /></ListItemIcon>
+                <ListItemText>{right}</ListItemText>
+              </ListItem>
+              <ListItem style={{ backgroundColor: 'red', color: 'white'}}>
+                <ListItemIcon><Close style={{color: 'white'}} /></ListItemIcon>
+                <ListItemText>Wrong Answers </ListItemText>
+                <ListItemIcon><TrendingFlat style={{color: 'white'}} /></ListItemIcon>
+                <ListItemText>{wrong}</ListItemText>
+              </ListItem>
+              <ListItem style={{ backgroundColor: 'blue', color: 'white'}}>
+                <ListItemIcon><Score style={{color: 'white'}} /></ListItemIcon>
+                <ListItemText>Total Score </ListItemText>
+                <ListItemIcon><TrendingFlat style={{color: 'white'}} /></ListItemIcon>
+                <ListItemText>{score}</ListItemText>
+              </ListItem>
+            </List>
+          </Paper>
+        </Grid>  
+      </Grid>
+    </React.Fragment>;
+  }
+}
+
+export default Alphabet;

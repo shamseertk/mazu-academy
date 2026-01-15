@@ -1,0 +1,386 @@
+/* buttonStyle */
+.buttonStyle {
+  margin: 4px 0px 0px 4px;
+}
+
+/* buttonCorrect */
+.buttonCorrect {
+  background-color: var(--btn-correct-bg);
+}
+
+/* buttonWrong */
+.buttonWrong {
+  background-color: var(--btn-wrong-bg);
+}
+
+/* restartButton */
+.restartButton {
+  background-color: var(--btn-restart-bg);
+}
+
+/* image */
+.image {
+  max-width: 100%;
+  /* Corrected property name from 'heigt' to 'height' */
+  height: auto;
+}
+
+/* scoreCard */
+.scoreCard {
+  margin: 5px 0px 0px 5px;
+}
+
+/* scorecardTitle */
+.scorecardTitle {
+  text-align: center;
+  font-size: 18px;
+}
+
+/* sliderValueLabel */
+.sliderValueLabel {
+  color: var(--slider-label);
+}
+
+/* rail */
+.rail {
+  background-color: var(--rail-bg);
+  height: 15px;
+}
+
+/* track */
+.track {
+  background-color: var(--track-bg);
+  height: 15px;
+}
+
+/* nextButton */
+.nextButton {
+  background-color: var(--next-btn-bg);
+  color: var(--next-btn-text);
+}
+
+/* Hover state for nextButton */
+.nextButton:hover {
+  background-color: var(--next-btn-hover);
+  color: var(--next-btn-hover-text);
+}
+
+
+/* label */
+.label {
+  font-size: 3em;
+}
+
+/* questNumber */
+.questNumber {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* result */
+.result {
+  font-size: 1.5em;
+}
+
+/* resultHighlight */
+.resultHighlight {
+  font-size: 2em;
+  color: var(--result-highlight);
+}
+
+.highlighted {
+  height: 70px;
+  width: 70px;
+  border: 1px solid var(--highlighted-border);
+  cursor: pointer;
+}
+
+
+/* wordPageWrapper */
+.wordPageWrapper {
+  max-width: 100%;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+  font-size: 3.5em;
+  flex-wrap: wrap;
+}
+
+/* wordContent */
+.wordContent {
+  padding: 15px;
+  margin-bottom: 8px;
+}
+
+/* Media Query for min-width: 1250px */
+@media screen and (min-width: 1250px) {
+
+  /* Assuming 'root' corresponds to a top-level container class */
+  .root {
+    max-width: 100%;
+  }
+}
+
+
+/* bookWrapper - Base styles (for screens wider than 900px) */
+.bookWrapper {
+  width: 900px;
+  /* 'selfAlign' is not a standard CSS property; it's likely intended 
+     to ensure horizontal centering, which 'margin: auto' handles. */
+  margin: auto;
+}
+
+/* Media Query for screens 900px and narrower */
+@media screen and (max-width: 900px) {
+  .bookWrapper {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+
+.menuClass {
+  font-size: '2em';
+}
+
+
+/* vowelRoot */
+.vowelRoot {
+  max-width: 100%;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* letterTitle */
+.letterTitle {
+  font-size: 30px;
+  color: var(--letter-title-color);
+  text-align: center;
+  background-color: var(--letter-title-bg);
+  margin-bottom: 10px;
+  padding: 0px 0px 5px 0px;
+}
+
+/* gridBox */
+.gridBox {
+  border: 1px solid var(--grid-box-border);
+  padding: 10px 15px;
+  text-align: center;
+  margin: 0px 10px 0px 10px;
+  font-size: 2em;
+}
+
+/* Hover state for gridBox */
+.gridBox:hover {
+  background-color: var(--grid-box-hover-bg);
+  cursor: pointer;
+}
+
+/* gridBoxButton */
+.gridBoxButton {
+  padding: 0px 15px;
+  text-align: center;
+  margin: 0px 10px 0px 10px;
+}
+
+/* boxContainer */
+.boxContainer {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+}
+
+/* word */
+.word {
+  margin: 10px 0px 0px 0px;
+  font-size: 3em;
+  text-align: center;
+  background-color: var(--word-bg);
+}
+
+
+/* wordRoot - Base Styles */
+.wordRoot {
+  max-width: 100%;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Media Query: Styles for screens 1250px and wider */
+@media screen and (min-width: 1250px) {
+  .wordRoot {
+    max-width: 100%;
+  }
+}
+
+/* boxWordContainer */
+.boxWordContainer {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* word */
+.word {
+  margin: 10px 0px 0px 0px;
+  font-size: 3em;
+  text-align: center;
+  background-color: var(--word-bg);
+  padding: 10px;
+}
+
+/* Nested Selector: Apply border to every even-numbered child of the element with class 'word' */
+.word:nth-child(even) {
+  border-left: 1px solid var(--word-border);
+}
+
+/* wordWrapper */
+.wordWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Nested Selector: Apply width style to all direct <div> children of the element with class 'wordWrapper' */
+.wordWrapper>div {
+  width: 50%;
+}
+
+/* tabsRoot */
+.tabsRoot {
+  background-color: var(--tabs-root-bg);
+  color: var(--tabs-root-text);
+}
+
+/* tabLabelIcon */
+.tabLabelIcon {
+  overflow: auto;
+  border-bottom: 20px solid var(--tab-label-icon-border);
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+}
+
+/* tabRoot */
+.tabRoot {
+  border-radius: 0px 20px 0px 0px;
+  background-color: var(--tab-root-bg);
+  border-right: 1px solid #fff;
+  color: white;
+}
+
+/* tabSelected */
+.tabSelected {
+  background-color: var(--tab-selected-bg);
+}
+
+/* wordRoot - Base Styles */
+.wordRoot {
+  max-width: 100%;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Media Query: Styles for screens 1250px and wider */
+@media screen and (min-width: 1250px) {
+  .wordRoot {
+    max-width: 100%;
+  }
+}
+
+/* boxWordContainer */
+.boxWordContainer {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* word */
+.word {
+  margin: 10px 0px 0px 0px;
+  font-size: 3em;
+  text-align: center;
+  background-color: var(--word-bg);
+  padding: 10px;
+}
+
+/* Nested Selector: Apply border to every even-numbered child of the element with class 'word' */
+.word:nth-child(even) {
+  border-left: 1px solid var(--word-border);
+}
+
+/* wordWrapper */
+.wordWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Nested Selector: Apply width style to all direct <div> children of the element with class 'wordWrapper' */
+.wordWrapper>div {
+  width: 50%;
+}
+
+.question {
+  font-size: 4em;
+}
+
+
+/* ... existing styles ... */
+
+/* dnd-image-container */
+.dnd-image-container {
+  /* Set fixed size for all screens as requested */
+  width: 100px !important;
+  height: 100px !important;
+  min-height: 100px !important;
+  /* Ensures droppable area maintains minimum height */
+}
+
+/* The previous media query is now removed as the size is fixed */
+
+
+/* src/misc.css */
+
+/* ... existing styles ... */
+
+/* New style for the generic drag-and-drop source box (text/number items) */
+.dnd-source-box {
+  /* Larger size */
+  width: 150px;
+  height: 100px;
+  min-height: 100px;
+
+  /* Bold and Rectangular Look */
+  font-weight: bold;
+  font-size: 1.5em;
+  /* Larger font */
+  border: 3px solid var(--dnd-source-border);
+  /* Bold border */
+
+  /* Centering the text content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Overriding previous non-dnd kit inline styles */
+  padding-top: 0 !important;
+  line-height: normal;
+}
+
+/* dnd-image-container */
+.dnd-image-container {
+  /* Set fixed size for all screens as requested */
+  width: 100px !important;
+  height: 100px !important;
+  min-height: 100px !important;
+  /* Ensures droppable area maintains minimum height */
+}
+
+/* The previous media query is now removed as the size is fixed */

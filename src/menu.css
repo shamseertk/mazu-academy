@@ -1,0 +1,147 @@
+/* Menu Variables will be defined in index.css */
+
+.menuButton {
+  background-color: transparent;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 16px;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin-left: 0;
+  transition: background-color 0.2s;
+}
+
+
+.menuContainer {
+  background-color: #3b5998; /* Example blue, adjust as needed or use rgba */
+  background: rgba(45, 66, 117, 0.7);
+  border-radius: 50px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  gap: 5px;
+}
+
+.menuButton:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.menuWrapper {
+  margin-left: 10px;
+  justify-content: flex-start;
+  display: flex;
+}
+
+.menuButtonDrawer {
+  background-color: var(--menu-btn-bg);
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 5px;
+  font-size: 20px;
+  color: var(--menu-btn-text);
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 10px;
+}
+
+.menuButtonDrawer:hover {
+  background-color: var(--menu-btn-hover);
+}
+
+.subMenuButtonDrawer {
+  background-color: var(--drawer-submenu-bg);
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 5px;
+  font-size: 20px;
+  color: var(--menu-btn-text);
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 1px;
+  padding-left: 5px;
+}
+
+.subMenuButtonDrawer:hover {
+  background-color: var(--drawer-submenu-hover);
+}
+
+
+
+/* 
+  Submenu
+  
+  */
+
+
+/* New styles for active drawer menu button */
+.menuButtonDrawerActive {
+  /* Darker, more prominent color to indicate active state */
+  background-color: var(--active-menu-bg) !important;
+  color: #fffff0 !important;
+}
+
+/* NEW: Styles for the actively selected sub-menu link */
+.subMenuButtonActive {
+  /* Use a contrasting color to highlight the active state */
+  background-color: var(--active-submenu-bg) !important;
+  /* Darker green */
+  color: #fffff0 !important;
+  /* White text */
+  font-weight: bold;
+  border: 1px solid #fffff0;
+}
+
+.pageTitleWrapper {
+  font-size: 20px;
+  padding: 10px 0px 10px 25px;
+  background-color: var(--page-title-bg);
+  display: flex;
+}
+
+/* Styling for the subMenuButton */
+.subMenuButton {
+  background-color: var(--drawer-submenu-bg);
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 5px;
+  /* Use 'px' or remove for pure number */
+  font-size: 20px;
+  color: var(--menu-btn-text);
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 5px;
+  white-space: nowrap;
+  /* Converted from whiteSpace */
+}
+
+/* New styles for active main navigation button */
+.menuButtonActive {
+  /* Darker, more prominent color to indicate active state */
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* NEW: Styles for the actively selected sub-menu link inside the Drawer */
+.subMenuButtonDrawerActive {
+  /* Use a contrasting color to highlight the active state */
+  background-color: var(--drawer-submenu-hover) !important;
+  /* Matching the subMenuButton hover color */
+  color: #fffff0 !important;
+  /* White text */
+  font-weight: bold;
+  border-left: 5px solid white;
+  /* Visual indicator */
+}
+
+/* Hover state for subMenuButton */
+.subMenuButton:hover {
+  background-color: var(--drawer-submenu-hover);
+}
+
+.pageTitle {
+  padding: 8px;
+  background-color: var(--page-title-bg-alt);
+  font-weight: bold;
+  font-family: sans-serif;
+  color: var(--page-title-text);
+}

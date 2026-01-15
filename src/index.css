@@ -1,0 +1,186 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --header-bg-color: #e7ecedff;
+  --header-text-color: #000000;
+  --menu-icon-color: #000066;
+  --footer-bg-color: darkolivegreen;
+  --footer-text-color: white;
+  --container-border-color: #e3eded;
+  --instruction-text-color: gray;
+  --instruction-decoration-color: #f0e0b3;
+  --instruction-highlight-bg: #00468c;
+  --instruction-highlight-text: #f0e0b3;
+  --arabic-bg: #f7f775;
+  --arabic-text: #5a0505;
+
+  /* Menu Variables */
+  --menu-btn-bg: darkcyan;
+  --menu-btn-hover: #28c0c0;
+  --menu-btn-text: white;
+  --drawer-submenu-bg: #5f9ea0;
+  --drawer-submenu-hover: #0b9862;
+  --active-menu-bg: #004d40;
+  --active-submenu-bg: #0b5a0b;
+  --page-title-bg: #00d0ff;
+  --page-title-text: #083f92;
+  --page-title-bg-alt: #e6c3d7;
+
+  /* Alphabet Tile Variables */
+  --tile-read-btn-bg: #9ee7e7;
+  --tile-read-btn-text: #000000;
+  --card-bg: #ffffff;
+  /* Drop Zone Variables */
+  --drop-zone-bg: #f8f9fa;
+  --drop-zone-bg-active: #d4edda;
+  --drop-zone-border: #ccc;
+  --drop-zone-border-active: blue;
+
+  /* Misc Variables */
+  --btn-correct-bg: green;
+  --btn-wrong-bg: red;
+  --btn-restart-bg: blue;
+  --slider-label: green;
+  --rail-bg: red;
+  --track-bg: green;
+  --next-btn-bg: green;
+  --next-btn-text: white;
+  --next-btn-hover: #9acd32;
+  --next-btn-hover-text: blue;
+  --result-highlight: blue;
+  --highlighted-border: #abc234;
+  --letter-title-color: blue;
+  --letter-title-bg: #faf0dd;
+  --grid-box-border: #bca234;
+  --grid-box-hover-bg: #ffdab9;
+  --word-bg: #afd275;
+  --word-border: #bca234;
+  --tabs-root-bg: #fff;
+  --tabs-root-text: white;
+  --tab-label-icon-border: #597d8c;
+  --tab-root-bg: #6e8194;
+  --tab-selected-bg: #597d8c;
+  --dnd-source-border: #234;
+}
+
+[data-theme='dark'] {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --header-bg-color: #333333;
+  --header-text-color: #ffffff;
+  --menu-icon-color: #ffffff;
+  --footer-bg-color: #1e1e1e;
+  --footer-text-color: #e0e0e0;
+  --container-border-color: #333333;
+  --instruction-text-color: #b0b0b0;
+  --instruction-decoration-color: #f0e0b3;
+  --instruction-highlight-bg: #5c6bc0;
+  --instruction-highlight-text: #ffffff;
+  --arabic-bg: #5a0505;
+  --arabic-text: #f7f775;
+
+  /* Menu Variables - Dark Mode */
+  --menu-btn-bg: #006064;
+  --menu-btn-hover: #00838f;
+  --menu-btn-text: #e0f7fa;
+  --drawer-submenu-bg: #455a64;
+  --drawer-submenu-hover: #607d8b;
+  --active-menu-bg: #004d40;
+  --active-submenu-bg: #1b5e20;
+  --page-title-bg: #01579b;
+  --page-title-text: #e1f5fe;
+  --page-title-bg-alt: #4a148c;
+
+  /* Alphabet Tile Variables - Dark Mode */
+  --tile-read-btn-bg: #006064;
+  --tile-read-btn-text: #ffffff;
+  --card-bg: #1e1e1e;
+  /* Drop Zone Variables - Dark Mode */
+  --drop-zone-bg: #424242;
+  --drop-zone-bg-active: #1b5e20;
+  --drop-zone-border: #757575;
+  --drop-zone-border-active: #90caf9;
+  --btn-correct-bg: #2e7d32;
+  --btn-wrong-bg: #c62828;
+  --btn-restart-bg: #1565c0;
+  --slider-label: #81c784;
+  --rail-bg: #d32f2f;
+  --track-bg: #4caf50;
+  --next-btn-bg: #2e7d32;
+  --next-btn-text: #e8f5e9;
+  --next-btn-hover: #66bb6a;
+  --next-btn-hover-text: #e3f2fd;
+  --result-highlight: #90caf9;
+  --highlighted-border: #d4e157;
+  --letter-title-color: #90caf9;
+  --letter-title-bg: #37474f;
+  --grid-box-border: #fdd835;
+  --grid-box-hover-bg: #455a64;
+  --word-bg: #33691e;
+  --word-border: #9e9d24;
+  --tabs-root-bg: #424242;
+  --tabs-root-text: #e0e0e0;
+  --tab-label-icon-border: #78909c;
+  --tab-root-bg: #546e7a;
+  --tab-selected-bg: #78909c;
+  --dnd-source-border: #90a4ae;
+}
+
+body {
+  margin: 0px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+  border: 1px solid var(--container-border-color);
+  padding: 0px 0px 10px 0px;
+  margin: 0px 10px 0px 10px;
+  min-height: 100%;
+}
+
+.container-full {
+  min-height: 500px;
+}
+
+.arabic-font {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.footer {
+  height: 30px;
+  background-color: var(--footer-bg-color);
+  color: var(--footer-text-color);
+  text-align: center;
+  padding-top: 15px;
+}
+
+.footer a {
+  color: var(--footer-text-color);
+}
+
+.instruction {
+  padding: 10px 0px 10px 10px;
+  color: var(--instruction-text-color);
+  text-decoration: underline dotted var(--instruction-decoration-color);
+  line-height: 1.5em;
+}
+
+.instruction .highlighter {
+  color: var(--instruction-highlight-text);
+  background-color: var(--instruction-highlight-bg);
+  padding: 2px;
+}
+
+.instruction .arabic {
+  background-color: var(--arabic-bg);
+  color: var(--arabic-text);
+  padding: 2px;
+  font-size: 1.5em;
+}
+
+@import "menu.css";
+@import "misc.css";
+@import "writing.css";
