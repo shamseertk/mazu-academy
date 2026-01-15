@@ -39,12 +39,16 @@ const Header = () => {
               />
             </IconButton>
           </Box>
-          <Typography
-            component="h1"
-            style={{ fontSize: '25px' }}
-          >
-            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>Arabic Learning</Link>
-          </Typography>
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <Typography component="h1" sx={{ fontSize: '25px', lineHeight: 1, fontWeight: 'bold' }}>
+                MAIL
+              </Typography>
+              <Typography variant="caption" sx={{ fontStyle: 'italic', lineHeight: 1 }}>
+                Mazu Academy of Islamic Learning
+              </Typography>
+            </Box>
+          </Link>
           <AppNav
             drawerOpen={drawerOpen}
             closeDrawer={closeDrawer}
