@@ -39,9 +39,27 @@ export const menus = [
     active: true,
     megaMenu: [
       {
-        heading: 'Basics',
+        heading: 'Fiqh',
         items: [
-          { label: 'Ablution(Wudu)', link: '/fiqh/ablution', active: true }
+          {
+            label: 'Ablution(Wudu)',
+            link: '/fiqh/ablution',
+            active: true,
+            subItems: [
+              { label: 'Wudu Du\'a', link: '/fiqh/ablution?section=dua', active: true },
+              { label: 'Wudu Sunnah', link: '/fiqh/ablution?section=sunnah', active: true }
+            ]
+          },
+          {
+            label: 'Salah(Prayer)',
+            link: '/fiqh/prayer',
+            active: true,
+            subItems: [
+              { label: 'Adaan & Iqamah', link: '/fiqh/prayer?section=adaan', active: true },
+              { label: 'Fard of Salah', link: '/fiqh/prayer?section=fard', active: true },
+              { label: 'Prayer Structure', link: '/fiqh/prayer?section=structure', active: true }
+            ]
+          }
         ]
       }
     ]
