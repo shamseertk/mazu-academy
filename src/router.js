@@ -16,6 +16,7 @@ import Colors from './container/level2/Colors';
 import Months from './container/level2/Months';
 import Family from './container/level2/Family';
 import Ablution from './container/fiqh/Ablution';
+import Prayer from './container/fiqh/Prayer';
 
 export default function Router() {
   return <Routes>
@@ -36,5 +37,6 @@ export default function Router() {
     <Route path="/level2/family" element={<Family />} />
     <Route path="*" element={<Letters />} />
     <Route path="fiqh/ablution" element={<Ablution />} />
+    <Route path="fiqh/prayer" element={<Prayer />} />
   </Routes>
 }

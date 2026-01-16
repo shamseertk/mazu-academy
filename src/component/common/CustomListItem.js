@@ -3,8 +3,8 @@ import { ListItem, ListItemIcon, Avatar, ListItemText, Typography } from '@mui/m
 
 const CustomListItem = ({ number, text }) => {
     return (
-        <ListItem>
-            <ListItemIcon>
+        <ListItem alignItems="flex-start">
+            <ListItemIcon sx={{ mt: 0.5 }}>
                 <Avatar sx={{ bgcolor: '#00838f', width: 32, height: 32, fontSize: '1rem' }}>
                     {number}
                 </Avatar>

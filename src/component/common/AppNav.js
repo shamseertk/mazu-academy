@@ -46,13 +46,24 @@ class AppNav extends React.Component {
                       <div key={idx} className="megaMenuSection">
                         <div className="megaMenuHeading">{section.heading}</div>
                         {section.items.map(item => (
-                          <Link
-                            key={item.link}
-                            to={item.link}
-                            className="megaMenuItem"
-                          >
-                            {item.label}
-                          </Link>
+                          <div key={item.link} style={{ display: 'flex', flexDirection: 'column' }}>
+                            <Link
+                              to={item.link}
+                              className="megaMenuItem"
+                            >
+                              {item.label}
+                            </Link>
+                            {/* Render Nested Items */}
+                            {item.subItems && item.subItems.map(subItem => (
+                              <Link
+                                key={subItem.link}
+                                to={subItem.link}
+                                className="megaMenuItemSub"
+                              >
+                                {subItem.label}
+                              </Link>
+                            ))}
+                          </div>
                         ))}
                       </div>
                     ))}
@@ -99,14 +110,26 @@ class AppNav extends React.Component {
               {/* Handle new Mega Menu structure in Drawer */}
               {menu.megaMenu && menu.megaMenu.map(section => (
                 section.items.map(item => (
-                  _.get(item, ['active'], true) && <Link
-                    key={item.link}
-                    to={item.link}
-                    className={`subMenuButtonDrawer ${currentPath === item.link ? 'subMenuButtonDrawerActive' : ''}`}
-                  >
-                    <SubdirectoryArrowRight />
-                    {item.label}
-                  </Link>
+                  <React.Fragment key={item.link}>
+                    {_.get(item, ['active'], true) && <Link
+                      to={item.link}
+                      className={`subMenuButtonDrawer ${currentPath === item.link ? 'subMenuButtonDrawerActive' : ''}`}
+                    >
+                      <SubdirectoryArrowRight />
+                      {item.label}
+                    </Link>}
+
+                    {item.subItems && item.subItems.map(subItem => (
+                      _.get(subItem, ['active'], true) && <Link
+                        key={subItem.link}
+                        to={subItem.link}
+                        className={`subMenuButtonDrawer ${currentPath === subItem.link ? 'subMenuButtonDrawerActive' : ''}`}
+                        style={{ paddingLeft: '35px', fontSize: '16px' }}
+                      >
+                        - {subItem.label}
+                      </Link>
+                    ))}
+                  </React.Fragment>
                 ))
               ))}
             </div>)

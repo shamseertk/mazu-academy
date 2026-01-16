@@ -5,7 +5,7 @@ import SectionTitle from '../common/SectionTitle';
 
 const AblutionRules = () => {
     return (
-        <>
+        <div id="fard">
             <Divider sx={{ my: 3, borderColor: '#b2ebf2' }} />
 
             <SectionTitle>Fard of Wudu (Mandatory steps of Ablution)</SectionTitle>
@@ -35,7 +35,7 @@ const AblutionRules = () => {
                     text="Thartheeb-Keep the order"
                 />
             </List>
-        </>
+        </div>
     );
 };
 
