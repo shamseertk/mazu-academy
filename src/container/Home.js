@@ -1,18 +1,38 @@
 import React from 'react';
 // Import Link from react-router-dom for proper navigation (crucial for HashRouter)
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import { Card, CardContent, Typography, Divider, List, ListItem, ListItemText, Box, Link as MuiLink } from '@mui/material';
 import { School, Translate, Abc, Apps } from '@mui/icons-material';
+import logo from '../images/mail-emblem.jpg';
 
 function Syllabus() {
   return (
-    <Box sx={{ maxWidth: 800, margin: '20px auto', padding: 2 }}>
+    <Box sx={{
+      maxWidth: 800,
+      margin: '20px auto',
+      padding: 2,
+      position: 'relative',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundImage: `url(${logo})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        backgroundSize: 'contain',
+        opacity: 0.15,
+        zIndex: -1
+      }
+    }}>
       <Card elevation={5}>
         <CardContent>
-          <Typography variant="h4" component="div" sx={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            mb: 2, 
+          <Typography variant="h4" component="div" sx={{
+            display: 'flex',
+            alignItems: 'center',
+            mb: 2,
             color: 'primary.main',
             fontWeight: 'bold'
           }}>
@@ -24,14 +44,14 @@ function Syllabus() {
           {/* Chapter 1: Letters and its practices - Level One with Link */}
           {/* MuiLink renders as react-router-dom Link, using 'to' prop for routing */}
           <MuiLink to="/level1" component={Link} underline="none" sx={{ textDecoration: 'none' }}>
-            <Typography 
-              variant="h5" 
-              component="h2" 
-              sx={{ 
-                mt: 3, 
-                mb: 1, 
-                color: 'secondary.dark', 
-                display: 'flex', 
+            <Typography
+              variant="h5"
+              component="h2"
+              sx={{
+                mt: 3,
+                mb: 1,
+                color: 'secondary.dark',
+                display: 'flex',
                 alignItems: 'center',
                 fontWeight: 'bold',
                 '&:hover': { color: 'primary.main' }
@@ -41,7 +61,7 @@ function Syllabus() {
               Chapter 1: Letters and its practices - Level One
             </Typography>
           </MuiLink>
-          
+
           <List dense>
             <ListItem>
               <ListItemText primary="Practice Alphabets: Interactive self-testing for letter recognition." />
@@ -70,14 +90,14 @@ function Syllabus() {
 
           {/* Chapter 2: Words and Its Excercises in Chapter 2 with Link */}
           <MuiLink to="/level2" component={Link} underline="none" sx={{ textDecoration: 'none' }}>
-            <Typography 
-              variant="h5" 
-              component="h2" 
-              sx={{ 
-                mt: 3, 
-                mb: 1, 
-                color: 'secondary.dark', 
-                display: 'flex', 
+            <Typography
+              variant="h5"
+              component="h2"
+              sx={{
+                mt: 3,
+                mb: 1,
+                color: 'secondary.dark',
+                display: 'flex',
                 alignItems: 'center',
                 fontWeight: 'bold',
                 '&:hover': { color: 'primary.main' }
@@ -102,11 +122,11 @@ function Syllabus() {
               <ListItemText primary="Exercise 2: Multiple choice quizzes for word recall." />
             </ListItem>
             <ListItem sx={{ mt: 1 }}>
-              <ListItemText 
+              <ListItemText
                 primary={<Typography variant="subtitle1" sx={{ fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
-                    <Apps sx={{ mr: 0.5, fontSize: 'medium' }} />
-                    Additional Level 2 Topics:
-                </Typography>} 
+                  <Apps sx={{ mr: 0.5, fontSize: 'medium' }} />
+                  Additional Level 2 Topics:
+                </Typography>}
                 secondary="Numbers, Months, Colors, and Family relations."
               />
             </ListItem>
