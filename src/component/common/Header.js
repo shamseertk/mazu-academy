@@ -4,6 +4,7 @@ import AppNav from './AppNav';
 import { Menu, Brightness4, Brightness7 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useThemeContext } from '../../contexts/ThemeContext';
+import logo from '../../images/mail-emblem.jpg';
 
 const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -39,7 +40,18 @@ const Header = () => {
               />
             </IconButton>
           </Box>
-          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center' }}>
+            <img
+              src={logo}
+              alt="MAIL Logo"
+              style={{
+                height: '50px',
+                width: 'auto',
+                marginRight: '15px',
+                borderRadius: '50%',
+                border: '2px solid white'
+              }}
+            />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography component="h1" sx={{ fontSize: '25px', lineHeight: 1, fontWeight: 'bold' }}>
                 MAIL

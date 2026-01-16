@@ -14,7 +14,8 @@
 
 
 .menuContainer {
-  background-color: #3b5998; /* Example blue, adjust as needed or use rgba */
+  background-color: #3b5998;
+  /* Example blue, adjust as needed or use rgba */
   background: rgba(45, 66, 117, 0.7);
   border-radius: 50px;
   padding: 5px 10px;
@@ -144,4 +145,94 @@
   font-weight: bold;
   font-family: sans-serif;
   color: var(--page-title-text);
+}
+
+/* Mega Menu Styles */
+.navItemContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.megaMenuDropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(60, 80, 130, 0.95);
+  /* Matches/compliments menuContainer */
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 450px;
+  /* Wide dropdown */
+  display: none;
+  /* Default hidden */
+  flex-direction: row;
+  gap: 30px;
+  /* margin-top: 10px; REMOVED to prevent gap */
+  margin-top: 10px;
+  /* Kept for visual spacing, but bridged by pseudo-element */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Invisible bridge to prevent menu from closing when moving mouse over the gap */
+.megaMenuDropdown::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  /* Covers the 10px margin plus a bit more for safety */
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+}
+
+/* Show dropdown on hover of the container */
+.navItemContainer:hover .megaMenuDropdown {
+  display: flex;
+}
+
+.megaMenuSection {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+}
+
+.megaMenuHeading {
+  color: #a0c4ff;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.megaMenuItem {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 6px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  transition: color 0.2s, transform 0.2s;
+}
+
+
+.megaMenuItem:hover {
+  color: #a0c4ff;
+  transform: translateX(5px);
+}
+
+/* Highlight parent menu item when mega menu is open/hovered */
+.navItemContainer:hover .menuButton {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #a0c4ff;
+}
+
+.navItemContainer:hover .menuButton svg {
+  color: #a0c4ff;
+  fill: #a0c4ff;
 }

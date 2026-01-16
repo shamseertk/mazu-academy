@@ -150,11 +150,10 @@ body {
 }
 
 .footer {
-  height: 30px;
   background-color: var(--footer-bg-color);
   color: var(--footer-text-color);
   text-align: center;
-  padding-top: 15px;
+  padding: 15px;
 }
 
 .footer a {
