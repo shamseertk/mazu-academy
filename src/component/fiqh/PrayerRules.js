@@ -52,19 +52,19 @@ const PrayerRules = () => {
                 />
                 <CustomListItem
                     number={11}
-                    text="Reciting the Final Tashahhud"
+                    text="Reciting the Salath(for Prophet Muhammad (SAW))"
                 />
                 <CustomListItem
                     number={12}
-                    text="Sending blessings (Salawat) on the Prophet (SAW) in the final sitting"
+                    text="Sitting for Aththahiyath and sending blessings (Salawat) on the Prophet (SAW)"
                 />
                 <CustomListItem
                     number={13}
-                    text="Tasleem (Saying Salam to end the prayer)"
+                    text="Tasleem (Saying Salam to end the prayer)- Assalamu Alaikkum"
                 />
                 <CustomListItem
                     number={14}
-                    text="Tertib (Performing the pillars in order)"
+                    text="Tertib (Performing all the steps in order)"
                 />
             </List>
         </div>
