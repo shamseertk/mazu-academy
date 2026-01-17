@@ -17,6 +17,7 @@ import Months from './container/level2/Months';
 import Family from './container/level2/Family';
 import Ablution from './container/fiqh/Ablution';
 import Prayer from './container/fiqh/Prayer';
+import IslamicStudies from './container/IslamicStudies';
 
 export default function Router() {
   return <Routes>
@@ -38,5 +39,6 @@ export default function Router() {
     <Route path="*" element={<Letters />} />
     <Route path="fiqh/ablution" element={<Ablution />} />
     <Route path="fiqh/prayer" element={<Prayer />} />
+    <Route path="/islamic-studies" element={<IslamicStudies />} />
   </Routes>
 }

@@ -57,7 +57,14 @@ export const menus = [
             subItems: [
               { label: 'Adaan & Iqamah', link: '/fiqh/prayer?section=adaan', active: true },
               { label: 'Fard of Salah', link: '/fiqh/prayer?section=fard', active: true },
-              { label: 'Prayer Structure', link: '/fiqh/prayer?section=structure', active: true }
+              {
+                label: 'Prayer Structure',
+                link: '/fiqh/prayer?section=structure',
+                active: true,
+                subItems: [
+                  { label: 'Dua Al-Iftitah(Wajjahthu)', link: '/fiqh/prayer?section=dua-iftitah', active: true }
+                ]
+              }
             ]
           }
         ]
