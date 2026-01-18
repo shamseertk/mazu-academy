@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { List, Divider } from '@mui/material';
 import CustomListItem from '../common/CustomListItem';
 import SectionTitle from '../common/SectionTitle';
