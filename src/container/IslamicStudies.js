@@ -1,11 +1,11 @@
 import React from 'react';
-import { Box, Card, CardContent, Typography, Button, Grid, Divider } from '@mui/material';
+import { Box, Card, CardContent, Typography, Button, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 import TopicWrapper from '../component/common/TopicWrapper';
 import TopicTitle from '../component/common/TopicTitle';
 import TopicDescription from '../component/common/TopicDescription';
 import { menus } from '../utils/menus';
-import _ from 'lodash';
+
 
 const IslamicStudies = () => {
     // Find the Islamic Studies menu item
