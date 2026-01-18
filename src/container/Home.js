@@ -1,4 +1,3 @@
-import React from 'react';
 // Import Link from react-router-dom for proper navigation (crucial for HashRouter)
 import { Link } from 'react-router-dom';
 import { Card, CardContent, Typography, Divider, List, ListItem, ListItemText, Box, Link as MuiLink } from '@mui/material';

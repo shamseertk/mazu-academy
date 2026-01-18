@@ -62,7 +62,13 @@ export const menus = [
                 link: '/fiqh/prayer?section=structure',
                 active: true,
                 subItems: [
-                  { label: 'Dua Al-Iftitah(Wajjahthu)', link: '/fiqh/prayer?section=dua-iftitah', active: true }
+                  { label: 'Dua Al-Iftitah(Wajjahthu)', link: '/fiqh/prayer?section=dua-iftitah', active: true },
+                  { label: 'Ruku Dua', link: '/fiqh/prayer?section=ruku-dua', active: true },
+                  { label: "I'tidal إعتدال Dua", link: '/fiqh/prayer?section=ruku-rise-dua', active: true },
+                  { label: "Dua in I'tidal", link: '/fiqh/prayer?section=dua-itidal', active: true },
+                  { label: "Dua in Sujud", link: '/fiqh/prayer?section=dua-sujud', active: true },
+                  { label: "Dua in Sitting between sujud", link: '/fiqh/prayer?section=dua-sitting', active: true },
+                  { label: "Thashahhud Dua", link: '/fiqh/prayer?section=dua-thashahhud', active: true }
                 ]
               }
             ]

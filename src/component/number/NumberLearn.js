@@ -1,4 +1,3 @@
-import React from 'react';
 import { Table, TableHead, TableRow, TableBody, TableCell, TableContainer } from '@mui/material';
 import { arabicNumbers, convertNumberToAR } from '../../utils/numbers';
 

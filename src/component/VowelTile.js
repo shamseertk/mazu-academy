@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, CardContent, IconButton } from '@mui/material';
 
 import { PlayArrowRounded } from '@mui/icons-material';

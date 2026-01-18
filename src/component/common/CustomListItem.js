@@ -1,4 +1,3 @@
-import React from 'react';
 import { ListItem, ListItemIcon, Avatar, ListItemText, Typography } from '@mui/material';
 
 const CustomListItem = ({ number, text }) => {

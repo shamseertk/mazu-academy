@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import { DndContext } from '@dnd-kit/core';
 import { Grid, Typography, Button, Select, MenuItem } from '@mui/material';
 import { arabicWords } from '../../utils/words';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Game from './container/Game';
 import Fun from './container/Fun';

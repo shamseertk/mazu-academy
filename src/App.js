@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from './component/common/Header';
 import Router from './router';
 import { ThemeContextProvider } from './contexts/ThemeContext';
