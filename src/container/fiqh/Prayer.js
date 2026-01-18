@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Box } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import TopicWrapper from '../../component/common/TopicWrapper';

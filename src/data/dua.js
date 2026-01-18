@@ -18,5 +18,29 @@ Glory be to You, O Allah, and with Your praise. I bear witness that there is no 
     duaRuku: {
         arabic: `سُبْحَانَ رَبِّيَ الْعَظِيمِ`,
         english: `"Glory be to my Lord, the Almighty."`
+    },
+    duaRukuRise: {
+        arabic: `سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ`,
+        english: `"Allah hears whoever praises Him."`
+    },
+    duaItidal: {
+        arabic: `رَبَّنَا لَكَ الْحَمْدُ مِلْءَ السَّمَاوَاتِ وَمِلْءَ الْأَرْضِ وَمِلْءَ مَا شِئْتَ مِنْ شَيْءٍ بَعْدُ`,
+        english: `"Our Lord, to You be all praise, filling the heavens, filling the earth, and filling whatever else You will."`
+    },
+    duaSujud: {
+        arabic: `سُبْحَانَ رَبِّيَ الْأَعْلَى`,
+        english: `"Glory is to my Lord, the Most High."`
+    },
+    duaBetweenSujud: {
+        arabic: `رَبِّ اغْفِرْ لِي وَارْحَمْنِي وَاجْبُرْنِي وَارْفَعْنِي وَارْزُقْنِي وَاهْدِنِي وَعَافِنِي`,
+        english: `"Lord forgive me, have mercy on me, strengthen me, raise my rank, provide for me, guide me, and grant me wellbeing."`
+    },
+    duaThashahhud: {
+        arabic: `التَّحِيَّاتُ الْمُبَارَكَاتُ الصَّلَوَاتُ الطَّيِّبَاتُ لِلَّهِ السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ
+اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ . اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ فِي الْعَالَمِينَ إِنَّكَ حَمِيدٌ مَجِيدٌ
+اللَّهُمَّ اغْفِرْ لِي مَا قَدَّمْتُ وَمَا أَخَّرْتُ وَمَا أَسْرَرْتُ وَمَا أَعْلَنْتُ وَمَا أَسْرَفْتُ وَمَا أَنْتَ أَعْلَمُ بِهِ مِنِّي إِنَّكَ أَنْتَ الْمُقَدِّمُ وَأَنْتَ الْمُؤَخِّرُ لَا إِلَهَ إِلَّا أَنْتَ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ وَمِنْ عَذَابِ النَّارِ وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ وَمِنْ فِتْنَةِ الْمَسِيحِ الدَّجَّالِ`,
+        english: `"Greetings, blessed compliments, prayers, and good things are due to Allah. Peace be upon you, O Prophet, and the mercy of Allah and His blessings. Peace be upon us, and on the righteous servants of Allah. I testify that there is no god but Allah, and I testify that Muhammad is the Messenger of Allah.
+O Allah, send prayers upon Muhammad and upon the family of Muhammad, as You sent prayers upon Ibrahim and upon the family of Ibrahim; You are indeed Worthy of Praise, Full of Glory. O Allah, bless Muhammad and the family of Muhammad, as You blessed Ibrahim and the family of Ibrahim; You are indeed Worthy of Praise, Full of Glory.
+O Allah! Forgive me what I have done in the past, and what I will do in the future, and what I have concealed, and what I have done openly, and what I have exceeded in, and what You know about me more than I do. You are the One Who brings forward and You are the One Who delays. There is no god but You. O Allah! I seek refuge in You from the punishment of the grave, and from the punishment of the Hellfire, and from the trials of life and death, and from the trial of the False Messiah (Dajjal)."`
     }
 };
