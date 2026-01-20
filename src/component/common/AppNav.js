@@ -18,11 +18,13 @@ const MobileMenuItem = ({ item, level = 0, onClose, currentPath }) => {
   const isActive = currentPath === item.link || (currentPath.startsWith(item.link) && item.link !== '/' && item.link !== '#');
 
   const handleLinkClick = (e) => {
-    if (hasChildren || item.link === '#' || !item.link) {
+    // If the item has no valid link (or is just a placeholder '#'), toggle expansion
+    if (item.link === '#' || !item.link) {
       e.preventDefault();
       e.stopPropagation();
       setIsOpen(!isOpen);
     } else {
+      // Otherwise, it's a real link. Let it navigate and close the drawer.
       onClose();
     }
   };
@@ -49,7 +51,7 @@ const MobileMenuItem = ({ item, level = 0, onClose, currentPath }) => {
             }}
             size="medium"
             sx={{
-              color: 'var(--menu-btn-text)',
+              color: 'var(--menu-icon-color)',
               marginTop: level === 0 ? '10px' : '0px',
               '&:hover': {
                 bgcolor: 'rgba(255,255,255,0.1)'
@@ -99,7 +101,7 @@ const AppNav = ({ drawerOpen, closeDrawer }) => {
                 className={`menuButton ${isActive ? 'menuButtonActive' : ''}`}
               >
                 {menu.label}
-                {hasMegaMenu && <KeyboardArrowDown sx={{ verticalAlign: 'middle', ml: 0.5 }} />}
+                {hasMegaMenu && <KeyboardArrowDown color='#000' sx={{ verticalAlign: 'middle', ml: 0.5 }} />}
               </Link>
 
               {hasMegaMenu && (
