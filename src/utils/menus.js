@@ -70,7 +70,8 @@ export const menus = [
                   { label: "Dua in Sitting between sujud", link: '/fiqh/prayer?section=dua-sitting', active: true },
                   { label: "Thashahhud Dua", link: '/fiqh/prayer?section=dua-thashahhud', active: true }
                 ]
-              }
+              },
+              { label: 'After Prayer(Salah) Duas', link: '/fiqh/prayer?section=after-salah', active: true }
             ]
           }
         ]

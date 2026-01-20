@@ -7,6 +7,7 @@ import TopicDescription from '../../component/common/TopicDescription';
 import AadanIqamah from '../../component/fiqh/AadanIqamah';
 import PrayerRules from '../../component/fiqh/PrayerRules';
 import PrayerStructure from '../../component/fiqh/PrayerStructure';
+import AfterSalah from '../../component/fiqh/AfterSalah';
 
 function Prayer() {
     const location = useLocation();
@@ -59,11 +60,17 @@ function Prayer() {
                 <Box onClick={() => scrollToSection('structure')} sx={{ cursor: 'pointer', bgcolor: '#e0f7fa', color: '#006064', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid #b2ebf2' }}>
                     Prayer Structure
                 </Box>
+                <Box onClick={() => scrollToSection('after-salah')} sx={{ cursor: 'pointer', bgcolor: '#e0f7fa', color: '#006064', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid #b2ebf2' }}>
+                    After Salah
+                </Box>
             </Box>
 
             <AadanIqamah />
             <PrayerRules />
             <PrayerStructure />
+            <div id="after-salah">
+                <AfterSalah />
+            </div>
         </TopicWrapper>
     );
 }
