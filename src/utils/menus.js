@@ -39,7 +39,7 @@ export const menus = [
     active: true,
     megaMenu: [
       {
-        heading: 'Fiqh',
+        heading: 'Prayer & Purification',
         items: [
           {
             label: 'Ablution(Wudu)',
@@ -68,12 +68,32 @@ export const menus = [
                   { label: "Dua in I'tidal", link: '/fiqh/prayer?section=dua-itidal', active: true },
                   { label: "Dua in Sujud", link: '/fiqh/prayer?section=dua-sujud', active: true },
                   { label: "Dua in Sitting between sujud", link: '/fiqh/prayer?section=dua-sitting', active: true },
-                  { label: "Thashahhud Dua", link: '/fiqh/prayer?section=dua-thashahhud', active: true }
+                  { label: "Thashahhud Dua", link: '/fiqh/prayer?section=dua-thashahhud', active: true },
                 ]
               },
-              { label: 'After Prayer(Salah) Duas', link: '/fiqh/prayer?section=after-salah', active: true }
+              { label: 'After Prayer(Salah) Duas', link: '/fiqh/prayer?section=after-salah', active: true },
+              {
+                label: 'Prayer(Salah) Related',
+                link: '/fiqh/prayer?section=prayer-related',
+                active: true,
+                subItems: [
+                  { label: 'Dua of Sahw Sujud', link: '/fiqh/prayer?section=sujud-sahw-dua', active: true },
+                  { label: 'Sujud Thilawath(Quran Reading Sujud) Dua', link: '/fiqh/prayer?section=sujud-tilawah-dua', active: true },
+                ]
+              },
             ]
-          }
+          },
+          { label: 'Optional Prayers(Salathul Sunnah)', link: '/fiqh/sunnah-prayer', active: true },
+          { label: 'Funeral Prayer(Janaza Prayer)', link: '/fiqh/prayer?section=janaza', active: true }
+        ]
+      },
+      {
+        heading: 'Other Pillars & Duas',
+        items: [
+          { label: 'Fasting in Ramadan(Sawm)', link: '/fiqh/fasting', active: true },
+          { label: 'Hajj', link: '/fiqh/hajj', active: true },
+          { label: 'Zakath', link: '/fiqh/zakath', active: true },
+          { label: 'Important Duas', link: '/fiqh/duas', active: true }
         ]
       }
     ]

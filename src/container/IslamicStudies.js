@@ -1,5 +1,6 @@
 import { Box, Card, CardContent, Typography, Button, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
+import SEO from '../component/common/SEO';
 import TopicWrapper from '../component/common/TopicWrapper';
 import TopicTitle from '../component/common/TopicTitle';
 import TopicDescription from '../component/common/TopicDescription';
@@ -13,6 +14,11 @@ const IslamicStudies = () => {
 
     return (
         <TopicWrapper>
+            <SEO
+                title="Islamic Studies"
+                description="Explore a comprehensive curriculum covering various aspects of Islamic knowledge, including Fiqh (Jurisprudence), History, and more."
+                keywords="Islamic Studies, Fiqh, Quran, Hadith, Islam for Kids"
+            />
             <TopicTitle>Islamic Studies</TopicTitle>
             <TopicDescription>
                 Explore a comprehensive curriculum covering various aspects of Islamic knowledge, including Fiqh (Jurisprudence), History, and more.

@@ -1,7 +1,7 @@
-// Import Link from react-router-dom for proper navigation (crucial for HashRouter)
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, Typography, Divider, List, ListItem, ListItemText, Box, Link as MuiLink } from '@mui/material';
-import { School, Translate, Abc, Apps } from '@mui/icons-material';
+import { School, Translate, Abc, Apps, MenuBook } from '@mui/icons-material';
 import logo from '../images/mail-emblem.jpg';
 
 function Syllabus() {
@@ -36,7 +36,7 @@ function Syllabus() {
             fontWeight: 'bold'
           }}>
             <School sx={{ mr: 1 }} />
-            Arabic Learning Syllabus
+            Mazu Academy Syllabus
           </Typography>
           <Divider />
 
@@ -127,6 +127,64 @@ function Syllabus() {
                   Additional Level 2 Topics:
                 </Typography>}
                 secondary="Numbers, Months, Colors, and Family relations."
+              />
+            </ListItem>
+          </List>
+
+          <Divider sx={{ my: 2 }} />
+
+          {/* Islamic Studies Section */}
+          <MuiLink to="/islamic-studies" component={Link} underline="none" sx={{ textDecoration: 'none' }}>
+            <Typography
+              variant="h5"
+              component="h2"
+              sx={{
+                mt: 3,
+                mb: 1,
+                color: 'secondary.dark',
+                display: 'flex',
+                alignItems: 'center',
+                fontWeight: 'bold',
+                '&:hover': { color: 'primary.main' }
+              }}
+            >
+              <MenuBook sx={{ mr: 1 }} />
+              Islamic Studies (Fiqh & Pillars)
+            </Typography>
+          </MuiLink>
+
+          <List dense>
+            <ListItem>
+              <ListItemText
+                primary={<Typography variant="subtitle1" sx={{ fontWeight: 'bold', color: '#006064' }}>Prayer & Purification</Typography>}
+                secondary={
+                  <React.Fragment>
+                    <Typography component="span" variant="body2" color="text.primary" display="block">
+                      <strong>Ablution (Wudu):</strong> Steps, Fard, Sunnah, and Duas for purification.
+                    </Typography>
+                    <Typography component="span" variant="body2" color="text.primary" display="block">
+                      <strong>Salah (Prayer):</strong> Complete guide to the 5 daily prayers, including Adaan, Fard components, Prayer Structure, and special prayers (Funeral, Sunnah).
+                    </Typography>
+                  </React.Fragment>
+                }
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemText
+                primary={<Typography variant="subtitle1" sx={{ fontWeight: 'bold', color: '#006064' }}>Other Pillars & Duas</Typography>}
+                secondary={
+                  <React.Fragment>
+                    <Typography component="span" variant="body2" color="text.primary" display="block">
+                      <strong>Fasting (Sawm):</strong> Rules and significance of Ramadan.
+                    </Typography>
+                    <Typography component="span" variant="body2" color="text.primary" display="block">
+                      <strong>Hajj & Zakath:</strong> Understanding the pilgrimage and obligatory charity.
+                    </Typography>
+                    <Typography component="span" variant="body2" color="text.primary" display="block">
+                      <strong>Duas:</strong> Important daily Duas and supplications (Hisnul Muslim).
+                    </Typography>
+                  </React.Fragment>
+                }
               />
             </ListItem>
           </List>
