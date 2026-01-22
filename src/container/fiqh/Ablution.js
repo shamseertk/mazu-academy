@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Box } from '@mui/material';
 import { useLocation } from 'react-router-dom';
+import SEO from '../../component/common/SEO';
 import TopicWrapper from '../../component/common/TopicWrapper';
 import TopicTitle from '../../component/common/TopicTitle';
 import TopicDescription from '../../component/common/TopicDescription';
@@ -34,6 +35,11 @@ function Ablution() {
 
     return (
         <TopicWrapper>
+            <SEO
+                title="Ablution (Wudu) - Islamic Studies"
+                description="Learn the steps of Wudu (Ablution), including mandatory (Fard) acts, Sunnah practices, and supplications."
+                keywords="Wudu, Ablution, Fard, Sunnah, Dua, Purification, Islam"
+            />
             <TopicTitle>Ablution (Wudu)</TopicTitle>
             <TopicDescription>
                 Wudu is the act of washing the body in a specific way to purify oneself before prayer.

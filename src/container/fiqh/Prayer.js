@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Box } from '@mui/material';
 import { useLocation } from 'react-router-dom';
+import SEO from '../../component/common/SEO';
 import TopicWrapper from '../../component/common/TopicWrapper';
 import TopicTitle from '../../component/common/TopicTitle';
 import TopicDescription from '../../component/common/TopicDescription';
@@ -8,6 +9,7 @@ import AadanIqamah from '../../component/fiqh/AadanIqamah';
 import PrayerRules from '../../component/fiqh/PrayerRules';
 import PrayerStructure from '../../component/fiqh/PrayerStructure';
 import AfterSalah from '../../component/fiqh/AfterSalah';
+import PrayerRelated from '../../component/fiqh/PrayerRelated';
 
 function Prayer() {
     const location = useLocation();
@@ -36,6 +38,11 @@ function Prayer() {
 
     return (
         <TopicWrapper>
+            <SEO
+                title="Salah (Prayer) - Islamic Studies"
+                description="Salah is the daily ritual prayer enjoined upon all Muslims as one of the five Pillars of Islam. Learn about Fajr, Dhuhr, Asr, Maghrib, and Isha."
+                keywords="Salah, Prayer, Fajr, Dhuhr, Asr, Maghrib, Isha, Islam, Pillars of Islam"
+            />
             <TopicTitle>Salah (Prayer)</TopicTitle>
             <TopicDescription>
                 Salah is the daily ritual prayer enjoined upon all Muslims as one of the five Pillars of Islam.
@@ -63,6 +70,9 @@ function Prayer() {
                 <Box onClick={() => scrollToSection('after-salah')} sx={{ cursor: 'pointer', bgcolor: '#e0f7fa', color: '#006064', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid #b2ebf2' }}>
                     After Salah
                 </Box>
+                <Box onClick={() => scrollToSection('prayer-related')} sx={{ cursor: 'pointer', bgcolor: '#e0f7fa', color: '#006064', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid #b2ebf2' }}>
+                    Prayer Related
+                </Box>
             </Box>
 
             <AadanIqamah />
@@ -70,6 +80,9 @@ function Prayer() {
             <PrayerStructure />
             <div id="after-salah">
                 <AfterSalah />
+            </div>
+            <div id="prayer-related">
+                <PrayerRelated />
             </div>
         </TopicWrapper>
     );

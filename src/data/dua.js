@@ -55,5 +55,13 @@ O Allah! Forgive me what I have done in the past, and what I will do in the futu
                 english: `"There is no god but Allah Alone, with no partner or associate. His is the sovereignty and to Him be praise, and He is Able to do all things. O Allah, none can withhold what You have given and none can give what You have withheld, and no wealth or fortune can benefit anyone for whom You have not decreed a share in the Hereafter."`
             }
         ]
+    },
+    duaSujudSahw: {
+        arabic: `سُبْحَانَ مَنْ لَا يَنَامُ وَلَا يَسْهُو`,
+        english: `"Glory be to Him Who does not sleep nor forget."`
+    },
+    sujudTilawah: {
+        arabic: `سَجَدَ وَجْهِي لِلَّذِي خَلَقَهُ وَصَوَّرَهُ وَشَقَّ سَمْعَهُ وَبَصَرَهُ بِحَوْلِهِ وَقُوَّتِهِ فَتَبَارَكَ اللَّهُ أَحْسَنُ الْخَالِقِينَ`,
+        english: `"My face has prostrated to the One Who created it and formed it, and opened its hearing and sight with His power and might. So blessed be Allah, the Best of Creators."`
     }
 };
