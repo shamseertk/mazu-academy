@@ -61,6 +61,29 @@
   --tab-root-bg: #6e8194;
   --tab-selected-bg: #597d8c;
   --dnd-source-border: #234;
+
+  /* Topic Wrapper Variables */
+  --topic-wrapper-bg: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+  --topic-wrapper-border: #b2ebf2;
+
+  /* Highlight Box Variables */
+  --highlight-box-bg: #effcfc;
+  /* kept close to original #effcfc / #e0f7fa mix */
+  --highlight-box-text: #006064;
+  --highlight-box-border: #b2ebf2;
+  --section-title-color: #006064;
+  --translation-text-color: #546e7a;
+  --topic-description-color: #37474f;
+  --arabic-text-color: #006064;
+
+  /* Menu Container Variables */
+  --menu-container-bg: #3b5998;
+  /* Fallback */
+  --menu-container-rgba: rgba(45, 66, 117, 0.7);
+  --mega-menu-bg: rgba(60, 80, 130, 0.95);
+  --mega-menu-heading-color: #a0c4ff;
+  --mega-menu-item-color: #fff;
+  --mega-menu-sub-color: #ddd;
 }
 
 [data-theme='dark'] {
@@ -124,6 +147,27 @@
   --tab-root-bg: #546e7a;
   --tab-selected-bg: #78909c;
   --dnd-source-border: #90a4ae;
+
+  /* Topic Wrapper Variables - Dark Mode */
+  --topic-wrapper-bg: linear-gradient(135deg, #263238 0%, #1e1e1e 100%);
+  --topic-wrapper-border: #546e7a;
+
+  /* Highlight Box Variables - Dark Mode */
+  --highlight-box-bg: #37474f;
+  --highlight-box-text: #e0f7fa;
+  --highlight-box-border: #546e7a;
+  --section-title-color: #80deea;
+  /* Light cyan for titles */
+  --translation-text-color: #b0bec5;
+  /* Light grey for translations */
+
+  /* Menu Container Variables - Dark Mode */
+  --menu-container-bg: #263238;
+  --menu-container-rgba: rgba(30, 40, 50, 0.85);
+  --mega-menu-bg: rgba(40, 50, 60, 0.95);
+  --mega-menu-heading-color: #90caf9;
+  --mega-menu-item-color: #e0e0e0;
+  --mega-menu-sub-color: #b0bec5;
 }
 
 body {
@@ -179,6 +223,8 @@ body {
   padding: 2px;
   font-size: 1.5em;
 }
+
+
 
 @import "menu.css";
 @import "misc.css";

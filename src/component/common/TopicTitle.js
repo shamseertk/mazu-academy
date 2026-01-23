@@ -6,7 +6,7 @@ const TopicTitle = ({ children }) => {
             variant="h4"
             component="h1"
             gutterBottom
-            sx={{ color: '#006064', fontWeight: 'bold' }}
+            sx={{ color: 'var(--section-title-color)', fontWeight: 'bold' }}
         >
             {children}
         </Typography>

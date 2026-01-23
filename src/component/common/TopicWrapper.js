@@ -8,8 +8,8 @@ const TopicWrapper = ({ children }) => {
                 sx={{
                     p: 4,
                     borderRadius: 4,
-                    background: 'linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%)',
-                    border: '1px solid #b2ebf2'
+                    background: 'var(--topic-wrapper-bg)',
+                    border: '1px solid var(--topic-wrapper-border)'
                 }}
             >
                 {children}
