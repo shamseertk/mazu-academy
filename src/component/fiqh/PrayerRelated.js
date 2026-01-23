@@ -8,7 +8,7 @@ const PrayerRelated = () => {
         <Box sx={{ mt: 4, mb: 4 }}>
             <SectionTitle>Prayer Related Information</SectionTitle>
 
-            <Typography variant="h6" sx={{ mt: 3, mb: 2, color: '#006064', fontWeight: 'bold' }}>
+            <Typography variant="h6" sx={{ mt: 3, mb: 2, color: 'var(--highlight-box-text)', fontWeight: 'bold' }}>
                 Sujud Sahw (Prostration of Forgetfulness) <br /> (سُجُود السَّهْو)
             </Typography>
 
@@ -28,8 +28,8 @@ const PrayerRelated = () => {
                 </ListItem>
             </List>
 
-            <Box sx={{ bgcolor: '#effcfc', p: 2, borderRadius: 2, border: '1px solid #b2ebf2', my: 2 }}>
-                <Typography variant="subtitle1" sx={{ fontWeight: 'bold', color: '#006064', mb: 1 }}>
+            <Box sx={{ bgcolor: 'var(--highlight-box-bg)', p: 2, borderRadius: 2, border: '1px solid var(--highlight-box-border)', my: 2 }}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 'bold', color: 'var(--highlight-box-text)', mb: 1 }}>
                     Specific Cases:
                 </Typography>
                 <List dense>
@@ -48,19 +48,19 @@ const PrayerRelated = () => {
                 </List>
             </Box>
 
-            <Typography id="sujud-sahw-dua" variant="subtitle1" sx={{ fontWeight: 'bold', mt: 3, mb: 1, color: '#006064' }}>
+            <Typography id="sujud-sahw-dua" variant="subtitle1" sx={{ fontWeight: 'bold', mt: 3, mb: 1, color: 'var(--highlight-box-text)' }}>
                 Dua in Sujud Sahw:
             </Typography>
-            <Typography variant="body1" sx={{ fontSize: '1.8rem', color: '#006064', fontFamily: 'serif', lineHeight: 2.2, direction: 'rtl', textAlign: 'right', mb: 1 }}>
+            <Typography variant="body1" sx={{ fontSize: '1.8rem', color: 'var(--highlight-box-text)', fontFamily: 'serif', lineHeight: 2.2, direction: 'rtl', textAlign: 'right', mb: 1 }}>
                 {duas.duaSujudSahw.arabic}
             </Typography>
-            <Typography variant="body1" sx={{ fontSize: '1.1rem', color: '#546e7a', fontStyle: 'italic' }}>
+            <Typography variant="body1" sx={{ fontSize: '1.1rem', color: 'var(--translation-text-color)', fontStyle: 'italic' }}>
                 {duas.duaSujudSahw.english}
             </Typography>
 
             <Divider sx={{ my: 4 }} />
 
-            <Typography variant="h6" sx={{ mt: 3, mb: 2, color: '#006064', fontWeight: 'bold' }}>
+            <Typography variant="h6" sx={{ mt: 3, mb: 2, color: 'var(--highlight-box-text)', fontWeight: 'bold' }}>
                 Sujud Tilawah (Prostration of Recitation) <br /> (سُجُودُ التِّلَاوَةِ)
             </Typography>
 
@@ -72,13 +72,13 @@ const PrayerRelated = () => {
                 For example, in the Fajr prayer on Friday, it is Sunnah to recite Surah As-Sajdah. When the verse of prostration is reached, one should say 'Allahu Akbar' and prostrate.
             </Typography>
 
-            <Typography id="sujud-tilawah-dua" variant="subtitle1" sx={{ fontWeight: 'bold', mt: 3, mb: 1, color: '#006064' }}>
+            <Typography id="sujud-tilawah-dua" variant="subtitle1" sx={{ fontWeight: 'bold', mt: 3, mb: 1, color: 'var(--highlight-box-text)' }}>
                 Dua in Sujud Tilawah:
             </Typography>
-            <Typography variant="body1" sx={{ fontSize: '1.6rem', color: '#006064', fontFamily: 'serif', lineHeight: 2.2, direction: 'rtl', textAlign: 'right', mb: 1 }}>
+            <Typography variant="body1" sx={{ fontSize: '1.6rem', color: 'var(--highlight-box-text)', fontFamily: 'serif', lineHeight: 2.2, direction: 'rtl', textAlign: 'right', mb: 1 }}>
                 {duas.sujudTilawah.arabic}
             </Typography>
-            <Typography variant="body1" sx={{ fontSize: '1.1rem', color: '#546e7a', fontStyle: 'italic' }}>
+            <Typography variant="body1" sx={{ fontSize: '1.1rem', color: 'var(--translation-text-color)', fontStyle: 'italic' }}>
                 {duas.sujudTilawah.english}
             </Typography>
         </Box>

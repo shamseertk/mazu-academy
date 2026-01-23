@@ -58,19 +58,19 @@ function Prayer() {
             </TopicDescription>
 
             <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 3 }}>
-                <Box onClick={() => scrollToSection('adaan')} sx={{ cursor: 'pointer', bgcolor: '#e0f7fa', color: '#006064', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid #b2ebf2' }}>
+                <Box onClick={() => scrollToSection('adaan')} sx={{ cursor: 'pointer', bgcolor: 'var(--highlight-box-bg)', color: 'var(--highlight-box-text)', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid var(--highlight-box-border)' }}>
                     Adaan & Iqamah
                 </Box>
-                <Box onClick={() => scrollToSection('fard')} sx={{ cursor: 'pointer', bgcolor: '#e0f7fa', color: '#006064', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid #b2ebf2' }}>
+                <Box onClick={() => scrollToSection('fard')} sx={{ cursor: 'pointer', bgcolor: 'var(--highlight-box-bg)', color: 'var(--highlight-box-text)', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid var(--highlight-box-border)' }}>
                     Fard of Salah
                 </Box>
-                <Box onClick={() => scrollToSection('structure')} sx={{ cursor: 'pointer', bgcolor: '#e0f7fa', color: '#006064', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid #b2ebf2' }}>
+                <Box onClick={() => scrollToSection('structure')} sx={{ cursor: 'pointer', bgcolor: 'var(--highlight-box-bg)', color: 'var(--highlight-box-text)', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid var(--highlight-box-border)' }}>
                     Prayer Structure
                 </Box>
-                <Box onClick={() => scrollToSection('after-salah')} sx={{ cursor: 'pointer', bgcolor: '#e0f7fa', color: '#006064', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid #b2ebf2' }}>
+                <Box onClick={() => scrollToSection('after-salah')} sx={{ cursor: 'pointer', bgcolor: 'var(--highlight-box-bg)', color: 'var(--highlight-box-text)', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid var(--highlight-box-border)' }}>
                     After Salah
                 </Box>
-                <Box onClick={() => scrollToSection('prayer-related')} sx={{ cursor: 'pointer', bgcolor: '#e0f7fa', color: '#006064', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid #b2ebf2' }}>
+                <Box onClick={() => scrollToSection('prayer-related')} sx={{ cursor: 'pointer', bgcolor: 'var(--highlight-box-bg)', color: 'var(--highlight-box-text)', px: 2, py: 1, borderRadius: 2, fontWeight: 'bold', border: '1px solid var(--highlight-box-border)' }}>
                     Prayer Related
                 </Box>
             </Box>
