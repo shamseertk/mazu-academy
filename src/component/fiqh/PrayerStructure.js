@@ -14,7 +14,7 @@ const PrayerStructure = () => {
                     text={
                         <div>
                             <strong>Standing (if able):</strong>
-                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: '#546e7a' }}>
+                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: 'var(--topic-description-color)' }}>
                                 <li style={{ marginBottom: '8px' }}>Stand facing towards the Qibla direction.</li>
                                 <li style={{ marginBottom: '8px' }}>
                                     <strong>Niyyah (Intention):</strong> Have the intention in your heart: "For Allah, I am performing this obligatory prayer of [number] rak'ahs facing the Qibla."
@@ -25,10 +25,10 @@ const PrayerStructure = () => {
                                 <li id="dua-iftitah" style={{ marginBottom: '8px' }}>
                                     <strong>Recite Dua Al-Iftitah (Opening Supplication):</strong>
                                     <p>This dua is only recited in the first rak'ah of the prayer after the takbeer.</p>
-                                    <div style={{ fontSize: '1.8rem', color: '#006064', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1.8rem', color: 'var(--arabic-text-color)', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
                                         {duas.duaIfthihah.arabic}
                                     </div>
-                                    <div style={{ fontSize: '1rem', color: '#546e7a', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1rem', color: 'var(--translation-text-color)', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
                                         {duas.duaIfthihah.english}
                                     </div>
                                 </li>
@@ -45,15 +45,15 @@ const PrayerStructure = () => {
                     text={
                         <div>
                             <strong>Ruku (Bowing):</strong>
-                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: '#546e7a' }}>
+                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: 'var(--topic-description-color)' }}>
                                 <li style={{ marginBottom: '8px' }}>Bend down in bowing position, keeping your back straight.</li>
                                 <li style={{ marginBottom: '8px' }}>Place both hands on the respective knees with fingers spread apart.</li>
                                 <li id="ruku-dua" style={{ marginBottom: '8px' }}>
                                     <strong>Recite:</strong>
-                                    <div style={{ fontSize: '1.8rem', color: '#006064', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1.8rem', color: 'var(--arabic-text-color)', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
                                         {duas.duaRuku.arabic}
                                     </div>
-                                    <div style={{ fontSize: '1rem', color: '#546e7a', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1rem', color: 'var(--translation-text-color)', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
                                         {duas.duaRuku.english}
                                     </div>
                                 </li>
@@ -66,24 +66,24 @@ const PrayerStructure = () => {
                     text={
                         <div>
                             <strong>I'tidal(إعتدال) (Standing up from Ruku):</strong>
-                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: '#546e7a' }}>
+                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: 'var(--topic-description-color)' }}>
                                 <li id="ruku-rise-dua" style={{ marginBottom: '8px' }}>
                                     <strong>Recite when you standing up from Ruku:</strong>
-                                    <div style={{ fontSize: '1.8rem', color: '#006064', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1.8rem', color: 'var(--arabic-text-color)', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
                                         {duas.duaRukuRise.arabic}
                                     </div>
-                                    <div style={{ fontSize: '1rem', color: '#546e7a', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1rem', color: 'var(--translation-text-color)', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
                                         {duas.duaRukuRise.english}
                                     </div>
                                 </li>
                             </ul>
-                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: '#546e7a' }}>
+                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: 'var(--topic-description-color)' }}>
                                 <li id="dua-itidal" style={{ marginBottom: '8px' }}>
                                     <strong>Recite:</strong>
-                                    <div style={{ fontSize: '1.8rem', color: '#006064', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1.8rem', color: 'var(--arabic-text-color)', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
                                         {duas.duaItidal.arabic}
                                     </div>
-                                    <div style={{ fontSize: '1rem', color: '#546e7a', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1rem', color: 'var(--translation-text-color)', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
                                         {duas.duaItidal.english}
                                     </div>
                                 </li>
@@ -96,13 +96,13 @@ const PrayerStructure = () => {
                     text={
                         <div>
                             <strong>Say Allahu Akbar (اللّٰهُ أَكْبَر) and go to Prostration (Sujud):</strong>
-                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: '#546e7a' }}>
+                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: 'var(--topic-description-color)' }}>
                                 <li id="dua-sujud" style={{ marginBottom: '8px' }}>
                                     <strong>Recite:</strong>
-                                    <div style={{ fontSize: '1.8rem', color: '#006064', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1.8rem', color: 'var(--arabic-text-color)', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
                                         {duas.duaSujud.arabic}
                                     </div>
-                                    <div style={{ fontSize: '1rem', color: '#546e7a', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1rem', color: 'var(--translation-text-color)', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
                                         {duas.duaSujud.english}
                                     </div>
                                 </li>
@@ -115,13 +115,13 @@ const PrayerStructure = () => {
                     text={
                         <div>
                             <strong>Sit back on left leg and right leg finger touches the floor and recite:</strong>
-                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: '#546e7a' }}>
+                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: 'var(--topic-description-color)' }}>
                                 <li id="dua-sitting" style={{ marginBottom: '8px' }}>
                                     <strong>Recite:</strong>
-                                    <div style={{ fontSize: '1.8rem', color: '#006064', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1.8rem', color: 'var(--arabic-text-color)', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
                                         {duas.duaBetweenSujud.arabic}
                                     </div>
-                                    <div style={{ fontSize: '1rem', color: '#546e7a', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1rem', color: 'var(--translation-text-color)', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
                                         {duas.duaBetweenSujud.english}
                                     </div>
                                 </li>
@@ -142,13 +142,13 @@ const PrayerStructure = () => {
                     text={
                         <div>
                             <strong>Stand up again and continue this until the end of the prayer. At every even rakat , after the second sujud sit for thashahhud and recite:</strong>
-                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: '#546e7a' }}>
+                            <ul style={{ marginTop: '10px', listStyleType: 'disc', paddingLeft: '20px', color: 'var(--topic-description-color)' }}>
                                 <li id="dua-thashahhud" style={{ marginBottom: '8px' }}>
                                     <strong>Recite:</strong>
-                                    <div style={{ fontSize: '1.8rem', color: '#006064', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1.8rem', color: 'var(--arabic-text-color)', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
                                         {duas.duaThashahhud.arabic}
                                     </div>
-                                    <div style={{ fontSize: '1rem', color: '#546e7a', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                                    <div style={{ fontSize: '1rem', color: 'var(--translation-text-color)', marginTop: '10px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
                                         {duas.duaThashahhud.english}
                                     </div>
                                 </li>

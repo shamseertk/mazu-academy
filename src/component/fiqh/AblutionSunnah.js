@@ -55,10 +55,10 @@ const AblutionSunnah = () => {
                     text={
                         <div id="dua">
                             Recite the Shahada and Du'a after Wudu:
-                            <div style={{ fontSize: '2rem', color: '#006064', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
+                            <div style={{ fontSize: '2rem', color: 'var(--arabic-text-color)', marginTop: '15px', textAlign: 'right', fontFamily: 'serif', lineHeight: '2.2', whiteSpace: 'pre-line' }}>
                                 {duas.afterWudu.arabic}
                             </div>
-                            <div style={{ fontSize: '1rem', color: '#546e7a', marginTop: '15px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
+                            <div style={{ fontSize: '1rem', color: 'var(--translation-text-color)', marginTop: '15px', fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>
                                 {duas.afterWudu.english}
                             </div>
                         </div>
