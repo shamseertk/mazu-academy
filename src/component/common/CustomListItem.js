@@ -10,7 +10,7 @@ const CustomListItem = ({ number, text }) => {
             </ListItemIcon>
             <ListItemText
                 primary={
-                    <Typography sx={{ fontSize: '1.1rem', color: '#37474f' }}>
+                    <Typography sx={{ fontSize: '1.1rem', color: 'var(--topic-description-color)' }}>
                         {text}
                     </Typography>
                 }

@@ -17,6 +17,7 @@ import Family from './container/level2/Family';
 import Ablution from './container/fiqh/Ablution';
 import Prayer from './container/fiqh/Prayer';
 import SunnahPrayer from './container/fiqh/SunnahPrayer';
+import Janaza from './container/fiqh/Janaza';
 import IslamicStudies from './container/IslamicStudies';
 
 export default function Router() {
@@ -40,6 +41,7 @@ export default function Router() {
     <Route path="fiqh/ablution" element={<Ablution />} />
     <Route path="fiqh/prayer" element={<Prayer />} />
     <Route path="fiqh/sunnah-prayer" element={<SunnahPrayer />} />
+    <Route path="fiqh/janaza" element={<Janaza />} />
     <Route path="/islamic-studies" element={<IslamicStudies />} />
   </Routes>
 }

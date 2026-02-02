@@ -84,7 +84,7 @@ export const menus = [
             ]
           },
           { label: 'Optional Prayers(Salathul Sunnah)', link: '/fiqh/sunnah-prayer', active: true },
-          { label: 'Funeral Prayer(Janaza Prayer)', link: '/fiqh/prayer?section=janaza', active: true }
+          { label: 'Funeral Prayer(Janaza Prayer)', link: '/fiqh/janaza', active: true }
         ]
       },
       {
