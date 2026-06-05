@@ -229,3 +229,10 @@ body {
   padding: 2px;
   font-size: 1.5em;
 }
+
+/* Make space for the fixed bottom menu bar on mobile viewports */
+@media (max-width: 1200px) {
+  body {
+    padding-bottom: 60px;
+  }
+}
