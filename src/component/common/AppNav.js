@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { IconButton, Divider, Box, Collapse } from '@mui/material';
-import Drawer from '@mui/material/Drawer';
+import { IconButton, Divider, Box, Collapse, Typography, SwipeableDrawer } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronLeft, KeyboardArrowDown, ExpandLess, ExpandMore } from '@mui/icons-material';
+import { ChevronLeft, KeyboardArrowDown, KeyboardArrowUp, ExpandLess, ExpandMore, Menu } from '@mui/icons-material';
 import _ from 'lodash';
 import { menus } from '../../utils/menus';
 
@@ -77,7 +76,7 @@ const MobileMenuItem = ({ item, level = 0, onClose, currentPath }) => {
   );
 };
 
-const AppNav = ({ drawerOpen, closeDrawer }) => {
+const AppNav = ({ drawerOpen, closeDrawer, openDrawer }) => {
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -149,29 +148,126 @@ const AppNav = ({ drawerOpen, closeDrawer }) => {
         })}
       </Box>
 
-      {/* Mobile Drawer */}
-      <Drawer
+      {/* Mobile Swipeable Drawer anchored at bottom */}
+      <SwipeableDrawer
         open={drawerOpen}
         onClose={closeDrawer}
+        onOpen={openDrawer}
+        anchor="bottom"
+        swipeAreaWidth={60}
+        disableBackdropTransition
+        disableDiscovery
+        allowSwipeInChildren
         className="menuDrawer"
+        PaperProps={{
+          sx: {
+            overflow: 'visible',
+            height: '75%',
+            borderTopLeftRadius: '20px',
+            borderTopRightRadius: '20px',
+            backgroundColor: 'var(--bg-color)',
+            boxShadow: '0 -5px 20px rgba(0,0,0,0.15)',
+            backgroundImage: 'none',
+            display: 'flex',
+            flexDirection: 'column',
+          }
+        }}
       >
-        <IconButton onClick={closeDrawer} size="large">
-          <ChevronLeft />
-          <ChevronLeft />
-        </IconButton>
-        <Divider />
-        <div style={{ paddingBottom: '20px' }}>
-          {menus && menus.map((menu, idx) => (
-            <MobileMenuItem
-              key={menu.label + idx}
-              item={menu}
-              level={0}
-              onClose={closeDrawer}
-              currentPath={currentPath}
+        {/* Bottom Menu Bar - Drag Header (frozen on mobile) */}
+        <Box
+          onClick={drawerOpen ? closeDrawer : openDrawer}
+          sx={{
+            position: 'absolute',
+            top: -60,
+            left: 0,
+            right: 0,
+            height: 60,
+            visibility: 'visible',
+            display: { xs: 'flex', lg: 'none' },
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            backgroundColor: 'var(--header-bg-color)',
+            borderTop: '1px solid var(--container-border-color)',
+            borderTopLeftRadius: drawerOpen ? '20px' : '0px',
+            borderTopRightRadius: drawerOpen ? '20px' : '0px',
+            transition: 'border-radius 0.3s ease',
+            boxShadow: drawerOpen ? 'none' : '0 -3px 10px rgba(0,0,0,0.1)',
+            backdropFilter: 'blur(10px)',
+            zIndex: 10,
+          }}
+        >
+          {/* Puller Indicator Line */}
+          <Box
+            sx={{
+              width: 40,
+              height: 5,
+              backgroundColor: 'var(--menu-icon-color)',
+              borderRadius: '3px',
+              opacity: 0.3,
+              mb: 0.5,
+              mt: 0.5,
+            }}
+          />
+          {/* Label and Icon */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Menu sx={{ color: 'var(--menu-icon-color)', fontSize: '1.2rem' }} />
+            <Typography
+              variant="button"
+              sx={{
+                color: 'var(--header-text-color)',
+                fontWeight: 'bold',
+                fontSize: '0.85rem',
+                letterSpacing: '1px',
+                fontFamily: 'system-ui, sans-serif',
+              }}
+            >
+              {drawerOpen ? 'Swipe Down to Close' : 'Swipe Up for Menu'}
+            </Typography>
+            <KeyboardArrowUp
+              sx={{
+                color: 'var(--menu-icon-color)',
+                transform: drawerOpen ? 'rotate(180deg)' : 'none',
+                transition: 'transform 0.3s ease',
+                fontSize: '1.2rem',
+              }}
             />
-          ))}
-        </div>
-      </Drawer>
+          </Box>
+        </Box>
+
+        {/* Scrollable list of items */}
+        <Box 
+          sx={{ 
+            flexGrow: 1, 
+            overflowY: 'auto', 
+            p: 2, 
+            pt: 1,
+            pb: '40px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 1
+          }}
+        >
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%', mb: 1 }}>
+            <IconButton onClick={closeDrawer} size="medium" sx={{ color: 'var(--text-color)', gap: 0.5 }}>
+              <ChevronLeft /> <span style={{ fontSize: '14px', fontFamily: 'sans-serif' }}>Close</span>
+            </IconButton>
+          </Box>
+          <Divider sx={{ mb: 2 }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {menus && menus.map((menu, idx) => (
+              <MobileMenuItem
+                key={menu.label + idx}
+                item={menu}
+                level={0}
+                onClose={closeDrawer}
+                currentPath={currentPath}
+              />
+            ))}
+          </div>
+        </Box>
+      </SwipeableDrawer>
     </div>
   );
 }

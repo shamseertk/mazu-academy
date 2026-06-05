@@ -26,20 +26,6 @@ const Header = () => {
         sx={{ backgroundColor: 'var(--header-bg-color)', color: 'var(--header-text-color)' }}
       >
         <Toolbar>
-          <Box
-            sx={{
-              display: {
-                xs: 'block',
-                lg: 'none'
-              }
-            }}
-          >
-            <IconButton onClick={openDrawer} size="large">
-              <Menu
-                style={{ color: 'var(--menu-icon-color)' }}
-              />
-            </IconButton>
-          </Box>
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center' }}>
             <img
               src={logo}
@@ -64,6 +50,7 @@ const Header = () => {
           <AppNav
             drawerOpen={drawerOpen}
             closeDrawer={closeDrawer}
+            openDrawer={openDrawer}
           />
           <Box sx={{ flexGrow: 1 }} />
           <Typography variant="body1" component="div" sx={{ mr: 1, color: 'inherit' }}>
