@@ -30,6 +30,12 @@ export const menus = [
           { label: 'More Words', link: '/level2/more-words', active: true },
           { label: 'Family', link: '/level2/family', active: true },
         ]
+      },
+      {
+        heading: 'Sarf',
+        items: [
+          { label: 'Conjugation Table', link: '/arabic/sarf', active: true }
+        ]
       }
     ]
   },

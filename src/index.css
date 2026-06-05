@@ -1,3 +1,7 @@
+@import "menu.css";
+@import "misc.css";
+@import "writing.css";
+
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
@@ -225,9 +229,3 @@ body {
   padding: 2px;
   font-size: 1.5em;
 }
-
-
-
-@import "menu.css";
-@import "misc.css";
-@import "writing.css";

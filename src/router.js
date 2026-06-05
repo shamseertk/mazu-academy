@@ -19,6 +19,7 @@ import Prayer from './container/fiqh/Prayer';
 import SunnahPrayer from './container/fiqh/SunnahPrayer';
 import Janaza from './container/fiqh/Janaza';
 import IslamicStudies from './container/IslamicStudies';
+import Sarf from './container/Sarf';
 
 export default function Router() {
   return <Routes>
@@ -43,5 +44,6 @@ export default function Router() {
     <Route path="fiqh/sunnah-prayer" element={<SunnahPrayer />} />
     <Route path="fiqh/janaza" element={<Janaza />} />
     <Route path="/islamic-studies" element={<IslamicStudies />} />
+    <Route path="/arabic/sarf" element={<Sarf />} />
   </Routes>
 }
